@@ -13,6 +13,8 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     required this.textPrimary,
     required this.textSecondary,
     required this.surface,
+    required this.inverseSurface,
+    required this.onInverseSurface,
     required this.background,
     required this.surfaceMuted,
     required this.authGradientTop,
@@ -36,6 +38,8 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   final Color textPrimary;
   final Color textSecondary;
   final Color surface;
+  final Color inverseSurface;
+  final Color onInverseSurface;
   final Color background;
   final Color surfaceMuted;
   final Color authGradientTop;
@@ -59,6 +63,8 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     textPrimary: AppColors.ink,
     textSecondary: AppColors.slate,
     surface: AppColors.white,
+    inverseSurface: AppColors.ink,
+    onInverseSurface: AppColors.white,
     background: AppColors.cloud,
     surfaceMuted: AppColors.mist,
     authGradientTop: AppColors.blush,
@@ -84,6 +90,8 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     Color? textPrimary,
     Color? textSecondary,
     Color? surface,
+    Color? inverseSurface,
+    Color? onInverseSurface,
     Color? background,
     Color? surfaceMuted,
     Color? authGradientTop,
@@ -106,6 +114,8 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     textPrimary: textPrimary ?? this.textPrimary,
     textSecondary: textSecondary ?? this.textSecondary,
     surface: surface ?? this.surface,
+    inverseSurface: inverseSurface ?? this.inverseSurface,
+    onInverseSurface: onInverseSurface ?? this.onInverseSurface,
     background: background ?? this.background,
     surfaceMuted: surfaceMuted ?? this.surfaceMuted,
     authGradientTop: authGradientTop ?? this.authGradientTop,
@@ -134,6 +144,8 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
       textPrimary: mix(textPrimary, other.textPrimary),
       textSecondary: mix(textSecondary, other.textSecondary),
       surface: mix(surface, other.surface),
+      inverseSurface: mix(inverseSurface, other.inverseSurface),
+      onInverseSurface: mix(onInverseSurface, other.onInverseSurface),
       background: mix(background, other.background),
       surfaceMuted: mix(surfaceMuted, other.surfaceMuted),
       authGradientTop: mix(authGradientTop, other.authGradientTop),

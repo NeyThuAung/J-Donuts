@@ -24,6 +24,9 @@ abstract final class AppMotion {
   static const carouselSlide = Duration(milliseconds: 500);
   static const carouselInterval = Duration(seconds: 4);
   static const attentionPulse = Duration(milliseconds: 1200);
+  static const snackIn = Duration(milliseconds: 400);
+  static const snackOut = Duration(milliseconds: 250);
+  static const snackDisplay = Duration(seconds: 4);
 
   // Curves
   static const standard = Curves.easeOutCubic;
