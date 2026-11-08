@@ -3,15 +3,17 @@ import 'package:flutter/painting.dart';
 import 'app_colors.dart';
 
 class AppInsets {
-  const AppInsets();
+  const AppInsets(this._scale);
 
-  final double xxs = 4;
-  final double xs = 8;
-  final double sm = 12;
-  final double md = 16;
-  final double lg = 24;
-  final double xl = 32;
-  final double xxl = 48;
+  final double _scale;
+
+  double get xxs => 4 * _scale;
+  double get xs => 8 * _scale;
+  double get sm => 12 * _scale;
+  double get md => 16 * _scale;
+  double get lg => 24 * _scale;
+  double get xl => 32 * _scale;
+  double get xxl => 48 * _scale;
 }
 
 class AppCorners {
