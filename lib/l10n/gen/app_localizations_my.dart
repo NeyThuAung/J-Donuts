@@ -19,6 +19,9 @@ class AppLocalizationsMy extends AppLocalizations {
   String get commonRetry => 'ထပ်စမ်းကြည့်မည်';
 
   @override
+  String get errorTitle => 'တစ်ခုခု မှားယွင်းနေပါသည်';
+
+  @override
   String get errorNoConnection => 'အင်တာနက် ချိတ်ဆက်မှု မရှိပါ။';
 
   @override

@@ -32,8 +32,10 @@ class AppSizes {
   final double iconButton = 40;
   final double minTapTarget = 44;
   final double icon = 24;
+  final double iconLg = 32;
   final double iconSm = 16;
   final double avatar = 48;
+  final double errorBadge = 64;
   final double navBarHeight = 72;
 }
 

@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// **'Retry'**
   String get commonRetry;
 
+  /// No description provided for @errorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get errorTitle;
+
   /// No description provided for @errorNoConnection.
   ///
   /// In en, this message translates to:

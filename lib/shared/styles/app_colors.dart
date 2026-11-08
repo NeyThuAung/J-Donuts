@@ -10,6 +10,7 @@ abstract final class AppColors {
   static const skyBlue = Color(0xFFA5DFF9);
   static const peach = Color(0xFFFFECDC);
   static const blush = Color(0xFFFDEDF3);
+  static const cyanTint = Color(0x1F59CFEC);
 
   static const white = Color(0xFFFFFFFF);
   static const ink = Color(0xFF242B32);

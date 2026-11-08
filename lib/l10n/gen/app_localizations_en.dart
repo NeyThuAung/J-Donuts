@@ -19,6 +19,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonRetry => 'Retry';
 
   @override
+  String get errorTitle => 'Something went wrong';
+
+  @override
   String get errorNoConnection => 'No internet connection.';
 
   @override

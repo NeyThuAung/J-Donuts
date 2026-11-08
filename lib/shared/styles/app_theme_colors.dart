@@ -6,6 +6,7 @@ import 'app_colors.dart';
 class AppThemeColors extends ThemeExtension<AppThemeColors> {
   const AppThemeColors({
     required this.primary,
+    required this.primaryTint,
     required this.onPrimary,
     required this.accent,
     required this.highlight,
@@ -28,6 +29,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   });
 
   final Color primary;
+  final Color primaryTint;
   final Color onPrimary;
   final Color accent;
   final Color highlight;
@@ -50,6 +52,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
 
   static const light = AppThemeColors(
     primary: AppColors.cyan,
+    primaryTint: AppColors.cyanTint,
     onPrimary: AppColors.white,
     accent: AppColors.pink,
     highlight: AppColors.orange,
@@ -74,6 +77,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   @override
   AppThemeColors copyWith({
     Color? primary,
+    Color? primaryTint,
     Color? onPrimary,
     Color? accent,
     Color? highlight,
@@ -95,6 +99,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     Color? shimmerHighlight,
   }) => AppThemeColors(
     primary: primary ?? this.primary,
+    primaryTint: primaryTint ?? this.primaryTint,
     onPrimary: onPrimary ?? this.onPrimary,
     accent: accent ?? this.accent,
     highlight: highlight ?? this.highlight,
@@ -122,6 +127,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     Color mix(Color a, Color b) => Color.lerp(a, b, t)!;
     return AppThemeColors(
       primary: mix(primary, other.primary),
+      primaryTint: mix(primaryTint, other.primaryTint),
       onPrimary: mix(onPrimary, other.onPrimary),
       accent: mix(accent, other.accent),
       highlight: mix(highlight, other.highlight),

@@ -3,6 +3,7 @@
   "appTitle": "J'Donuts",
   "commonContinue": "Continue",
   "commonRetry": "Retry",
+  "errorTitle": "Something went wrong",
   "errorNoConnection": "No internet connection.",
   "errorTimeout": "The connection timed out. Please try again.",
   "errorNotFound": "We couldn't find that.",
