@@ -18,6 +18,7 @@ analyzer:
     - "**/*.config.dart"
     - lib/gen/**
     - lib/l10n/gen/**
+    - test/**/generated/**
 
 formatter:
   trailing_commas: preserve
