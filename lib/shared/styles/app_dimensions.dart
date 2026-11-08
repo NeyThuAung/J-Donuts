@@ -43,6 +43,8 @@ class AppSizes {
   final double stepRingStroke = 5;
   final double focusBorder = 1.5;
   final double otpBoxHeight = 56;
+  final double wheelPickerHeight = 216;
+  final double wheelItemExtent = 40;
 }
 
 class AppGrid {

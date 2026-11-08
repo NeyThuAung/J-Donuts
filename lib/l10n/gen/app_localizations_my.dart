@@ -202,4 +202,30 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get authNameErrorInvalid => 'စာလုံးနှင့် space သာ အသုံးပြုပါ။';
+
+  @override
+  String get commonDone => 'ပြီးပါပြီ';
+
+  @override
+  String get authDobTitle => 'သင့်မွေးနေ့ ဘယ်နေ့လဲ?';
+
+  @override
+  String get authDobMonth => 'လ';
+
+  @override
+  String get authDobDay => 'ရက်';
+
+  @override
+  String get authDobYear => 'ခုနှစ်';
+
+  @override
+  String get authDobErrorInvalid => 'ထိုရက်စွဲ မရှိပါ။';
+
+  @override
+  String get authDobErrorFuture => 'မွေးနေ့သည် အနာဂတ်ရက်စွဲ ဖြစ်၍ မရပါ။';
+
+  @override
+  String authDobErrorTooYoung(int age) {
+    return 'အဖွဲ့ဝင်ရန် အသက် $age နှစ် အနည်းဆုံး ပြည့်ရပါမည်။';
+  }
 }

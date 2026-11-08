@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:j_donuts/features/auth/domain/entity/auth_flow.dart';
 import 'package:j_donuts/features/auth/presentation/cubit/authentication_cubit.dart';
+import 'package:j_donuts/features/auth/presentation/pages/date_of_birth/cubit/date_of_birth_cubit.dart';
 import 'package:j_donuts/features/auth/presentation/pages/date_of_birth/date_of_birth_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/name/name_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/onboarding/onboarding_page.dart';
@@ -259,8 +261,9 @@ void main() {
       await tester.pumpAndSettle();
       expect(
         tester
-            .widget<DateOfBirthPage>(find.byType(DateOfBirthPage))
-            .args
+            .element(find.byType(DateOfBirthPage))
+            .read<DateOfBirthCubit>()
+            .state
             .firstName,
         'Ye Min',
       );

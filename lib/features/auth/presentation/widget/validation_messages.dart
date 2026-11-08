@@ -23,3 +23,13 @@ extension NameValidationErrorMessage on NameValidationError {
     NameValidationError.invalidCharacters => l10n.authNameErrorInvalid,
   };
 }
+
+extension DateOfBirthValidationErrorMessage on DateOfBirthValidationError {
+  String message(AppLocalizations l10n) => switch (this) {
+    DateOfBirthValidationError.invalidDate => l10n.authDobErrorInvalid,
+    DateOfBirthValidationError.inFuture => l10n.authDobErrorFuture,
+    DateOfBirthValidationError.tooYoung => l10n.authDobErrorTooYoung(
+      AuthRules.minimumAge,
+    ),
+  };
+}

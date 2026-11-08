@@ -445,6 +445,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Use letters and spaces only.'**
   String get authNameErrorInvalid;
+
+  /// No description provided for @commonDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get commonDone;
+
+  /// No description provided for @authDobTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s your date of birth?'**
+  String get authDobTitle;
+
+  /// No description provided for @authDobMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get authDobMonth;
+
+  /// No description provided for @authDobDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get authDobDay;
+
+  /// No description provided for @authDobYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get authDobYear;
+
+  /// No description provided for @authDobErrorInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'That date doesn\'t exist.'**
+  String get authDobErrorInvalid;
+
+  /// No description provided for @authDobErrorFuture.
+  ///
+  /// In en, this message translates to:
+  /// **'Your date of birth can\'t be in the future.'**
+  String get authDobErrorFuture;
+
+  /// No description provided for @authDobErrorTooYoung.
+  ///
+  /// In en, this message translates to:
+  /// **'You need to be at least {age} years old to join.'**
+  String authDobErrorTooYoung(int age);
 }
 
 class _AppLocalizationsDelegate

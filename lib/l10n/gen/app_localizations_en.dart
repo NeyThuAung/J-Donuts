@@ -204,4 +204,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authNameErrorInvalid => 'Use letters and spaces only.';
+
+  @override
+  String get commonDone => 'Done';
+
+  @override
+  String get authDobTitle => 'What\'s your date of birth?';
+
+  @override
+  String get authDobMonth => 'Month';
+
+  @override
+  String get authDobDay => 'Day';
+
+  @override
+  String get authDobYear => 'Year';
+
+  @override
+  String get authDobErrorInvalid => 'That date doesn\'t exist.';
+
+  @override
+  String get authDobErrorFuture =>
+      'Your date of birth can\'t be in the future.';
+
+  @override
+  String authDobErrorTooYoung(int age) {
+    return 'You need to be at least $age years old to join.';
+  }
 }

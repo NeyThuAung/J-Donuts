@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 
 import '../di/di.dart';
 import '../features/auth/presentation/cubit/authentication_cubit.dart';
+import '../features/auth/presentation/pages/date_of_birth/cubit/date_of_birth_cubit.dart';
 import '../features/auth/presentation/pages/date_of_birth/date_of_birth_page.dart';
 import '../features/auth/presentation/pages/name/cubit/name_cubit.dart';
 import '../features/auth/presentation/pages/name/name_page.dart';
@@ -96,7 +97,15 @@ class NavigationRouter {
     ),
     _routeWithArgs<DateOfBirthArgs>(
       DateOfBirthPage.routePath,
-      (args) => DateOfBirthPage(args: args),
+      (args) => BlocProvider(
+        create: (_) => inject<DateOfBirthCubit>()
+          ..start(
+            phone: args.phone,
+            firstName: args.firstName,
+            lastName: args.lastName,
+          ),
+        child: const DateOfBirthPage(),
+      ),
     ),
     GoRoute(
       path: WelcomePage.routePath,

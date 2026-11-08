@@ -111,5 +111,20 @@
     }
   },
   "authNameErrorDigits": "Names can't contain numbers.",
-  "authNameErrorInvalid": "Use letters and spaces only."
+  "authNameErrorInvalid": "Use letters and spaces only.",
+  "commonDone": "Done",
+  "authDobTitle": "What's your date of birth?",
+  "authDobMonth": "Month",
+  "authDobDay": "Day",
+  "authDobYear": "Year",
+  "authDobErrorInvalid": "That date doesn't exist.",
+  "authDobErrorFuture": "Your date of birth can't be in the future.",
+  "authDobErrorTooYoung": "You need to be at least {age} years old to join.",
+  "@authDobErrorTooYoung": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      }
+    }
+  }
 }
