@@ -2,6 +2,7 @@
   "@@locale": "en",
   "appTitle": "J'Donuts",
   "commonContinue": "Continue",
+  "commonComingSoon": "Coming soon",
   "commonRetry": "Retry",
   "errorTitle": "Something went wrong",
   "errorNoConnection": "No internet connection.",
@@ -11,5 +12,10 @@
   "errorSessionExpired": "Your session has expired. Please log in again.",
   "errorServer": "Our server is having trouble. Please try again later.",
   "errorStorage": "We couldn't read the data saved on this phone.",
-  "errorUnknown": "Something went wrong. Please try again."
+  "errorUnknown": "Something went wrong. Please try again.",
+  "navHome": "Home",
+  "navRewards": "Reward",
+  "navOrders": "Orders",
+  "navWallet": "Wallet",
+  "navSettings": "Settings"
 }

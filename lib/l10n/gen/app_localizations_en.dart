@@ -16,6 +16,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonContinue => 'Continue';
 
   @override
+  String get commonComingSoon => 'Coming soon';
+
+  @override
   String get commonRetry => 'Retry';
 
   @override
@@ -46,4 +49,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorUnknown => 'Something went wrong. Please try again.';
+
+  @override
+  String get navHome => 'Home';
+
+  @override
+  String get navRewards => 'Reward';
+
+  @override
+  String get navOrders => 'Orders';
+
+  @override
+  String get navWallet => 'Wallet';
+
+  @override
+  String get navSettings => 'Settings';
 }

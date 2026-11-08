@@ -16,6 +16,9 @@ class AppLocalizationsMy extends AppLocalizations {
   String get commonContinue => 'ဆက်လုပ်မည်';
 
   @override
+  String get commonComingSoon => 'မကြာမီ လာမည်';
+
+  @override
   String get commonRetry => 'ထပ်စမ်းကြည့်မည်';
 
   @override
@@ -45,4 +48,19 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get errorUnknown => 'တစ်ခုခု မှားယွင်းနေပါသည်။ ထပ်စမ်းကြည့်ပါ။';
+
+  @override
+  String get navHome => 'ပင်မ';
+
+  @override
+  String get navRewards => 'ဆုလာဘ်';
+
+  @override
+  String get navOrders => 'အော်ဒါများ';
+
+  @override
+  String get navWallet => 'ပိုက်ဆံအိတ်';
+
+  @override
+  String get navSettings => 'ဆက်တင်များ';
 }

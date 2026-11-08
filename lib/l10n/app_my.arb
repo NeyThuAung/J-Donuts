@@ -2,6 +2,7 @@
   "@@locale": "my",
   "appTitle": "J'Donuts",
   "commonContinue": "ဆက်လုပ်မည်",
+  "commonComingSoon": "မကြာမီ လာမည်",
   "commonRetry": "ထပ်စမ်းကြည့်မည်",
   "errorTitle": "တစ်ခုခု မှားယွင်းနေပါသည်",
   "errorNoConnection": "အင်တာနက် ချိတ်ဆက်မှု မရှိပါ။",
@@ -11,5 +12,10 @@
   "errorSessionExpired": "အကောင့်ဝင်ချိန် ကုန်သွားပါပြီ။ ပြန်ဝင်ပါ။",
   "errorServer": "ဆာဗာတွင် ပြဿနာ ရှိနေပါသည်။ နောက်မှ ထပ်စမ်းကြည့်ပါ။",
   "errorStorage": "ဖုန်းထဲတွင် သိမ်းထားသော ဒေတာကို ဖတ်၍ မရပါ။",
-  "errorUnknown": "တစ်ခုခု မှားယွင်းနေပါသည်။ ထပ်စမ်းကြည့်ပါ။"
+  "errorUnknown": "တစ်ခုခု မှားယွင်းနေပါသည်။ ထပ်စမ်းကြည့်ပါ။",
+  "navHome": "ပင်မ",
+  "navRewards": "ဆုလာဘ်",
+  "navOrders": "အော်ဒါများ",
+  "navWallet": "ပိုက်ဆံအိတ်",
+  "navSettings": "ဆက်တင်များ"
 }

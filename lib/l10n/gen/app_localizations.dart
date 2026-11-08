@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// **'Continue'**
   String get commonContinue;
 
+  /// No description provided for @commonComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon'**
+  String get commonComingSoon;
+
   /// No description provided for @commonRetry.
   ///
   /// In en, this message translates to:
@@ -169,6 +175,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Something went wrong. Please try again.'**
   String get errorUnknown;
+
+  /// No description provided for @navHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get navHome;
+
+  /// No description provided for @navRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward'**
+  String get navRewards;
+
+  /// No description provided for @navOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get navOrders;
+
+  /// No description provided for @navWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get navWallet;
+
+  /// No description provided for @navSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get navSettings;
 }
 
 class _AppLocalizationsDelegate
