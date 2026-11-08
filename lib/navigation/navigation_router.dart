@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
@@ -66,18 +66,21 @@ class NavigationRouter {
   List<GoRoute> get _authRoutes => [
     GoRoute(
       path: OnboardingPage.routePath,
-      builder: (_, _) => const OnboardingPage(),
+      pageBuilder: (_, state) => _page(state, const OnboardingPage()),
     ),
     GoRoute(
       path: PhoneNumberPage.routePath,
-      builder: (_, state) => BlocProvider(
-        create: (_) => inject<PhoneNumberCubit>()
-          ..start(
-            PhoneNumberPage.flowFromQuery(
-              state.uri.queryParameters[PhoneNumberPage.flowParam],
+      pageBuilder: (_, state) => _page(
+        state,
+        BlocProvider(
+          create: (_) => inject<PhoneNumberCubit>()
+            ..start(
+              PhoneNumberPage.flowFromQuery(
+                state.uri.queryParameters[PhoneNumberPage.flowParam],
+              ),
             ),
-          ),
-        child: const PhoneNumberPage(),
+          child: const PhoneNumberPage(),
+        ),
       ),
     ),
     _routeWithArgs<VerifyOtpArgs>(
@@ -109,23 +112,40 @@ class NavigationRouter {
     ),
     GoRoute(
       path: WelcomePage.routePath,
-      builder: (_, _) => const WelcomePage(),
+      pageBuilder: (_, state) => _page(state, const WelcomePage()),
     ),
   ];
 
   GoRoute get _indexRoute => GoRoute(
     path: IndexPage.routePath,
-    builder: (_, state) => IndexPage(
-      tab: IndexTab.fromQuery(state.uri.queryParameters[IndexTab.queryKey]),
+    pageBuilder: (_, state) => _page(
+      state,
+      IndexPage(
+        tab: IndexTab.fromQuery(state.uri.queryParameters[IndexTab.queryKey]),
+      ),
     ),
     routes: [
       GoRoute(
         path: ProductDetailPage.routePath,
-        builder: (_, state) => ProductDetailPage(
-          productId: state.pathParameters[ProductDetailPage.idParam]!,
+        pageBuilder: (_, state) => _page(
+          state,
+          ProductDetailPage(
+            productId: state.pathParameters[ProductDetailPage.idParam]!,
+          ),
         ),
       ),
     ],
+  );
+
+  // Pages are built here, not by go_router: its app-type check misses
+  // MaterialApp on this Flutter version and falls back to pages without
+  // transitions. MaterialPage follows the theme's page transitions.
+  static Page<void> _page(GoRouterState state, Widget child) => MaterialPage(
+    key: state.pageKey,
+    name: state.name ?? state.path,
+    arguments: {...state.pathParameters, ...state.uri.queryParameters},
+    restorationId: state.pageKey.value,
+    child: child,
   );
 
   // A step opened without its arguments (deep link, restored route) restarts
@@ -135,7 +155,7 @@ class NavigationRouter {
         path: path,
         redirect: (_, state) =>
             state.extra is T ? null : OnboardingPage.routePath,
-        builder: (_, state) => build(state.extra! as T),
+        pageBuilder: (_, state) => _page(state, build(state.extra! as T)),
       );
 
   @disposeMethod

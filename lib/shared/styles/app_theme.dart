@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'app_page_transitions.dart';
 import 'app_styles.dart';
 import 'app_theme_colors.dart';
 import 'app_typography.dart';
@@ -18,6 +19,7 @@ abstract final class AppTheme {
       highlightColor: Colors.transparent,
       elevatedButtonTheme: _elevatedButtonTheme(colors, textTheme),
       inputDecorationTheme: _inputTheme(colors, textTheme),
+      pageTransitionsTheme: AppPageTransitions.theme,
       extensions: const [colors],
     );
   }
