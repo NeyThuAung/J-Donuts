@@ -19,6 +19,7 @@ import 'package:j_donuts/core/network/network_info.dart' as _i296;
 import 'package:j_donuts/di/third_party_modules/logger_module.dart' as _i20;
 import 'package:j_donuts/di/third_party_modules/network_module.dart' as _i869;
 import 'package:j_donuts/di/third_party_modules/storage_module.dart' as _i767;
+import 'package:j_donuts/navigation/navigation_key_provider.dart' as _i168;
 import 'package:logger/logger.dart' as _i974;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -35,6 +36,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i895.Connectivity>(() => networkModule.connectivity);
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => storageModule.secureStorage,
+    );
+    gh.singleton<_i168.INavigationKeyProvider>(
+      () => _i168.NavigationKeyProvider(),
     );
     gh.lazySingleton<_i296.NetworkInfo>(
       () => networkModule.networkInfo(gh<_i895.Connectivity>()),
