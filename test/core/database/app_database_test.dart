@@ -9,17 +9,17 @@ void main() {
     setUp(() => database = AppDatabase(NativeDatabase.memory()));
     tearDown(() => database.close());
 
-    test('starts at schema version 1', () {
-      expect(database.schemaVersion, 1);
+    test('is at schema version 2, which adds users', () {
+      expect(database.schemaVersion, 2);
     });
 
-    test('creates the app_meta table on first open', () async {
+    test('creates every table on first open', () async {
       final tables = await database
           .customSelect("SELECT name FROM sqlite_master WHERE type = 'table'")
           .map((row) => row.read<String>('name'))
           .get();
 
-      expect(tables, contains('app_meta'));
+      expect(tables, containsAll(['app_meta', 'users']));
     });
 
     test('turns foreign key checks on when it opens', () async {

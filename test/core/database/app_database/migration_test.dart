@@ -5,9 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:j_donuts/core/database/database.dart';
 
 import 'generated/schema.dart';
+import 'generated/schema_v1.dart' as v1;
 
-// Snapshots in drift_schemas/ come from `dart run drift_dev make-migrations`;
-// it adds a step-by-step upgrade test here once a second version exists.
+// Snapshots in drift_schemas/ come from `dart run drift_dev make-migrations`.
 void main() {
   driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
   late SchemaVerifier verifier;
@@ -28,6 +28,36 @@ void main() {
       addTearDown(database.close);
 
       expect(GeneratedHelper.versions.last, database.schemaVersion);
+    });
+  });
+
+  group('AppDatabase upgrades', () {
+    test('each older version upgrades to the current schema', () async {
+      for (final from in GeneratedHelper.versions.take(
+        GeneratedHelper.versions.length - 1,
+      )) {
+        final connection = (await verifier.schemaAt(from)).newConnection();
+        final database = AppDatabase(connection);
+
+        await verifier.migrateAndValidate(database, database.schemaVersion);
+        await database.close();
+      }
+    });
+
+    test('v1 to v2 adds users and keeps app_meta values', () async {
+      final schema = await verifier.schemaAt(1);
+      final oldDatabase = v1.DatabaseAtV1(schema.newConnection());
+      await oldDatabase
+          .into(oldDatabase.appMeta)
+          .insert(v1.AppMetaCompanion.insert(key: 'seed_version', value: '1'));
+      await oldDatabase.close();
+
+      final database = AppDatabase(schema.newConnection());
+      addTearDown(database.close);
+      await verifier.migrateAndValidate(database, 2);
+
+      expect(await database.appMetaDao.readValue('seed_version'), '1');
+      expect(await database.select(database.users).get(), isEmpty);
     });
   });
 }
