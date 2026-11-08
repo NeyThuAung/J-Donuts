@@ -5,5 +5,7 @@ export 'exceptions/remote_exception.dart';
 export 'failures/app_failure.dart';
 export 'failures/failure.dart';
 export 'failures/remote_failure.dart';
+export 'logging/app_logger.dart';
+export 'network/network_info.dart';
 export 'usecase/guard.dart';
 export 'usecase/usecase.dart';
