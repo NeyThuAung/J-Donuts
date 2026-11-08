@@ -1,0 +1,26 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        generate_for:
+          - lib/**
+      json_serializable:
+        generate_for:
+          - lib/**
+        options:
+          explicit_to_json: true
+          checked: true
+      injectable_generator:injectable_builder:
+        generate_for:
+          - lib/**
+      injectable_generator:injectable_config_builder:
+        generate_for:
+          - lib/di/**
+      drift_dev:
+        generate_for:
+          - lib/core/database/**
+        options:
+          store_date_time_values_as_text: true
+          named_parameters: true
+          sql:
+            dialect: sqlite
