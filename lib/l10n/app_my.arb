@@ -67,5 +67,10 @@
   "authDobErrorFuture": "မွေးနေ့သည် အနာဂတ်ရက်စွဲ ဖြစ်၍ မရပါ။",
   "authDobErrorTooYoung": "အဖွဲ့ဝင်ရန် အသက် {age} နှစ် အနည်းဆုံး ပြည့်ရပါမည်။",
   "authWelcomeTitle": "J'donuts ကမ္ဘာမှ ကြိုဆိုပါတယ်",
-  "authWelcomeExplore": "စတင်ရှာဖွေမည်"
+  "authWelcomeExplore": "စတင်ရှာဖွေမည်",
+  "commonCancel": "မလုပ်တော့ပါ",
+  "settingsAccount": "အကောင့်",
+  "settingsLogOut": "ထွက်ရန်",
+  "settingsLogOutTitle": "အကောင့်မှ ထွက်မလား?",
+  "settingsLogOutMessage": "ပြန်ဝင်ရန် ဖုန်းနံပါတ်နှင့် ကုဒ် လိုအပ်ပါမည်။"
 }

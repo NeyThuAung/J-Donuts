@@ -234,4 +234,20 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get authWelcomeExplore => 'စတင်ရှာဖွေမည်';
+
+  @override
+  String get commonCancel => 'မလုပ်တော့ပါ';
+
+  @override
+  String get settingsAccount => 'အကောင့်';
+
+  @override
+  String get settingsLogOut => 'ထွက်ရန်';
+
+  @override
+  String get settingsLogOutTitle => 'အကောင့်မှ ထွက်မလား?';
+
+  @override
+  String get settingsLogOutMessage =>
+      'ပြန်ဝင်ရန် ဖုန်းနံပါတ်နှင့် ကုဒ် လိုအပ်ပါမည်။';
 }

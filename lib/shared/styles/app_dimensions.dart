@@ -45,6 +45,8 @@ class AppSizes {
   final double otpBoxHeight = 56;
   final double wheelPickerHeight = 216;
   final double wheelItemExtent = 40;
+  final double settingsRow = 56;
+  final double hairline = 1;
 }
 
 class AppGrid {

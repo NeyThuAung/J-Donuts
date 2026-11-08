@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../features/auth/presentation/cubit/authentication_cubit.dart';
 import '../features/settings/presentation/pages/placeholder/placeholder_page.dart';
+import '../features/settings/presentation/pages/settings/settings_page.dart';
 import '../l10n/l10n.dart';
 import 'index_tab.dart';
 import 'router_extension.dart';
@@ -21,8 +26,7 @@ class IndexPage extends StatelessWidget {
       body: IndexedStack(
         index: tab.index,
         children: [
-          for (final tab in IndexTab.values)
-            PlaceholderPage(title: tab.label(l10n), icon: tab.icon),
+          for (final tab in IndexTab.values) _body(context, tab),
         ],
       ),
       bottomNavigationBar: NavigationBar(
@@ -36,6 +40,15 @@ class IndexPage extends StatelessWidget {
       ),
     );
   }
+
+  // Home and Rewards arrive with Tasks 2 and 3; Orders and Wallet stay
+  // placeholders, as the brief allows.
+  Widget _body(BuildContext context, IndexTab tab) => switch (tab) {
+    IndexTab.settings => SettingsPage(
+      onLogOut: () => unawaited(context.read<AuthenticationCubit>().logOut()),
+    ),
+    _ => PlaceholderPage(title: tab.label(context.l10n), icon: tab.icon),
+  };
 }
 
 extension IndexTabView on IndexTab {

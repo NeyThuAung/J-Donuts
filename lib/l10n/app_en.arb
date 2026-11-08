@@ -128,5 +128,10 @@
     }
   },
   "authWelcomeTitle": "Welcome to the world of J'donuts",
-  "authWelcomeExplore": "Let's explore"
+  "authWelcomeExplore": "Let's explore",
+  "commonCancel": "Cancel",
+  "settingsAccount": "Account",
+  "settingsLogOut": "Log out",
+  "settingsLogOutTitle": "Log out?",
+  "settingsLogOutMessage": "You'll need your phone number and a code to log back in."
 }

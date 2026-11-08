@@ -505,6 +505,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Let\'s explore'**
   String get authWelcomeExplore;
+
+  /// No description provided for @commonCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get commonCancel;
+
+  /// No description provided for @settingsAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get settingsAccount;
+
+  /// No description provided for @settingsLogOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out'**
+  String get settingsLogOut;
+
+  /// No description provided for @settingsLogOutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out?'**
+  String get settingsLogOutTitle;
+
+  /// No description provided for @settingsLogOutMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll need your phone number and a code to log back in.'**
+  String get settingsLogOutMessage;
 }
 
 class _AppLocalizationsDelegate

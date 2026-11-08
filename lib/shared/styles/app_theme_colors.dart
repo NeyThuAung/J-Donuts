@@ -28,6 +28,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     required this.trackActive,
     required this.shimmerBase,
     required this.shimmerHighlight,
+    required this.scrim,
   });
 
   final Color primary;
@@ -54,6 +55,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   final Color shimmerBase;
   final Color shimmerHighlight;
 
+  /// Behind dialogs.
+  final Color scrim;
+
   static const light = AppThemeColors(
     primary: AppColors.cyan,
     primaryTint: AppColors.cyanTint,
@@ -78,6 +82,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     trackActive: AppColors.grey,
     shimmerBase: AppColors.smoke,
     shimmerHighlight: AppColors.mist,
+    scrim: AppColors.scrim,
   );
 
   @override
@@ -105,6 +110,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     Color? trackActive,
     Color? shimmerBase,
     Color? shimmerHighlight,
+    Color? scrim,
   }) => AppThemeColors(
     primary: primary ?? this.primary,
     primaryTint: primaryTint ?? this.primaryTint,
@@ -129,6 +135,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     trackActive: trackActive ?? this.trackActive,
     shimmerBase: shimmerBase ?? this.shimmerBase,
     shimmerHighlight: shimmerHighlight ?? this.shimmerHighlight,
+    scrim: scrim ?? this.scrim,
   );
 
   @override
@@ -159,6 +166,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
       trackActive: mix(trackActive, other.trackActive),
       shimmerBase: mix(shimmerBase, other.shimmerBase),
       shimmerHighlight: mix(shimmerHighlight, other.shimmerHighlight),
+      scrim: mix(scrim, other.scrim),
     );
   }
 }

@@ -11,6 +11,7 @@ abstract final class AppMotion {
   static const tabSwitch = Duration(milliseconds: 350);
   static const buttonMorph = Duration(milliseconds: 300);
   static const pageStep = Duration(milliseconds: 400);
+  static const dialog = Duration(milliseconds: 200);
   static const hero = Duration(milliseconds: 400);
   static const shake = Duration(milliseconds: 450);
   static const badgePop = Duration(milliseconds: 450);
@@ -40,6 +41,7 @@ abstract final class AppMotion {
   // Values
   static const pressedScale = 0.96;
   static const pulseScale = 1.06;
+  static const dialogEnterScale = 1.08;
   static const enterSlideOffset = Offset(0, 0.15);
   static const shakeDistance = 10.0;
   static const shakeOscillations = 3;

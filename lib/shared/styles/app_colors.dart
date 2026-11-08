@@ -21,4 +21,5 @@ abstract final class AppColors {
   static const mist = Color(0xFFF6F6F8);
   static const smoke = Color(0xFFE2E5E7);
   static const shadow = Color(0x14242B32);
+  static const scrim = Color(0x66242B32);
 }

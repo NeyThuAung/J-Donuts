@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:j_donuts/features/settings/presentation/pages/placeholder/placeholder_page.dart';
+import 'package:j_donuts/features/settings/presentation/pages/settings/settings_page.dart';
 import 'package:j_donuts/l10n/l10n.dart';
 import 'package:j_donuts/navigation/index_page.dart';
 import 'package:j_donuts/navigation/index_tab.dart';
@@ -55,12 +56,15 @@ void main() {
       expect(_visibleTab(tester), IndexTab.rewards.index);
     });
 
-    testWidgets('shows a placeholder body for every tab', (tester) async {
+    testWidgets('shows Settings on its tab and placeholders on the rest', (
+      tester,
+    ) async {
       await _pump(tester, '/');
 
+      expect(find.byType(SettingsPage, skipOffstage: false), findsOneWidget);
       expect(
         find.byType(PlaceholderPage, skipOffstage: false),
-        findsNWidgets(IndexTab.values.length),
+        findsNWidgets(IndexTab.values.length - 1),
       );
     });
 

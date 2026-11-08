@@ -237,4 +237,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authWelcomeExplore => 'Let\'s explore';
+
+  @override
+  String get commonCancel => 'Cancel';
+
+  @override
+  String get settingsAccount => 'Account';
+
+  @override
+  String get settingsLogOut => 'Log out';
+
+  @override
+  String get settingsLogOutTitle => 'Log out?';
+
+  @override
+  String get settingsLogOutMessage =>
+      'You\'ll need your phone number and a code to log back in.';
 }
