@@ -140,4 +140,43 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get authPhoneLogInInstead => 'ဝင်ရောက်ရန်';
+
+  @override
+  String get authOtpTitle => 'သင့်နံပါတ်ကို အတည်ပြုပါ';
+
+  @override
+  String authOtpSentTo(int length, String phone) {
+    return '$phone သို့ ဂဏန်း $length လုံးပါ OTP ပို့ထားပါသည်';
+  }
+
+  @override
+  String get authOtpCodeLabel => 'အတည်ပြုကုဒ်';
+
+  @override
+  String get authOtpNoCode => 'ကုဒ် မရရှိဘူးလား?';
+
+  @override
+  String authOtpResendIn(String time) {
+    return '$time မိနစ်အတွင်း ပြန်ပို့နိုင်ပါမည်';
+  }
+
+  @override
+  String get authOtpResend => 'ကုဒ် ပြန်ပို့ရန်';
+
+  @override
+  String get authOtpResent => 'ကုဒ်အသစ် ပို့ပေးလိုက်ပါပြီ။';
+
+  @override
+  String authOtpWrongCode(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'ကုဒ် မှားနေပါသည်။ နောက်ထပ် $count ကြိမ် ကြိုးစားနိုင်ပါသည်။',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get authOtpLocked =>
+      'ကုဒ်မှားသည့်အကြိမ် များလွန်းပါသည်။ ကုဒ်အသစ် ပြန်ပို့ပါ။';
 }

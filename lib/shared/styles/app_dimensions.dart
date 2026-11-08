@@ -42,6 +42,7 @@ class AppSizes {
   final double stepRing = 32;
   final double stepRingStroke = 5;
   final double focusBorder = 1.5;
+  final double otpBoxHeight = 56;
 }
 
 class AppGrid {

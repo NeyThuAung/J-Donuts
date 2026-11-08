@@ -349,6 +349,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Log in'**
   String get authPhoneLogInInstead;
+
+  /// No description provided for @authOtpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your number'**
+  String get authOtpTitle;
+
+  /// No description provided for @authOtpSentTo.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ve sent {length} digit OTP to {phone}'**
+  String authOtpSentTo(int length, String phone);
+
+  /// No description provided for @authOtpCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code'**
+  String get authOtpCodeLabel;
+
+  /// No description provided for @authOtpNoCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive the code?'**
+  String get authOtpNoCode;
+
+  /// {time} is shown highlighted, e.g. 4:58.
+  ///
+  /// In en, this message translates to:
+  /// **'resend in {time} min'**
+  String authOtpResendIn(String time);
+
+  /// No description provided for @authOtpResend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get authOtpResend;
+
+  /// No description provided for @authOtpResent.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ve sent you a new code.'**
+  String get authOtpResent;
+
+  /// No description provided for @authOtpWrongCode.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{That code isn\'t right. 1 try left.} other{That code isn\'t right. {count} tries left.}}'**
+  String authOtpWrongCode(int count);
+
+  /// No description provided for @authOtpLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many wrong codes. Resend to get a new one.'**
+  String get authOtpLocked;
 }
 
 class _AppLocalizationsDelegate

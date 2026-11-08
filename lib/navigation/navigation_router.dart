@@ -10,6 +10,7 @@ import '../features/auth/presentation/pages/name/name_page.dart';
 import '../features/auth/presentation/pages/onboarding/onboarding_page.dart';
 import '../features/auth/presentation/pages/phone_number/cubit/phone_number_cubit.dart';
 import '../features/auth/presentation/pages/phone_number/phone_number_page.dart';
+import '../features/auth/presentation/pages/verify_otp/cubit/verify_otp_cubit.dart';
 import '../features/auth/presentation/pages/verify_otp/verify_otp_page.dart';
 import '../features/auth/presentation/pages/welcome/welcome_page.dart';
 import '../features/product/presentation/pages/product_detail/product_detail_page.dart';
@@ -79,7 +80,11 @@ class NavigationRouter {
     ),
     _routeWithArgs<VerifyOtpArgs>(
       VerifyOtpPage.routePath,
-      (args) => VerifyOtpPage(args: args),
+      (args) => BlocProvider(
+        create: (_) =>
+            inject<VerifyOtpCubit>()..start(phone: args.phone, flow: args.flow),
+        child: VerifyOtpPage(phone: args.phone),
+      ),
     ),
     _routeWithArgs<NameArgs>(
       NamePage.routePath,

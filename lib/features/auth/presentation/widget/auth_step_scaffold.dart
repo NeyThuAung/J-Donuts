@@ -47,18 +47,22 @@ class AuthStepScaffold extends StatelessWidget {
         ),
         child: SafeArea(
           child: DismissFocusWrapper(
-            child: CustomScrollView(
-              slivers: [
-                SliverPadding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: $styles.grid.authPageMargin,
-                  ),
-                  sliver: SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: _content(context),
+            // Not SliverFillRemaining: that sizes from intrinsic heights,
+            // which lag behind an error message animating open or closed.
+            child: LayoutBuilder(
+              builder: (context, constraints) => SingleChildScrollView(
+                padding: EdgeInsets.symmetric(
+                  horizontal: $styles.grid.authPageMargin,
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [_top(context), _bottom()],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -66,10 +70,9 @@ class AuthStepScaffold extends StatelessWidget {
     );
   }
 
-  Widget _content(BuildContext context) {
+  Widget _top(BuildContext context) {
     final insets = $styles.insets;
     final subtitle = this.subtitle;
-    final action = this.action;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -86,7 +89,16 @@ class AuthStepScaffold extends StatelessWidget {
         if (subtitle != null) ...[insets.xs.toHeightSizedBox, subtitle],
         insets.xl.toHeightSizedBox,
         body,
-        const Spacer(),
+      ],
+    );
+  }
+
+  Widget _bottom() {
+    final insets = $styles.insets;
+    final action = this.action;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
         insets.lg.toHeightSizedBox,
         ?action,
         insets.lg.toHeightSizedBox,

@@ -41,5 +41,14 @@
   "authPhoneNotRegistered": "ဤနံပါတ်ဖြင့် စာရင်းမသွင်းရသေးပါ။",
   "authPhoneRegisterInstead": "စာရင်းသွင်းရန်",
   "authPhoneAlreadyRegistered": "ဤနံပါတ်ဖြင့် အကောင့်ရှိပြီးသားပါ။",
-  "authPhoneLogInInstead": "ဝင်ရောက်ရန်"
+  "authPhoneLogInInstead": "ဝင်ရောက်ရန်",
+  "authOtpTitle": "သင့်နံပါတ်ကို အတည်ပြုပါ",
+  "authOtpSentTo": "{phone} သို့ ဂဏန်း {length} လုံးပါ OTP ပို့ထားပါသည်",
+  "authOtpCodeLabel": "အတည်ပြုကုဒ်",
+  "authOtpNoCode": "ကုဒ် မရရှိဘူးလား?",
+  "authOtpResendIn": "{time} မိနစ်အတွင်း ပြန်ပို့နိုင်ပါမည်",
+  "authOtpResend": "ကုဒ် ပြန်ပို့ရန်",
+  "authOtpResent": "ကုဒ်အသစ် ပို့ပေးလိုက်ပါပြီ။",
+  "authOtpWrongCode": "{count, plural, other{ကုဒ် မှားနေပါသည်။ နောက်ထပ် {count} ကြိမ် ကြိုးစားနိုင်ပါသည်။}}",
+  "authOtpLocked": "ကုဒ်မှားသည့်အကြိမ် များလွန်းပါသည်။ ကုဒ်အသစ် ပြန်ပို့ပါ။"
 }

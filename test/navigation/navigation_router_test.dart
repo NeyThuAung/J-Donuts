@@ -243,7 +243,7 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(
-        tester.widget<VerifyOtpPage>(find.byType(VerifyOtpPage)).args.phone,
+        tester.widget<VerifyOtpPage>(find.byType(VerifyOtpPage)).phone,
         _phone,
       );
 

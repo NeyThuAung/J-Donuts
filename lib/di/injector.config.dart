@@ -43,6 +43,8 @@ import 'package:j_donuts/features/auth/presentation/cubit/authentication_cubit.d
     as _i618;
 import 'package:j_donuts/features/auth/presentation/pages/phone_number/cubit/phone_number_cubit.dart'
     as _i1028;
+import 'package:j_donuts/features/auth/presentation/pages/verify_otp/cubit/verify_otp_cubit.dart'
+    as _i131;
 import 'package:j_donuts/navigation/navigation_key_provider.dart' as _i168;
 import 'package:j_donuts/navigation/navigation_router.dart' as _i1038;
 import 'package:j_donuts/shared/components/components.dart' as _i995;
@@ -109,6 +111,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i617.VerifyOtpUseCase>(
       () => _i617.VerifyOtpUseCase(gh<_i907.AuthRepository>()),
+    );
+    gh.factory<_i131.VerifyOtpCubit>(
+      () => _i131.VerifyOtpCubit(
+        gh<_i617.VerifyOtpUseCase>(),
+        gh<_i653.RequestOtpUseCase>(),
+        gh<_i995.ISnackShower>(),
+      ),
     );
     gh.lazySingleton<_i618.AuthenticationCubit>(
       () => _i618.AuthenticationCubit(

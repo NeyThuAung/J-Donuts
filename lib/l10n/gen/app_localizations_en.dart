@@ -142,4 +142,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authPhoneLogInInstead => 'Log in';
+
+  @override
+  String get authOtpTitle => 'Verify your number';
+
+  @override
+  String authOtpSentTo(int length, String phone) {
+    return 'We\'ve sent $length digit OTP to $phone';
+  }
+
+  @override
+  String get authOtpCodeLabel => 'Verification code';
+
+  @override
+  String get authOtpNoCode => 'Didn\'t receive the code?';
+
+  @override
+  String authOtpResendIn(String time) {
+    return 'resend in $time min';
+  }
+
+  @override
+  String get authOtpResend => 'Resend code';
+
+  @override
+  String get authOtpResent => 'We\'ve sent you a new code.';
+
+  @override
+  String authOtpWrongCode(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'That code isn\'t right. $count tries left.',
+      one: 'That code isn\'t right. 1 try left.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get authOtpLocked => 'Too many wrong codes. Resend to get a new one.';
 }

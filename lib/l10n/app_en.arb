@@ -63,5 +63,39 @@
   "authPhoneNotRegistered": "This number isn't registered yet.",
   "authPhoneRegisterInstead": "Register",
   "authPhoneAlreadyRegistered": "This number already has an account.",
-  "authPhoneLogInInstead": "Log in"
+  "authPhoneLogInInstead": "Log in",
+  "authOtpTitle": "Verify your number",
+  "authOtpSentTo": "We've sent {length} digit OTP to {phone}",
+  "@authOtpSentTo": {
+    "placeholders": {
+      "length": {
+        "type": "int"
+      },
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "authOtpCodeLabel": "Verification code",
+  "authOtpNoCode": "Didn't receive the code?",
+  "authOtpResendIn": "resend in {time} min",
+  "@authOtpResendIn": {
+    "description": "{time} is shown highlighted, e.g. 4:58.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "authOtpResend": "Resend code",
+  "authOtpResent": "We've sent you a new code.",
+  "authOtpWrongCode": "{count, plural, =1{That code isn't right. 1 try left.} other{That code isn't right. {count} tries left.}}",
+  "@authOtpWrongCode": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authOtpLocked": "Too many wrong codes. Resend to get a new one."
 }
