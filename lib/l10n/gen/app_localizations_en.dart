@@ -231,4 +231,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String authDobErrorTooYoung(int age) {
     return 'You need to be at least $age years old to join.';
   }
+
+  @override
+  String get authWelcomeTitle => 'Welcome to the world of J\'donuts';
+
+  @override
+  String get authWelcomeExplore => 'Let\'s explore';
 }

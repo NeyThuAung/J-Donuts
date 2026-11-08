@@ -65,5 +65,7 @@
   "authDobYear": "ခုနှစ်",
   "authDobErrorInvalid": "ထိုရက်စွဲ မရှိပါ။",
   "authDobErrorFuture": "မွေးနေ့သည် အနာဂတ်ရက်စွဲ ဖြစ်၍ မရပါ။",
-  "authDobErrorTooYoung": "အဖွဲ့ဝင်ရန် အသက် {age} နှစ် အနည်းဆုံး ပြည့်ရပါမည်။"
+  "authDobErrorTooYoung": "အဖွဲ့ဝင်ရန် အသက် {age} နှစ် အနည်းဆုံး ပြည့်ရပါမည်။",
+  "authWelcomeTitle": "J'donuts ကမ္ဘာမှ ကြိုဆိုပါတယ်",
+  "authWelcomeExplore": "စတင်ရှာဖွေမည်"
 }

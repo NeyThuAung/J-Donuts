@@ -228,4 +228,10 @@ class AppLocalizationsMy extends AppLocalizations {
   String authDobErrorTooYoung(int age) {
     return 'အဖွဲ့ဝင်ရန် အသက် $age နှစ် အနည်းဆုံး ပြည့်ရပါမည်။';
   }
+
+  @override
+  String get authWelcomeTitle => 'J\'donuts ကမ္ဘာမှ ကြိုဆိုပါတယ်';
+
+  @override
+  String get authWelcomeExplore => 'စတင်ရှာဖွေမည်';
 }

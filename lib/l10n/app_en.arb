@@ -126,5 +126,7 @@
         "type": "int"
       }
     }
-  }
+  },
+  "authWelcomeTitle": "Welcome to the world of J'donuts",
+  "authWelcomeExplore": "Let's explore"
 }

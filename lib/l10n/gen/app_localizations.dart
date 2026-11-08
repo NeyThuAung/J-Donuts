@@ -493,6 +493,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You need to be at least {age} years old to join.'**
   String authDobErrorTooYoung(int age);
+
+  /// No description provided for @authWelcomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to the world of J\'donuts'**
+  String get authWelcomeTitle;
+
+  /// No description provided for @authWelcomeExplore.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s explore'**
+  String get authWelcomeExplore;
 }
 
 class _AppLocalizationsDelegate
