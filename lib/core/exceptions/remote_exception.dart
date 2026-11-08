@@ -13,8 +13,8 @@ final class InternetConnectionException extends RemoteException {
   Failure toFailure() => ConnectionFailure(message);
 }
 
-final class TimeoutException extends RemoteException {
-  const TimeoutException(super.message, [super.code]);
+final class RequestTimeoutException extends RemoteException {
+  const RequestTimeoutException(super.message, [super.code]);
 
   @override
   Failure toFailure() => TimeoutFailure(message);

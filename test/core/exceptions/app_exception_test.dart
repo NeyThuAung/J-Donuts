@@ -7,7 +7,7 @@ void main() {
       const InternetConnectionException('offline'): const ConnectionFailure(
         'offline',
       ),
-      const TimeoutException('slow'): const TimeoutFailure('slow'),
+      const RequestTimeoutException('slow'): const TimeoutFailure('slow'),
       const NotFoundException('gone'): const NotFoundFailure('gone'),
       const BadRequestException('bad'): const BadRequestFailure('bad'),
       const UnauthorizedException('expired'): const SessionFailure('expired'),
