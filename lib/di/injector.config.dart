@@ -24,6 +24,7 @@ import 'package:j_donuts/di/third_party_modules/storage_module.dart' as _i767;
 import 'package:j_donuts/features/auth/presentation/cubit/authentication_cubit.dart'
     as _i617;
 import 'package:j_donuts/navigation/navigation_key_provider.dart' as _i168;
+import 'package:j_donuts/navigation/navigation_router.dart' as _i1038;
 import 'package:j_donuts/shared/components/snack/snack_shower.dart' as _i52;
 import 'package:logger/logger.dart' as _i974;
 
@@ -61,6 +62,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i479.AppLogger>(
       () => loggerModule.appLogger(gh<_i974.Logger>()),
+    );
+    gh.lazySingleton<_i1038.NavigationRouter>(
+      () => _i1038.NavigationRouter(
+        gh<_i168.INavigationKeyProvider>(),
+        gh<_i617.AuthenticationCubit>(),
+      ),
+      dispose: (i) => i.dispose(),
     );
     return this;
   }
