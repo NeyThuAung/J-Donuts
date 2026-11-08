@@ -123,12 +123,12 @@ return authenticated(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  unknown,TResult Function()?  unauthenticated,TResult Function( String userId)?  authenticated,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  unknown,TResult Function()?  unauthenticated,TResult Function( String userId,  bool isNewMember)?  authenticated,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case AuthenticationUnknown() when unknown != null:
 return unknown();case AuthenticationUnauthenticated() when unauthenticated != null:
 return unauthenticated();case Authenticated() when authenticated != null:
-return authenticated(_that.userId);case _:
+return authenticated(_that.userId,_that.isNewMember);case _:
   return orElse();
 
 }
@@ -146,12 +146,12 @@ return authenticated(_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  unknown,required TResult Function()  unauthenticated,required TResult Function( String userId)  authenticated,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  unknown,required TResult Function()  unauthenticated,required TResult Function( String userId,  bool isNewMember)  authenticated,}) {final _that = this;
 switch (_that) {
 case AuthenticationUnknown():
 return unknown();case AuthenticationUnauthenticated():
 return unauthenticated();case Authenticated():
-return authenticated(_that.userId);}
+return authenticated(_that.userId,_that.isNewMember);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -165,12 +165,12 @@ return authenticated(_that.userId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  unknown,TResult? Function()?  unauthenticated,TResult? Function( String userId)?  authenticated,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  unknown,TResult? Function()?  unauthenticated,TResult? Function( String userId,  bool isNewMember)?  authenticated,}) {final _that = this;
 switch (_that) {
 case AuthenticationUnknown() when unknown != null:
 return unknown();case AuthenticationUnauthenticated() when unauthenticated != null:
 return unauthenticated();case Authenticated() when authenticated != null:
-return authenticated(_that.userId);case _:
+return authenticated(_that.userId,_that.isNewMember);case _:
   return null;
 
 }
@@ -246,10 +246,11 @@ String toString() {
 
 
 class Authenticated implements AuthenticationState {
-  const Authenticated({required this.userId});
+  const Authenticated({required this.userId, this.isNewMember = false});
   
 
  final  String userId;
+@JsonKey() final  bool isNewMember;
 
 /// Create a copy of AuthenticationState
 /// with the given fields replaced by the non-null parameter values.
@@ -261,18 +262,18 @@ $AuthenticatedCopyWith<Authenticated> get copyWith => _$AuthenticatedCopyWithImp
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is Authenticated&&(identical(other.userId, userId) || other.userId == userId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is Authenticated&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.isNewMember, isNewMember) || other.isNewMember == isNewMember));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,userId);
+    return Object.hash(runtimeType,userId,isNewMember);
 }
 
 @override
 String toString() {
-    return 'AuthenticationState.authenticated(userId: $userId)';
+    return 'AuthenticationState.authenticated(userId: $userId, isNewMember: $isNewMember)';
 }
 
 
@@ -283,7 +284,7 @@ abstract mixin class $AuthenticatedCopyWith<$Res> implements $AuthenticationStat
   factory $AuthenticatedCopyWith(Authenticated value, $Res Function(Authenticated) _then) = _$AuthenticatedCopyWithImpl;
 @useResult
 $Res call({
- String userId
+ String userId, bool isNewMember
 });
 
 
@@ -300,10 +301,11 @@ class _$AuthenticatedCopyWithImpl<$Res>
 
 /// Create a copy of AuthenticationState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? userId = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? userId = null,Object? isNewMember = null,}) {
   return _then(Authenticated(
 userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as String,
+as String,isNewMember: null == isNewMember ? _self.isNewMember : isNewMember // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

@@ -8,6 +8,9 @@ sealed class AuthenticationState with _$AuthenticationState {
   const factory AuthenticationState.unauthenticated() =
       AuthenticationUnauthenticated;
 
-  const factory AuthenticationState.authenticated({required String userId}) =
-      Authenticated;
+  // A new member sees Welcome once before Home.
+  const factory AuthenticationState.authenticated({
+    required String userId,
+    @Default(false) bool isNewMember,
+  }) = Authenticated;
 }

@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:j_donuts/app.dart';
-import 'package:j_donuts/features/auth/presentation/cubit/authentication_cubit.dart';
 import 'package:j_donuts/features/auth/presentation/pages/onboarding/onboarding_page.dart';
 import 'package:j_donuts/gen/fonts.gen.dart';
 import 'package:j_donuts/navigation/navigation.dart';
 
+import 'helpers/test_authentication_cubit.dart';
+
 const _systemTextScale = 2.0;
 const _sampleFontSize = 10.0;
 
-class _TestAuthenticationCubit extends AuthenticationCubit {
-  void signIn() => emit(const AuthenticationState.authenticated(userId: 'u1'));
-}
-
 void main() {
   group('App', () {
-    late _TestAuthenticationCubit authCubit;
+    late TestAuthenticationCubit authCubit;
     late NavigationRouter navigationRouter;
 
     setUp(() {
-      authCubit = _TestAuthenticationCubit();
+      authCubit = TestAuthenticationCubit();
       navigationRouter = NavigationRouter(NavigationKeyProvider(), authCubit);
     });
 
@@ -62,7 +59,10 @@ void main() {
       await pumpApp(tester);
 
       final context = tester.element(find.byType(OnboardingPage));
-      expect(find.text('မကြာမီ လာမည်'), findsOneWidget);
+      expect(
+        find.text('စိတ်ခံစားမှုတိုင်းအတွက် အဝိုင်းလေးများ'),
+        findsOneWidget,
+      );
       expect(
         Theme.of(context).textTheme.bodyMedium?.fontFamily,
         FontFamily.notoSansMyanmar,

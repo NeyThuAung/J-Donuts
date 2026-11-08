@@ -4,6 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:j_donuts/core/core.dart';
 import 'package:j_donuts/core/database/database.dart';
 import 'package:j_donuts/di/di.dart';
+import 'package:j_donuts/features/auth/domain/repository/auth_repository.dart';
+import 'package:j_donuts/features/auth/domain/usecase/verify_otp_usecase.dart';
 
 void main() {
   setUpAll(configureDependencies);
@@ -17,5 +19,11 @@ void main() {
   // Resolving would open the on-device file; DAO tests use an in-memory one.
   test('registers the app database without opening it', () {
     expect(GetIt.instance.isRegistered<AppDatabase>(), isTrue);
+  });
+
+  test('registers auth behind its interface', () {
+    expect(GetIt.instance.isRegistered<AuthRepository>(), isTrue);
+    expect(GetIt.instance.isRegistered<UsersDao>(), isTrue);
+    expect(GetIt.instance.isRegistered<VerifyOtpUseCase>(), isTrue);
   });
 }
