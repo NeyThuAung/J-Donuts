@@ -1,0 +1,14 @@
+{
+  "@@locale": "en",
+  "appTitle": "J'Donuts",
+  "commonContinue": "Continue",
+  "commonRetry": "Retry",
+  "errorNoConnection": "No internet connection.",
+  "errorTimeout": "The connection timed out. Please try again.",
+  "errorNotFound": "We couldn't find that.",
+  "errorBadRequest": "Something in the request wasn't right.",
+  "errorSessionExpired": "Your session has expired. Please log in again.",
+  "errorServer": "Our server is having trouble. Please try again later.",
+  "errorStorage": "We couldn't read the data saved on this phone.",
+  "errorUnknown": "Something went wrong. Please try again."
+}
