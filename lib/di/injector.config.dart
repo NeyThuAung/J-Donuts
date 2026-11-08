@@ -14,8 +14,10 @@ import 'package:connectivity_plus/connectivity_plus.dart' as _i895;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:j_donuts/core/database/database.dart' as _i416;
 import 'package:j_donuts/core/logging/app_logger.dart' as _i479;
 import 'package:j_donuts/core/network/network_info.dart' as _i296;
+import 'package:j_donuts/di/third_party_modules/database_module.dart' as _i1057;
 import 'package:j_donuts/di/third_party_modules/logger_module.dart' as _i20;
 import 'package:j_donuts/di/third_party_modules/network_module.dart' as _i869;
 import 'package:j_donuts/di/third_party_modules/storage_module.dart' as _i767;
@@ -30,9 +32,14 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    final databaseModule = _$DatabaseModule();
     final loggerModule = _$LoggerModule();
     final networkModule = _$NetworkModule();
     final storageModule = _$StorageModule();
+    gh.lazySingleton<_i416.AppDatabase>(
+      () => databaseModule.database,
+      dispose: _i1057.closeDatabase,
+    );
     gh.lazySingleton<_i974.Logger>(() => loggerModule.logger);
     gh.lazySingleton<_i895.Connectivity>(() => networkModule.connectivity);
     gh.lazySingleton<_i558.FlutterSecureStorage>(
@@ -53,6 +60,8 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$DatabaseModule extends _i1057.DatabaseModule {}
 
 class _$LoggerModule extends _i20.LoggerModule {}
 
