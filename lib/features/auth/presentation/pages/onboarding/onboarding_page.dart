@@ -1,10 +1,17 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
-import '../../../../../l10n/l10n.dart';
 import '../../../../../shared/components/components.dart';
+import '../../../../../shared/styles/styles.dart';
+import 'widget/donut_cluster.dart';
+import 'widget/onboarding_actions.dart';
 
-// Placeholder until Task 1 builds the onboarding screen.
+// Share of the screen height given to the donut cluster, and its floor for
+// very short screens.
+const _clusterShare = 0.56;
+const _minClusterHeight = 220.0;
+
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
@@ -13,13 +20,36 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
+    final clusterHeight = math.max(
+      MediaQuery.sizeOf(context).height * _clusterShare,
+      _minClusterHeight,
+    );
     return Scaffold(
-      body: SafeArea(
-        child: AppErrorView(
-          icon: CupertinoIcons.person_crop_circle,
-          title: l10n.appTitle,
-          message: l10n.commonComingSoon,
+      backgroundColor: context.appColors.authGradientTop,
+      body: StaggeredEntrance(
+        duration: AppMotion.donutDrift,
+        builder: (context, animation) => CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  DonutCluster(animation: animation, height: clusterHeight),
+                  Expanded(
+                    child: SafeArea(
+                      top: false,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: $styles.grid.authPageMargin,
+                        ),
+                        child: OnboardingActions(animation: animation),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

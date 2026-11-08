@@ -37,7 +37,7 @@ void main() {
       await pumpApp(tester);
 
       expect(find.byType(OnboardingPage), findsOneWidget);
-      expect(find.text('Coming soon'), findsOneWidget);
+      expect(find.text('Round food for every mood'), findsOneWidget);
     });
 
     testWidgets('opens the Home tab when a user is signed in', (tester) async {
@@ -78,7 +78,7 @@ void main() {
       await pumpApp(tester);
 
       final context = tester.element(find.byType(OnboardingPage));
-      expect(find.text('Coming soon'), findsOneWidget);
+      expect(find.text('Round food for every mood'), findsOneWidget);
       expect(
         Theme.of(context).textTheme.bodyMedium?.fontFamily,
         FontFamily.figtree,

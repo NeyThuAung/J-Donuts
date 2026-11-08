@@ -83,6 +83,8 @@ flutter:
   generate: true
 
   assets:
+    - assets/images/
+    - assets/icons/
     - assets/fonts/OFL-Figtree.txt
     - assets/fonts/OFL-NotoSansMyanmar.txt
 

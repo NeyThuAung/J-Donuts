@@ -19,6 +19,14 @@ void main() {
       expect(body?.height, greaterThan(1));
     });
 
+    test('spaces out button labels in English but not in Burmese', () {
+      final english = AppTheme.light(const Locale('en')).textTheme.labelLarge;
+      final burmese = AppTheme.light(const Locale('my')).textTheme.labelLarge;
+
+      expect(english?.letterSpacing, greaterThan(0));
+      expect(burmese?.letterSpacing, isNull);
+    });
+
     testWidgets('exposes AppThemeColors through context.appColors', (
       tester,
     ) async {

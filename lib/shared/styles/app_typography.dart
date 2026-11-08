@@ -4,6 +4,7 @@ import '../../gen/fonts.gen.dart';
 
 abstract final class AppTypography {
   static const _myanmarLanguageCode = 'my';
+  // Latin button labels only: spacing breaks Myanmar glyph clusters apart.
   static const _buttonLetterSpacing = 1.2;
 
   // Myanmar marks stack above and below letters; normal line height clips them.
@@ -37,7 +38,7 @@ abstract final class AppTypography {
       labelLarge: style(
         14,
         FontWeight.w800,
-      ).copyWith(letterSpacing: _buttonLetterSpacing),
+      ).copyWith(letterSpacing: isMyanmar ? null : _buttonLetterSpacing),
       labelMedium: style(12, FontWeight.w600),
       labelSmall: style(10, FontWeight.w600),
     );
