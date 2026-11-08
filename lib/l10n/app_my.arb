@@ -17,5 +17,18 @@
   "navRewards": "ဆုလာဘ်",
   "navOrders": "အော်ဒါများ",
   "navWallet": "ပိုက်ဆံအိတ်",
-  "navSettings": "ဆက်တင်များ"
+  "navSettings": "ဆက်တင်များ",
+  "authStepProgress": "အဆင့် {total} ဆင့်အနက် {current}",
+  "authTermsNotice": "ဆက်လုပ်ခြင်းဖြင့် ကျွန်ုပ်တို့၏ {terms} နှင့် {privacy} ကို ဖတ်ရှုပြီး သဘောတူကြောင်း အသိအမှတ်ပြုပါသည်။",
+  "authTermsOfUse": "အသုံးပြုမှု စည်းမျဉ်းများ",
+  "authPrivacyPolicy": "ကိုယ်ရေးအချက်အလက် မူဝါဒ",
+  "commonClose": "ပိတ်ရန်",
+  "commonNotInDemo": "ဤ demo တွင် မရရှိနိုင်သေးပါ။",
+  "authOnboardingTitle": "စိတ်ခံစားမှုတိုင်းအတွက် အဝိုင်းလေးများ",
+  "authGetStarted": "စတင်လိုက်ရအောင်",
+  "authHaveAccount": "အကောင့်ရှိပြီးသားလား?",
+  "authLogIn": "ဝင်ရောက်ရန်",
+  "authContinueWithGoogle": "Google ဖြင့် ဆက်လုပ်ရန်",
+  "authContinueWithApple": "Apple ဖြင့် ဆက်လုပ်ရန်",
+  "authContinueWithFacebook": "Facebook ဖြင့် ဆက်လုပ်ရန်"
 }

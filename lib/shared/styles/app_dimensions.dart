@@ -37,6 +37,11 @@ class AppSizes {
   final double avatar = 48;
   final double errorBadge = 64;
   final double navBarHeight = 72;
+  final double spinner = 22;
+  final double spinnerStroke = 2.5;
+  final double stepRing = 32;
+  final double stepRingStroke = 5;
+  final double focusBorder = 1.5;
 }
 
 class AppGrid {

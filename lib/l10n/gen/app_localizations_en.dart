@@ -64,4 +64,47 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navSettings => 'Settings';
+
+  @override
+  String authStepProgress(int current, int total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String authTermsNotice(String terms, String privacy) {
+    return 'By continuing, you acknowledge that you have read and agree to our $terms and $privacy.';
+  }
+
+  @override
+  String get authTermsOfUse => 'Terms of Use';
+
+  @override
+  String get authPrivacyPolicy => 'Privacy Policy';
+
+  @override
+  String get commonClose => 'Close';
+
+  @override
+  String get commonNotInDemo => 'This isn\'t available in the demo yet.';
+
+  @override
+  String get authOnboardingTitle => 'Round food for every mood';
+
+  @override
+  String get authGetStarted => 'Let\'s get started';
+
+  @override
+  String get authHaveAccount => 'Already have an account?';
+
+  @override
+  String get authLogIn => 'Log In';
+
+  @override
+  String get authContinueWithGoogle => 'Continue with Google';
+
+  @override
+  String get authContinueWithApple => 'Continue with Apple';
+
+  @override
+  String get authContinueWithFacebook => 'Continue with Facebook';
 }

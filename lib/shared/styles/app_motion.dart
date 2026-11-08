@@ -15,6 +15,7 @@ abstract final class AppMotion {
   static const shake = Duration(milliseconds: 450);
   static const badgePop = Duration(milliseconds: 450);
   static const progressRing = Duration(milliseconds: 600);
+  static const ringToCheck = Duration(milliseconds: 400);
   static const entrance = Duration(milliseconds: 500);
   static const staggerStep = Duration(milliseconds: 80);
   static const donutDrift = Duration(milliseconds: 1200);

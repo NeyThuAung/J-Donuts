@@ -17,5 +17,40 @@
   "navRewards": "Reward",
   "navOrders": "Orders",
   "navWallet": "Wallet",
-  "navSettings": "Settings"
+  "navSettings": "Settings",
+  "authStepProgress": "Step {current} of {total}",
+  "@authStepProgress": {
+    "description": "Screen reader label of the sign-up progress ring.",
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "authTermsNotice": "By continuing, you acknowledge that you have read and agree to our {terms} and {privacy}.",
+  "@authTermsNotice": {
+    "description": "Footer of the sign-up screens; {terms} and {privacy} become links.",
+    "placeholders": {
+      "terms": {
+        "type": "String"
+      },
+      "privacy": {
+        "type": "String"
+      }
+    }
+  },
+  "authTermsOfUse": "Terms of Use",
+  "authPrivacyPolicy": "Privacy Policy",
+  "commonClose": "Close",
+  "commonNotInDemo": "This isn't available in the demo yet.",
+  "authOnboardingTitle": "Round food for every mood",
+  "authGetStarted": "Let's get started",
+  "authHaveAccount": "Already have an account?",
+  "authLogIn": "Log In",
+  "authContinueWithGoogle": "Continue with Google",
+  "authContinueWithApple": "Continue with Apple",
+  "authContinueWithFacebook": "Continue with Facebook"
 }

@@ -205,6 +205,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get navSettings;
+
+  /// Screen reader label of the sign-up progress ring.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String authStepProgress(int current, int total);
+
+  /// Footer of the sign-up screens; {terms} and {privacy} become links.
+  ///
+  /// In en, this message translates to:
+  /// **'By continuing, you acknowledge that you have read and agree to our {terms} and {privacy}.'**
+  String authTermsNotice(String terms, String privacy);
+
+  /// No description provided for @authTermsOfUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use'**
+  String get authTermsOfUse;
+
+  /// No description provided for @authPrivacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get authPrivacyPolicy;
+
+  /// No description provided for @commonClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get commonClose;
+
+  /// No description provided for @commonNotInDemo.
+  ///
+  /// In en, this message translates to:
+  /// **'This isn\'t available in the demo yet.'**
+  String get commonNotInDemo;
+
+  /// No description provided for @authOnboardingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Round food for every mood'**
+  String get authOnboardingTitle;
+
+  /// No description provided for @authGetStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s get started'**
+  String get authGetStarted;
+
+  /// No description provided for @authHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get authHaveAccount;
+
+  /// No description provided for @authLogIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Log In'**
+  String get authLogIn;
+
+  /// No description provided for @authContinueWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get authContinueWithGoogle;
+
+  /// No description provided for @authContinueWithApple.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Apple'**
+  String get authContinueWithApple;
+
+  /// No description provided for @authContinueWithFacebook.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Facebook'**
+  String get authContinueWithFacebook;
 }
 
 class _AppLocalizationsDelegate

@@ -63,4 +63,47 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get navSettings => 'ဆက်တင်များ';
+
+  @override
+  String authStepProgress(int current, int total) {
+    return 'အဆင့် $total ဆင့်အနက် $current';
+  }
+
+  @override
+  String authTermsNotice(String terms, String privacy) {
+    return 'ဆက်လုပ်ခြင်းဖြင့် ကျွန်ုပ်တို့၏ $terms နှင့် $privacy ကို ဖတ်ရှုပြီး သဘောတူကြောင်း အသိအမှတ်ပြုပါသည်။';
+  }
+
+  @override
+  String get authTermsOfUse => 'အသုံးပြုမှု စည်းမျဉ်းများ';
+
+  @override
+  String get authPrivacyPolicy => 'ကိုယ်ရေးအချက်အလက် မူဝါဒ';
+
+  @override
+  String get commonClose => 'ပိတ်ရန်';
+
+  @override
+  String get commonNotInDemo => 'ဤ demo တွင် မရရှိနိုင်သေးပါ။';
+
+  @override
+  String get authOnboardingTitle => 'စိတ်ခံစားမှုတိုင်းအတွက် အဝိုင်းလေးများ';
+
+  @override
+  String get authGetStarted => 'စတင်လိုက်ရအောင်';
+
+  @override
+  String get authHaveAccount => 'အကောင့်ရှိပြီးသားလား?';
+
+  @override
+  String get authLogIn => 'ဝင်ရောက်ရန်';
+
+  @override
+  String get authContinueWithGoogle => 'Google ဖြင့် ဆက်လုပ်ရန်';
+
+  @override
+  String get authContinueWithApple => 'Apple ဖြင့် ဆက်လုပ်ရန်';
+
+  @override
+  String get authContinueWithFacebook => 'Facebook ဖြင့် ဆက်လုပ်ရန်';
 }
