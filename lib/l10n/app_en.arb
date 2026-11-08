@@ -52,5 +52,16 @@
   "authLogIn": "Log In",
   "authContinueWithGoogle": "Continue with Google",
   "authContinueWithApple": "Continue with Apple",
-  "authContinueWithFacebook": "Continue with Facebook"
+  "authContinueWithFacebook": "Continue with Facebook",
+  "authPhoneTitle": "Enter your phone number",
+  "authPhoneHint": "09 xxx xxx xxx",
+  "authPhoneErrorEmpty": "Enter your phone number.",
+  "authPhoneErrorNotDigits": "Use numbers only.",
+  "authPhoneErrorWrongLeadingDigit": "Myanmar mobile numbers start with 09.",
+  "authPhoneErrorTooShort": "This number is too short.",
+  "authPhoneErrorTooLong": "This number is too long.",
+  "authPhoneNotRegistered": "This number isn't registered yet.",
+  "authPhoneRegisterInstead": "Register",
+  "authPhoneAlreadyRegistered": "This number already has an account.",
+  "authPhoneLogInInstead": "Log in"
 }

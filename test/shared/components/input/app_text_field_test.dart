@@ -56,11 +56,10 @@ void main() {
       expect(controller.text, 'Ye Min');
     });
 
-    testWidgets('shows the prefix once the field has focus', (tester) async {
+    testWidgets('shows the prefix while the field is still empty', (
+      tester,
+    ) async {
       await tester.pumpWidget(testApp(_field(controller)));
-
-      await tester.tap(find.byType(AppTextField));
-      await tester.pumpAndSettle();
 
       expect(find.text('+95 '), findsOneWidget);
     });

@@ -106,4 +106,38 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get authContinueWithFacebook => 'Facebook ဖြင့် ဆက်လုပ်ရန်';
+
+  @override
+  String get authPhoneTitle => 'သင့်ဖုန်းနံပါတ်ကို ထည့်ပါ';
+
+  @override
+  String get authPhoneHint => '09 xxx xxx xxx';
+
+  @override
+  String get authPhoneErrorEmpty => 'ဖုန်းနံပါတ် ထည့်ပါ။';
+
+  @override
+  String get authPhoneErrorNotDigits => 'ဂဏန်းများသာ အသုံးပြုပါ။';
+
+  @override
+  String get authPhoneErrorWrongLeadingDigit =>
+      'မြန်မာ မိုဘိုင်းနံပါတ်များသည် 09 ဖြင့် စတင်ပါသည်။';
+
+  @override
+  String get authPhoneErrorTooShort => 'ဤနံပါတ်သည် တိုလွန်းပါသည်။';
+
+  @override
+  String get authPhoneErrorTooLong => 'ဤနံပါတ်သည် ရှည်လွန်းပါသည်။';
+
+  @override
+  String get authPhoneNotRegistered => 'ဤနံပါတ်ဖြင့် စာရင်းမသွင်းရသေးပါ။';
+
+  @override
+  String get authPhoneRegisterInstead => 'စာရင်းသွင်းရန်';
+
+  @override
+  String get authPhoneAlreadyRegistered => 'ဤနံပါတ်ဖြင့် အကောင့်ရှိပြီးသားပါ။';
+
+  @override
+  String get authPhoneLogInInstead => 'ဝင်ရောက်ရန်';
 }

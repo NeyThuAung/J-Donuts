@@ -283,6 +283,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue with Facebook'**
   String get authContinueWithFacebook;
+
+  /// No description provided for @authPhoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your phone number'**
+  String get authPhoneTitle;
+
+  /// No description provided for @authPhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'09 xxx xxx xxx'**
+  String get authPhoneHint;
+
+  /// No description provided for @authPhoneErrorEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your phone number.'**
+  String get authPhoneErrorEmpty;
+
+  /// No description provided for @authPhoneErrorNotDigits.
+  ///
+  /// In en, this message translates to:
+  /// **'Use numbers only.'**
+  String get authPhoneErrorNotDigits;
+
+  /// No description provided for @authPhoneErrorWrongLeadingDigit.
+  ///
+  /// In en, this message translates to:
+  /// **'Myanmar mobile numbers start with 09.'**
+  String get authPhoneErrorWrongLeadingDigit;
+
+  /// No description provided for @authPhoneErrorTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'This number is too short.'**
+  String get authPhoneErrorTooShort;
+
+  /// No description provided for @authPhoneErrorTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'This number is too long.'**
+  String get authPhoneErrorTooLong;
+
+  /// No description provided for @authPhoneNotRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'This number isn\'t registered yet.'**
+  String get authPhoneNotRegistered;
+
+  /// No description provided for @authPhoneRegisterInstead.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get authPhoneRegisterInstead;
+
+  /// No description provided for @authPhoneAlreadyRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'This number already has an account.'**
+  String get authPhoneAlreadyRegistered;
+
+  /// No description provided for @authPhoneLogInInstead.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in'**
+  String get authPhoneLogInInstead;
 }
 
 class _AppLocalizationsDelegate

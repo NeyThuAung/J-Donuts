@@ -107,6 +107,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   Widget _field(BuildContext context) {
     final textTheme = context.textTheme;
+    final prefixText = widget.prefixText;
     return TextField(
       controller: widget.controller,
       focusNode: _focusNode,
@@ -120,10 +121,22 @@ class _AppTextFieldState extends State<AppTextField> {
       style: textTheme.bodyLarge,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        prefixText: widget.prefixText,
-        prefixStyle: textTheme.bodyLarge?.copyWith(
-          color: context.appColors.textSecondary,
-        ),
+        // prefixIcon, not prefixText: the design shows it while empty too.
+        prefixIcon: prefixText == null
+            ? null
+            : Padding(
+                padding: EdgeInsetsDirectional.only(
+                  start: $styles.insets.md,
+                  end: $styles.insets.sm,
+                ),
+                child: Text(
+                  prefixText,
+                  style: textTheme.bodyLarge?.copyWith(
+                    color: context.appColors.textSecondary,
+                  ),
+                ),
+              ),
+        prefixIconConstraints: const BoxConstraints(),
         filled: false,
         border: InputBorder.none,
         enabledBorder: InputBorder.none,

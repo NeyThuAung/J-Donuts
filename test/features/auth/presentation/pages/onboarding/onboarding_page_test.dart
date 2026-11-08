@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:j_donuts/features/auth/domain/entity/auth_flow.dart';
 import 'package:j_donuts/features/auth/presentation/pages/onboarding/onboarding_page.dart';
-import 'package:j_donuts/features/auth/presentation/pages/phone_number/phone_number_page.dart';
 import 'package:j_donuts/l10n/l10n.dart';
 import 'package:j_donuts/navigation/navigation.dart';
 import 'package:j_donuts/shared/components/components.dart';
@@ -10,12 +9,14 @@ import 'package:j_donuts/shared/styles/styles.dart';
 
 import '../../../../../helpers/test_app.dart';
 import '../../../../../helpers/test_authentication_cubit.dart';
+import '../../../../../helpers/test_page_cubits.dart';
 
 void main() {
   late TestAuthenticationCubit authCubit;
   late NavigationRouter navigationRouter;
 
   setUp(() {
+    registerPageCubits();
     authCubit = TestAuthenticationCubit()..signOut();
     navigationRouter = NavigationRouter(NavigationKeyProvider(), authCubit);
   });
@@ -73,8 +74,7 @@ void main() {
       await tester.tap(find.text("LET'S GET STARTED"));
       await tester.pumpAndSettle();
 
-      final page = tester.widget<PhoneNumberPage>(find.byType(PhoneNumberPage));
-      expect(page.flow, AuthFlow.register);
+      expect(phoneFlowOf(tester), AuthFlow.register);
     });
 
     testWidgets('Log In opens the phone step to log in', (tester) async {
@@ -83,8 +83,7 @@ void main() {
       await tester.tap(find.text('Log In'));
       await tester.pumpAndSettle();
 
-      final page = tester.widget<PhoneNumberPage>(find.byType(PhoneNumberPage));
-      expect(page.flow, AuthFlow.logIn);
+      expect(phoneFlowOf(tester), AuthFlow.logIn);
     });
 
     testWidgets('social sign-in shows a not-in-demo sheet', (tester) async {

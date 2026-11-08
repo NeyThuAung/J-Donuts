@@ -107,4 +107,39 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authContinueWithFacebook => 'Continue with Facebook';
+
+  @override
+  String get authPhoneTitle => 'Enter your phone number';
+
+  @override
+  String get authPhoneHint => '09 xxx xxx xxx';
+
+  @override
+  String get authPhoneErrorEmpty => 'Enter your phone number.';
+
+  @override
+  String get authPhoneErrorNotDigits => 'Use numbers only.';
+
+  @override
+  String get authPhoneErrorWrongLeadingDigit =>
+      'Myanmar mobile numbers start with 09.';
+
+  @override
+  String get authPhoneErrorTooShort => 'This number is too short.';
+
+  @override
+  String get authPhoneErrorTooLong => 'This number is too long.';
+
+  @override
+  String get authPhoneNotRegistered => 'This number isn\'t registered yet.';
+
+  @override
+  String get authPhoneRegisterInstead => 'Register';
+
+  @override
+  String get authPhoneAlreadyRegistered =>
+      'This number already has an account.';
+
+  @override
+  String get authPhoneLogInInstead => 'Log in';
 }

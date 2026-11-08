@@ -30,5 +30,16 @@
   "authLogIn": "ဝင်ရောက်ရန်",
   "authContinueWithGoogle": "Google ဖြင့် ဆက်လုပ်ရန်",
   "authContinueWithApple": "Apple ဖြင့် ဆက်လုပ်ရန်",
-  "authContinueWithFacebook": "Facebook ဖြင့် ဆက်လုပ်ရန်"
+  "authContinueWithFacebook": "Facebook ဖြင့် ဆက်လုပ်ရန်",
+  "authPhoneTitle": "သင့်ဖုန်းနံပါတ်ကို ထည့်ပါ",
+  "authPhoneHint": "09 xxx xxx xxx",
+  "authPhoneErrorEmpty": "ဖုန်းနံပါတ် ထည့်ပါ။",
+  "authPhoneErrorNotDigits": "ဂဏန်းများသာ အသုံးပြုပါ။",
+  "authPhoneErrorWrongLeadingDigit": "မြန်မာ မိုဘိုင်းနံပါတ်များသည် 09 ဖြင့် စတင်ပါသည်။",
+  "authPhoneErrorTooShort": "ဤနံပါတ်သည် တိုလွန်းပါသည်။",
+  "authPhoneErrorTooLong": "ဤနံပါတ်သည် ရှည်လွန်းပါသည်။",
+  "authPhoneNotRegistered": "ဤနံပါတ်ဖြင့် စာရင်းမသွင်းရသေးပါ။",
+  "authPhoneRegisterInstead": "စာရင်းသွင်းရန်",
+  "authPhoneAlreadyRegistered": "ဤနံပါတ်ဖြင့် အကောင့်ရှိပြီးသားပါ။",
+  "authPhoneLogInInstead": "ဝင်ရောက်ရန်"
 }

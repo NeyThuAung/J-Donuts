@@ -7,7 +7,6 @@ import 'package:j_donuts/features/auth/presentation/cubit/authentication_cubit.d
 import 'package:j_donuts/features/auth/presentation/pages/date_of_birth/date_of_birth_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/name/name_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/onboarding/onboarding_page.dart';
-import 'package:j_donuts/features/auth/presentation/pages/phone_number/phone_number_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/verify_otp/verify_otp_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/welcome/welcome_page.dart';
 import 'package:j_donuts/features/product/presentation/pages/product_detail/product_detail_page.dart';
@@ -16,6 +15,7 @@ import 'package:j_donuts/navigation/navigation.dart';
 import 'package:j_donuts/shared/styles/styles.dart';
 
 import '../helpers/test_authentication_cubit.dart';
+import '../helpers/test_page_cubits.dart';
 
 const _unknown = AuthenticationState.unknown();
 const _signedOut = AuthenticationState.unauthenticated();
@@ -90,6 +90,7 @@ void main() {
     late NavigationRouter navigationRouter;
 
     setUp(() {
+      registerPageCubits();
       authCubit = TestAuthenticationCubit();
       navigationRouter = NavigationRouter(NavigationKeyProvider(), authCubit);
     });
@@ -208,8 +209,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      final page = tester.widget<PhoneNumberPage>(find.byType(PhoneNumberPage));
-      expect(page.flow, AuthFlow.logIn);
+      expect(phoneFlowOf(tester), AuthFlow.logIn);
       expect(location(), '/phone-number?flow=logIn');
 
       navigationRouter.router.pop();
@@ -226,8 +226,7 @@ void main() {
       navigationRouter.router.go('/phone-number?flow=other');
       await tester.pumpAndSettle();
 
-      final page = tester.widget<PhoneNumberPage>(find.byType(PhoneNumberPage));
-      expect(page.flow, AuthFlow.register);
+      expect(phoneFlowOf(tester), AuthFlow.register);
     });
 
     testWidgets('passes the typed arguments to each sign-up step', (

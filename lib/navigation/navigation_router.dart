@@ -1,11 +1,14 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
+import '../di/di.dart';
 import '../features/auth/presentation/cubit/authentication_cubit.dart';
 import '../features/auth/presentation/pages/date_of_birth/date_of_birth_page.dart';
 import '../features/auth/presentation/pages/name/name_page.dart';
 import '../features/auth/presentation/pages/onboarding/onboarding_page.dart';
+import '../features/auth/presentation/pages/phone_number/cubit/phone_number_cubit.dart';
 import '../features/auth/presentation/pages/phone_number/phone_number_page.dart';
 import '../features/auth/presentation/pages/verify_otp/verify_otp_page.dart';
 import '../features/auth/presentation/pages/welcome/welcome_page.dart';
@@ -64,10 +67,14 @@ class NavigationRouter {
     ),
     GoRoute(
       path: PhoneNumberPage.routePath,
-      builder: (_, state) => PhoneNumberPage(
-        flow: PhoneNumberPage.flowFromQuery(
-          state.uri.queryParameters[PhoneNumberPage.flowParam],
-        ),
+      builder: (_, state) => BlocProvider(
+        create: (_) => inject<PhoneNumberCubit>()
+          ..start(
+            PhoneNumberPage.flowFromQuery(
+              state.uri.queryParameters[PhoneNumberPage.flowParam],
+            ),
+          ),
+        child: const PhoneNumberPage(),
       ),
     ),
     _routeWithArgs<VerifyOtpArgs>(

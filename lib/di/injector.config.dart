@@ -41,6 +41,8 @@ import 'package:j_donuts/features/auth/domain/usecase/verify_otp_usecase.dart'
     as _i617;
 import 'package:j_donuts/features/auth/presentation/cubit/authentication_cubit.dart'
     as _i618;
+import 'package:j_donuts/features/auth/presentation/pages/phone_number/cubit/phone_number_cubit.dart'
+    as _i1028;
 import 'package:j_donuts/navigation/navigation_key_provider.dart' as _i168;
 import 'package:j_donuts/navigation/navigation_router.dart' as _i1038;
 import 'package:j_donuts/shared/components/components.dart' as _i995;
@@ -112,6 +114,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i618.AuthenticationCubit(
         gh<_i191.CheckSessionUseCase>(),
         gh<_i865.LogOutUseCase>(),
+        gh<_i995.ISnackShower>(),
+      ),
+    );
+    gh.factory<_i1028.PhoneNumberCubit>(
+      () => _i1028.PhoneNumberCubit(
+        gh<_i653.RequestOtpUseCase>(),
         gh<_i995.ISnackShower>(),
       ),
     );
