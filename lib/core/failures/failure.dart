@@ -1,7 +1,4 @@
-/// A user-presentable outcome of a failed operation.
-///
-/// [reason] is a developer-facing description for logs and tests. Widgets
-/// never show it directly; they map the failure type to localized text.
+/// [reason] is for logs; widgets map the failure type to l10n text.
 abstract class Failure {
   const Failure(this.reason);
 

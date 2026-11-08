@@ -2,7 +2,6 @@ import '../failures/failure.dart';
 import '../failures/remote_failure.dart';
 import 'app_exception.dart';
 
-/// Thrown by repositories when a network call fails.
 sealed class RemoteException extends AppException {
   const RemoteException(super.message, [super.code]);
 }

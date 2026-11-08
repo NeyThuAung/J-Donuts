@@ -1,11 +1,8 @@
 import '../failures/failure.dart';
 
-/// Result of a use case: either [Success] with data or [Failed] with a
-/// [Failure]. Callers branch with `switch` or `onSuccess` / `onError`.
 sealed class DataState<T> {
   const DataState();
 
-  /// The data when this is a [Success], otherwise null.
   T? get dataOrNull => switch (this) {
     Success<T>(:final data) => data,
     Failed<T>() => null,
@@ -42,7 +39,7 @@ final class Failed<T> extends DataState<T> {
 
   final Failure failure;
 
-  /// The original error, kept for logging only.
+  // Original error, for logging only.
   final Object? error;
 
   @override
