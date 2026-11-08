@@ -41,6 +41,8 @@ import 'package:j_donuts/features/auth/domain/usecase/verify_otp_usecase.dart'
     as _i617;
 import 'package:j_donuts/features/auth/presentation/cubit/authentication_cubit.dart'
     as _i618;
+import 'package:j_donuts/features/auth/presentation/pages/name/cubit/name_cubit.dart'
+    as _i965;
 import 'package:j_donuts/features/auth/presentation/pages/phone_number/cubit/phone_number_cubit.dart'
     as _i1028;
 import 'package:j_donuts/features/auth/presentation/pages/verify_otp/cubit/verify_otp_cubit.dart'
@@ -62,6 +64,7 @@ extension GetItInjectableX on _i174.GetIt {
     final loggerModule = _$LoggerModule();
     final networkModule = _$NetworkModule();
     final storageModule = _$StorageModule();
+    gh.factory<_i965.NameCubit>(() => _i965.NameCubit());
     gh.lazySingleton<_i416.AppDatabase>(
       () => databaseModule.database,
       dispose: _i1057.closeDatabase,

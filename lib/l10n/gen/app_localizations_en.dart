@@ -181,4 +181,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authOtpLocked => 'Too many wrong codes. Resend to get a new one.';
+
+  @override
+  String get authNameTitle => 'What\'s your name?';
+
+  @override
+  String get authNameFirstHint => 'First Name';
+
+  @override
+  String get authNameLastHint => 'Last Name';
+
+  @override
+  String get authNameErrorEmpty => 'Enter your first name.';
+
+  @override
+  String authNameErrorTooLong(int max) {
+    return 'Use $max characters or fewer.';
+  }
+
+  @override
+  String get authNameErrorDigits => 'Names can\'t contain numbers.';
+
+  @override
+  String get authNameErrorInvalid => 'Use letters and spaces only.';
 }

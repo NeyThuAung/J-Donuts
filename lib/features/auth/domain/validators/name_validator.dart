@@ -30,3 +30,9 @@ NameValidationError? _validateCharacters(String name) {
   }
   return null;
 }
+
+final _repeatedSpaces = RegExp(r'\s+');
+
+/// Trims and collapses inner spaces: "  Ye   Min " → "Ye Min".
+String normalizeName(String input) =>
+    input.trim().replaceAll(_repeatedSpaces, ' ');

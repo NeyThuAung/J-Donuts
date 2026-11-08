@@ -403,6 +403,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Too many wrong codes. Resend to get a new one.'**
   String get authOtpLocked;
+
+  /// No description provided for @authNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s your name?'**
+  String get authNameTitle;
+
+  /// No description provided for @authNameFirstHint.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get authNameFirstHint;
+
+  /// No description provided for @authNameLastHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get authNameLastHint;
+
+  /// No description provided for @authNameErrorEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your first name.'**
+  String get authNameErrorEmpty;
+
+  /// No description provided for @authNameErrorTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Use {max} characters or fewer.'**
+  String authNameErrorTooLong(int max);
+
+  /// No description provided for @authNameErrorDigits.
+  ///
+  /// In en, this message translates to:
+  /// **'Names can\'t contain numbers.'**
+  String get authNameErrorDigits;
+
+  /// No description provided for @authNameErrorInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Use letters and spaces only.'**
+  String get authNameErrorInvalid;
 }
 
 class _AppLocalizationsDelegate

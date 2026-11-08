@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:j_donuts/features/auth/domain/entity/auth_flow.dart';
 import 'package:j_donuts/features/auth/domain/usecase/request_otp_usecase.dart';
 import 'package:j_donuts/features/auth/domain/usecase/verify_otp_usecase.dart';
+import 'package:j_donuts/features/auth/presentation/pages/name/cubit/name_cubit.dart';
 import 'package:j_donuts/features/auth/presentation/pages/phone_number/cubit/phone_number_cubit.dart';
 import 'package:j_donuts/features/auth/presentation/pages/phone_number/phone_number_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/verify_otp/cubit/verify_otp_cubit.dart';
@@ -23,7 +24,8 @@ void registerPageCubits() {
     ..registerFactory(() => PhoneNumberCubit(_MockRequestOtp(), snack))
     ..registerFactory(
       () => VerifyOtpCubit(_MockVerifyOtp(), _MockRequestOtp(), snack),
-    );
+    )
+    ..registerFactory(NameCubit.new);
   addTearDown(GetIt.instance.reset);
 }
 

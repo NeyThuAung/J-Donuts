@@ -97,5 +97,19 @@
       }
     }
   },
-  "authOtpLocked": "Too many wrong codes. Resend to get a new one."
+  "authOtpLocked": "Too many wrong codes. Resend to get a new one.",
+  "authNameTitle": "What's your name?",
+  "authNameFirstHint": "First Name",
+  "authNameLastHint": "Last Name",
+  "authNameErrorEmpty": "Enter your first name.",
+  "authNameErrorTooLong": "Use {max} characters or fewer.",
+  "@authNameErrorTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "authNameErrorDigits": "Names can't contain numbers.",
+  "authNameErrorInvalid": "Use letters and spaces only."
 }

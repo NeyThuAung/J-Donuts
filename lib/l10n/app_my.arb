@@ -50,5 +50,12 @@
   "authOtpResend": "ကုဒ် ပြန်ပို့ရန်",
   "authOtpResent": "ကုဒ်အသစ် ပို့ပေးလိုက်ပါပြီ။",
   "authOtpWrongCode": "{count, plural, other{ကုဒ် မှားနေပါသည်။ နောက်ထပ် {count} ကြိမ် ကြိုးစားနိုင်ပါသည်။}}",
-  "authOtpLocked": "ကုဒ်မှားသည့်အကြိမ် များလွန်းပါသည်။ ကုဒ်အသစ် ပြန်ပို့ပါ။"
+  "authOtpLocked": "ကုဒ်မှားသည့်အကြိမ် များလွန်းပါသည်။ ကုဒ်အသစ် ပြန်ပို့ပါ။",
+  "authNameTitle": "သင့်အမည် ဘယ်လိုခေါ်လဲ?",
+  "authNameFirstHint": "အမည်",
+  "authNameLastHint": "မျိုးရိုးအမည်",
+  "authNameErrorEmpty": "သင့်အမည်ကို ထည့်ပါ။",
+  "authNameErrorTooLong": "စာလုံး {max} လုံးထက် မပိုစေရ။",
+  "authNameErrorDigits": "အမည်တွင် ဂဏန်းများ မပါရပါ။",
+  "authNameErrorInvalid": "စာလုံးနှင့် space သာ အသုံးပြုပါ။"
 }

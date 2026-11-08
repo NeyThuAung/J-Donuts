@@ -179,4 +179,27 @@ class AppLocalizationsMy extends AppLocalizations {
   @override
   String get authOtpLocked =>
       'ကုဒ်မှားသည့်အကြိမ် များလွန်းပါသည်။ ကုဒ်အသစ် ပြန်ပို့ပါ။';
+
+  @override
+  String get authNameTitle => 'သင့်အမည် ဘယ်လိုခေါ်လဲ?';
+
+  @override
+  String get authNameFirstHint => 'အမည်';
+
+  @override
+  String get authNameLastHint => 'မျိုးရိုးအမည်';
+
+  @override
+  String get authNameErrorEmpty => 'သင့်အမည်ကို ထည့်ပါ။';
+
+  @override
+  String authNameErrorTooLong(int max) {
+    return 'စာလုံး $max လုံးထက် မပိုစေရ။';
+  }
+
+  @override
+  String get authNameErrorDigits => 'အမည်တွင် ဂဏန်းများ မပါရပါ။';
+
+  @override
+  String get authNameErrorInvalid => 'စာလုံးနှင့် space သာ အသုံးပြုပါ။';
 }
