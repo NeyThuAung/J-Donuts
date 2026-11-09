@@ -20,6 +20,7 @@ abstract final class AppMotion {
   static const staggerStep = Duration(milliseconds: 80);
   static const donutDrift = Duration(milliseconds: 1200);
   static const homeEntrance = Duration(milliseconds: 900);
+  static const productEntrance = Duration(milliseconds: 900);
   static const welcomeEntrance = Duration(milliseconds: 1400);
   static const rewardsEntrance = Duration(milliseconds: 1600);
   static const rewardsCards = Duration(milliseconds: 1400);

@@ -12,13 +12,17 @@ import 'widget/sub/product_detail_skeleton.dart';
 
 // Screen 9; the route provides ProductDetailCubit for [productId].
 class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({super.key, required this.productId});
+  const ProductDetailPage({super.key, required this.productId, this.heroFrom});
 
   static const routeName = 'product';
   static const idParam = 'id';
+  static const fromParam = 'from';
   static const routePath = '$routeName/:$idParam';
 
   final String productId;
+
+  /// Where the user tapped the product (a Home section); null: no Hero.
+  final String? heroFrom;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +53,10 @@ class ProductDetailPage extends StatelessWidget {
     final l10n = context.l10n;
     return switch (state) {
       ProductDetailLoading() => const ProductDetailSkeleton(),
-      ProductDetailReady() => ProductDetailReadyPage(state: state),
+      ProductDetailReady() => ProductDetailReadyPage(
+        state: state,
+        heroTag: _heroTag,
+      ),
       ProductDetailNotFound() => AppErrorView(
         icon: CupertinoIcons.search,
         title: l10n.productNotFoundTitle,
@@ -60,5 +67,10 @@ class ProductDetailPage extends StatelessWidget {
         onRetry: context.read<ProductDetailCubit>().retry,
       ),
     };
+  }
+
+  String? get _heroTag {
+    final from = heroFrom;
+    return from == null ? null : HeroTags.product(from: from, id: productId);
   }
 }

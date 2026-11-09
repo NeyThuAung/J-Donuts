@@ -7,6 +7,7 @@ import '../features/auth/presentation/pages/name/name_page.dart';
 import '../features/auth/presentation/pages/onboarding/onboarding_page.dart';
 import '../features/auth/presentation/pages/phone_number/phone_number_page.dart';
 import '../features/auth/presentation/pages/verify_otp/verify_otp_page.dart';
+import '../features/product/domain/entity/product_entity.dart';
 import '../features/product/presentation/pages/product_detail/product_detail_page.dart';
 import 'index_page.dart';
 import 'index_tab.dart';
@@ -41,10 +42,16 @@ extension RouterExtension on BuildContext {
     ).toString(),
   );
 
-  // Pushed so the tab underneath stays as the user left it.
-  Future<void> pushProductDetailPage({required String productId}) => push(
+  // Pushed so the tab underneath stays as the user left it. [from] scopes
+  // the Hero tag; [product] is shown at once so the Hero has a destination.
+  Future<void> pushProductDetailPage({
+    required ProductEntity product,
+    required String from,
+  }) => push(
     Uri(
-      pathSegments: ['', ProductDetailPage.routeName, productId],
+      pathSegments: ['', ProductDetailPage.routeName, product.id],
+      queryParameters: {ProductDetailPage.fromParam: from},
     ).toString(),
+    extra: product,
   );
 }

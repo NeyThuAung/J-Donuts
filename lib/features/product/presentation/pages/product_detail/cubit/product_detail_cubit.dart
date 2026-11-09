@@ -28,8 +28,13 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
   Timer? _addedTimer;
   String? _productId;
 
-  void start(String productId) {
+  /// [preview] (the product the user tapped) shows at once so the image
+  /// Hero has a destination; the database stream then keeps it fresh.
+  void start(String productId, {ProductEntity? preview}) {
     _productId = productId;
+    if (preview != null && state is ProductDetailLoading) {
+      emit(ProductDetailState.ready(product: preview));
+    }
     unawaited(_subscription?.cancel());
     _subscription = _watchProduct(productId).listen(_onProduct);
   }

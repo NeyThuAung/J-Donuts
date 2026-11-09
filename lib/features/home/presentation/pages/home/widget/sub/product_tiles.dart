@@ -22,6 +22,9 @@ extension HomeSectionTileSize on HomeSectionType {
     HomeSectionType.orderAgain => 112,
   };
 
+  /// Scopes the product Hero tag and the detail route's `from`.
+  String get heroFrom => name;
+
   /// Image, gap and two name lines at the current text scale.
   double tileHeight(BuildContext context) =>
       imageHeight +
@@ -73,6 +76,8 @@ class _Picture extends StatelessWidget {
   final ProductEntity product;
   final HomeSectionType type;
 
+  String get _heroTag => HeroTags.product(from: type.heroFrom, id: product.id);
+
   @override
   Widget build(BuildContext context) {
     final radius = BorderRadius.circular($styles.corner.md);
@@ -82,9 +87,13 @@ class _Picture extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         if (isPhoto)
-          AppImage(product.image, borderRadius: radius)
+          AppHeroImage(
+            tag: _heroTag,
+            image: product.image,
+            borderRadius: radius,
+          )
         else
-          _CardImage(product: product, radius: radius),
+          _CardImage(product: product, radius: radius, heroTag: _heroTag),
         if (discount != null)
           PositionedDirectional(
             end: $styles.insets.xs,
@@ -96,11 +105,17 @@ class _Picture extends StatelessWidget {
   }
 }
 
+// Only the product flies to the detail page; the white card stays.
 class _CardImage extends StatelessWidget {
-  const _CardImage({required this.product, required this.radius});
+  const _CardImage({
+    required this.product,
+    required this.radius,
+    required this.heroTag,
+  });
 
   final ProductEntity product;
   final BorderRadius radius;
+  final String heroTag;
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
@@ -110,7 +125,11 @@ class _CardImage extends StatelessWidget {
     ),
     child: Padding(
       padding: EdgeInsets.all($styles.insets.sm),
-      child: AppImage(product.image, fit: BoxFit.contain),
+      child: AppHeroImage(
+        tag: heroTag,
+        image: product.image,
+        fit: BoxFit.contain,
+      ),
     ),
   );
 }

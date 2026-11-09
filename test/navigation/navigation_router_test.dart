@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:j_donuts/core/image/image_ref.dart';
 import 'package:j_donuts/features/auth/domain/entity/auth_flow.dart';
 import 'package:j_donuts/features/auth/presentation/cubit/authentication_cubit.dart';
 import 'package:j_donuts/features/auth/presentation/pages/date_of_birth/cubit/date_of_birth_cubit.dart';
@@ -11,6 +12,7 @@ import 'package:j_donuts/features/auth/presentation/pages/name/name_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/onboarding/onboarding_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/verify_otp/verify_otp_page.dart';
 import 'package:j_donuts/features/auth/presentation/pages/welcome/welcome_page.dart';
+import 'package:j_donuts/features/product/domain/entity/product_entity.dart';
 import 'package:j_donuts/features/product/presentation/pages/product_detail/product_detail_page.dart';
 import 'package:j_donuts/l10n/l10n.dart';
 import 'package:j_donuts/navigation/navigation.dart';
@@ -156,35 +158,39 @@ void main() {
       );
     });
 
-    testWidgets('pushes product detail with its id over the current tab', (
-      tester,
-    ) async {
-      authCubit.signIn();
-      await pumpApp(tester);
-      tester.element(find.byType(IndexPage)).selectIndexTab(IndexTab.rewards);
-      await tester.pumpAndSettle();
+    testWidgets(
+      'pushes product detail with its id and section over the current tab',
+      (
+        tester,
+      ) async {
+        authCubit.signIn();
+        await pumpApp(tester);
+        tester.element(find.byType(IndexPage)).selectIndexTab(IndexTab.rewards);
+        await tester.pumpAndSettle();
 
-      // Completes only when the page is popped, so it is not awaited.
-      unawaited(
-        tester
-            .element(find.byType(IndexPage))
-            .pushProductDetailPage(productId: 'p_coconut'),
-      );
-      await tester.pumpAndSettle();
+        // Completes only when the page is popped, so it is not awaited.
+        unawaited(
+          tester
+              .element(find.byType(IndexPage))
+              .pushProductDetailPage(product: _coconut, from: 'popular'),
+        );
+        await tester.pumpAndSettle();
 
-      final page = tester.widget<ProductDetailPage>(
-        find.byType(ProductDetailPage),
-      );
-      expect(page.productId, 'p_coconut');
-      expect(location(), '/product/p_coconut');
+        final page = tester.widget<ProductDetailPage>(
+          find.byType(ProductDetailPage),
+        );
+        expect(page.productId, 'p_coconut');
+        expect(page.heroFrom, 'popular');
+        expect(location(), '/product/p_coconut?from=popular');
 
-      navigationRouter.router.pop();
-      await tester.pumpAndSettle();
-      expect(
-        tester.widget<IndexPage>(find.byType(IndexPage)).tab,
-        IndexTab.rewards,
-      );
-    });
+        navigationRouter.router.pop();
+        await tester.pumpAndSettle();
+        expect(
+          tester.widget<IndexPage>(find.byType(IndexPage)).tab,
+          IndexTab.rewards,
+        );
+      },
+    );
 
     testWidgets('sends the user to onboarding when they sign out', (
       tester,
@@ -315,3 +321,13 @@ void main() {
     });
   });
 }
+
+const _coconut = ProductEntity(
+  id: 'p_coconut',
+  code: 'JD022123',
+  name: 'Coconut Donut',
+  priceMmk: 3200,
+  isNew: true,
+  image: AssetImageRef('assets/images/donut_chocolate_strawberry.png'),
+  description: 'Soft, sweet, and satisfying in every bite.',
+);

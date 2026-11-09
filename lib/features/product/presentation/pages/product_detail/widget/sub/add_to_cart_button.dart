@@ -5,7 +5,7 @@ import '../../../../../../../shared/components/components.dart';
 import '../../../../../../../shared/extensions/extensions.dart';
 import '../../../../../../../shared/styles/styles.dart';
 
-// "ADD TO CART | 3,200 MMK" with the live total; after a tap it shows a
+// "ADD TO CART | 3,200 MMK" with the live total (it rolls on change); after a tap it shows a
 // check and "Added" for a moment (the cart is visual feedback only).
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({
@@ -75,10 +75,19 @@ class _TotalLabel extends StatelessWidget {
             child: ColoredBox(color: colors.onPrimary),
           ),
         ),
-        Text(
-          l10n.productPrice(totalMmk.grouped(context)).toUpperCase(),
-          maxLines: 1,
-          style: style,
+        // Rolls to the new total when the quantity changes; fixed-width
+        // digits keep the label from wobbling while it counts.
+        TweenAnimationBuilder<int>(
+          tween: IntTween(end: totalMmk),
+          duration: context.motion(AppMotion.quantity),
+          curve: AppMotion.standard,
+          builder: (context, value, _) => Text(
+            l10n.productPrice(value.grouped(context)).toUpperCase(),
+            maxLines: 1,
+            style: style?.copyWith(
+              fontFeatures: const [FontFeature.tabularFigures()],
+            ),
+          ),
         ),
       ],
     );

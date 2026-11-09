@@ -108,8 +108,10 @@ class _SectionList extends StatelessWidget {
             index: HomeContent._firstSectionIndex + index,
             child: ProductSection(
               section: section,
-              onProductTap: (product) =>
-                  context.pushProductDetailPage(productId: product.id),
+              onProductTap: (product) => context.pushProductDetailPage(
+                product: product,
+                from: section.type.heroFrom,
+              ),
             ),
           ),
         ],
