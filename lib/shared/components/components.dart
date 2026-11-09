@@ -9,6 +9,7 @@ export 'loading/app_shimmer.dart';
 export 'motion/app_animated_size.dart';
 export 'motion/app_hero_image.dart';
 export 'motion/pressable_scale.dart';
+export 'motion/reduce_motion_scope.dart';
 export 'motion/staggered_entrance.dart';
 export 'navigation/app_bottom_nav_bar.dart';
 export 'section/section_data.dart';

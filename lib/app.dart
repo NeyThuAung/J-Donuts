@@ -48,19 +48,21 @@ class App extends StatelessWidget {
   // Runs below Localizations, so the theme can follow the resolved locale.
   Widget _buildFrame(BuildContext context, Widget? child) {
     updateStylesForScreen(MediaQuery.sizeOf(context));
-    return MediaQuery.withClampedTextScaling(
-      maxScaleFactor: maxTextScale,
-      child: Theme(
-        data: AppTheme.light(Localizations.localeOf(context)),
-        child: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: context.systemOverlayStyle,
-          child: BlocBuilder<ConnectivityCubit, ConnectivityStatus>(
-            builder: (context, status) => OfflineBannerFrame(
-              isVisible:
-                  status == ConnectivityStatus.offline ||
-                  status == ConnectivityStatus.backOnline,
-              isOffline: status == ConnectivityStatus.offline,
-              child: child ?? const SizedBox.shrink(),
+    return ReduceMotionScope(
+      child: MediaQuery.withClampedTextScaling(
+        maxScaleFactor: maxTextScale,
+        child: Theme(
+          data: AppTheme.light(Localizations.localeOf(context)),
+          child: AnnotatedRegion<SystemUiOverlayStyle>(
+            value: context.systemOverlayStyle,
+            child: BlocBuilder<ConnectivityCubit, ConnectivityStatus>(
+              builder: (context, status) => OfflineBannerFrame(
+                isVisible:
+                    status == ConnectivityStatus.offline ||
+                    status == ConnectivityStatus.backOnline,
+                isOffline: status == ConnectivityStatus.offline,
+                child: child ?? const SizedBox.shrink(),
+              ),
             ),
           ),
         ),

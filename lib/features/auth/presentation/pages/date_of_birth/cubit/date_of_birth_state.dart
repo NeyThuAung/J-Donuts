@@ -6,13 +6,11 @@ abstract class DateOfBirthState with _$DateOfBirthState {
     @Default('') String phone,
     @Default('') String firstName,
     String? lastName,
-    // Null until first picked.
     int? year,
     int? month,
     int? day,
     DateOfBirthValidationError? validationError,
     @Default(false) bool isSubmitting,
-    // Set once registered; the page signs the new member in.
     UserEntity? registeredUser,
   }) = _DateOfBirthState;
 

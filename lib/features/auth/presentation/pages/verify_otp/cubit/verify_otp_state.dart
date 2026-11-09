@@ -7,13 +7,10 @@ abstract class VerifyOtpState with _$VerifyOtpState {
     @Default(AuthFlow.register) AuthFlow flow,
     @Default(AuthRules.resendCountdown) Duration resendIn,
     @Default(0) int wrongAttempts,
-    // Hides the wrong-code message once the user types again.
     @Default(false) bool showWrongCode,
-    // Bumped on every wrong code; the boxes shake when it changes.
     @Default(0) int shakeCount,
     @Default(false) bool isVerifying,
     @Default(false) bool isResending,
-    // Set once; the page signs in or opens the Name step.
     OtpResult? result,
   }) = _VerifyOtpState;
 

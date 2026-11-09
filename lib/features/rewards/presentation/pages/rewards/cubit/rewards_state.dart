@@ -12,7 +12,6 @@ abstract class RewardsState with _$RewardsState {
 
   const RewardsState._();
 
-  /// The selected tab's challenges, keeping the loading and failed states.
   SectionData<List<ChallengeEntity>> get visibleChallenges =>
       switch (challenges) {
         SectionReady(:final data) => SectionData.ready([

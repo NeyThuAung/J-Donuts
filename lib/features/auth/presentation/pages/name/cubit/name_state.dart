@@ -3,10 +3,8 @@ part of 'name_cubit.dart';
 @freezed
 abstract class NameState with _$NameState {
   const factory NameState({
-    // Live results; Continue stays disabled while either is not null.
     @Default(NameValidationError.empty) NameValidationError? firstNameError,
     NameValidationError? lastNameError,
-    // Each message shows only after its field first loses focus.
     @Default(false) bool showFirstNameError,
     @Default(false) bool showLastNameError,
   }) = _NameState;

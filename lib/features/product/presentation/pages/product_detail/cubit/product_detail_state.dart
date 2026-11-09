@@ -8,7 +8,6 @@ sealed class ProductDetailState with _$ProductDetailState {
     required ProductEntity product,
     @Default(CartRules.minQuantity) int quantity,
 
-    /// True for a moment after Add to cart, for the button's added state.
     @Default(false) bool justAdded,
   }) = ProductDetailReady;
 
@@ -18,6 +17,5 @@ sealed class ProductDetailState with _$ProductDetailState {
 }
 
 extension ProductDetailReadyTotal on ProductDetailReady {
-  /// Live total on the button: quantity × price.
   int get totalMmk => quantity * product.priceMmk;
 }

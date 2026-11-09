@@ -225,7 +225,6 @@ class ProductDetailReady implements ProductDetailState {
 
  final  ProductEntity product;
 @JsonKey() final  int quantity;
-/// True for a moment after Add to cart, for the button's added state.
 @JsonKey() final  bool justAdded;
 
 /// Create a copy of ProductDetailState

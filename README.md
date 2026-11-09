@@ -122,7 +122,7 @@ The local database is the single source of truth: **the UI only ever reads Drift
 1. **First launch, even in airplane mode.** Before the first frame, the app seeds the database from bundled JSON (`assets/seed/v1`). Seed images are bundled too, so Home, Product detail and Rewards are complete with no network at all.
 2. **Versioned data.** Every payload carries `meta.version`; a version is stored per table in an `app_meta` table. `saveIfNewer` writes only newer data, so a refresh never goes backwards and a bundled seed never overwrites a newer refresh.
 3. **Refresh.** When the app starts online, or the connection comes back, it refreshes in the background; Home and Rewards also refresh on pull-to-refresh. The screens update through their database streams. A failed refresh keeps what is shown and only shows a snack (pull-to-refresh) or logs (background).
-4. **Connectivity.** `connectivity_plus` plus a real reachability check (a DNS lookup), so Wi-Fi without internet counts as offline. An offline banner slides in while offline.
+4. **Connectivity.** `connectivity_plus` plus a real reachability check (a DNS lookup), so Wi-Fi without internet counts as offline. A dark offline banner slides in under the status bar and stays for as long as the device is offline, pushing the page down rather than covering it. When the connection comes back, the banner turns green and says "Back online" for 2 seconds, then slides away while the background refresh runs. It never appears when the app starts online.
 5. **Images.** A URL whose file is bundled loads from assets; anything else goes through `cached_network_image` with a disk cache, a shimmer placeholder and an error state.
 6. **Auth is local too.** Users and the session live on the device (users in Drift, the session in `flutter_secure_storage`), so registering, logging out and logging back in all work offline.
 7. **Schema changes** use Drift's `make-migrations` workflow: one committed snapshot per version in `drift_schemas/` and migration tests from every older version.
@@ -131,10 +131,22 @@ The local database is the single source of truth: **the UI only ever reads Drift
 
 A static JSON API on GitHub Pages: `https://neythuaung.github.io/J-Donuts/v1/` (`member.json`, `products.json`, `banners.json`, `sections.json`, `shops.json`, `tiers.json`, `challenges.json`), with the images at `https://neythuaung.github.io/J-Donuts/images/`.
 
-- **Source:** the same files as the bundled seed, `assets/seed/v1/`. The `Mock API` workflow (`.github/workflows/pages.yml`) checks that every file parses and publishes them on each push to `master`, so the app and the API can never disagree on shape.
+- **Source:** the same files as the bundled seed, `assets/seed/v1/`. The `Mock API` workflow (`.github/workflows/pages.yml`) checks that every file parses and publishes them, so the app and the API can never disagree on shape. It runs on a push to `master` that changes `assets/seed/`, `assets/images/` or the workflow itself, and can also be run by hand.
 - **Shape:** every response is `{ "data": …, "error": null, "meta": { "version": 1 } }`, the same envelope the app parses for the seed.
 - **Client:** Dio + retrofit with connect and receive timeouts, retry with back-off on connection errors, timeouts and 5xx/429 (`dio_smart_retry`), and request logging in debug builds.
 - **To change data:** edit a file in `assets/seed/v1/`, raise its `meta.version`, push. Running apps pick it up on their next refresh; new installs get it from the bundle.
+
+### Deploying the mock API on GitHub Pages
+
+No server to host: GitHub Actions builds a small static site and GitHub Pages serves it.
+
+1. **Enable Pages:** in the repository go to **Settings → Pages** and set **Source** to **GitHub Actions** (one time only).
+2. **Publish:** push a change under `assets/seed/` or `assets/images/` to `master`, or open **Actions → Mock API → Run workflow** to publish without a change.
+3. **What the workflow does:**
+   - **Build site:** checks that every JSON file parses, then copies `assets/seed/v1/` to `site/v1/` and `assets/images/` to `site/images/` and uploads `site/` as the Pages artifact.
+   - **Deploy:** publishes the artifact to the `github-pages` environment; the run summary links to the live URL.
+4. **Check it:** open `https://<user>.github.io/<repo>/v1/products.json` in a browser.
+5. **On a fork:** point `ApiConfig.baseUrl` in `lib/config/api_config.dart` at your own `https://<user>.github.io/<repo>/v1/`.
 
 ## Animations
 
@@ -147,12 +159,13 @@ All durations, curves and intervals are named constants in one motion file (`sha
 | Inputs | The field border fades to cyan with a soft shadow on focus; error messages ease open. The OTP boxes shake and clear on a wrong code. |
 | Buttons | Every tappable scales down on press. Continue morphs into a loading state, and taps are ignored while it loads. |
 | Welcome | Donut tiles slide in one after another, then the title and button fade up. |
-| Home | Skeleton shimmer while loading; header, sections and shops enter in a stagger; the banner carousel auto-plays (and pauses while the tab is hidden); the offline banner slides in. |
+| Home | Skeleton shimmer while loading; header, sections and shops enter in a stagger; the banner carousel auto-plays (and pauses while the tab is hidden). |
+| Connection banner (every screen) | The dark offline strip slides down and pushes the page with it; when the connection returns it fades to green as the icon and text change to "Back online", holds for 2 s, then slides up. |
 | Product tile → detail | Hero transition on the product image, with rounded corners kept through the flight. The card content fades up in order, the quantity rolls on change, the total counts to its new value, and Add to cart turns into "Added" with a check. |
 | Tab switch | The bottom-nav pill slides between tabs with a small bounce and its label grows from the centre. |
 | Rewards | The points ring (`CustomPainter`, glazed pink with sprinkles) sweeps while the total counts up to 680,000; the reward badge pops in; the tier shields (Silver → Gold → Platinum) appear in order, the current one highlighted, and the line to the next tier fills. The tab indicator slides between "Eat more earn more" and "Gift" and the list fades between them. Challenge cards enter in a stagger and draw their progress: the donut colours in by quarters, the coffee arc fills to 9/12. A complete challenge's Earn button breathes for attention. The entrance replays on every visit. |
 
-**Reduce Motion** (`MediaQuery.disableAnimations`): entrances start finished, the shimmer holds still, page transitions and the Hero flight are off, the carousel stops auto-playing, the OTP shake and the Earn pulse are skipped, and sizes change at once. Every state change is still shown.
+**Reduce Motion** (iOS Reduce Motion and Android Remove animations; `ReduceMotionScope` folds iOS's separate `reduceMotion` flag into `MediaQuery.disableAnimations`): entrances start finished, the shimmer holds still, page transitions and the Hero flight are off, the carousel stops auto-playing, the OTP shake and the Earn pulse are skipped, the connection banner appears and changes colour at once (the "Back online" message still stays for its 2 s reading time), and sizes change at once. Every state change is still shown.
 
 ## Fake OTP
 
