@@ -194,12 +194,15 @@ GitHub Actions (`.github/workflows/ci.yml`) runs on every push and pull request 
 
 ## Time spent
 
+Approximate, over two days.
+
 | Area | Time |
 |---|---|
-| Project setup | — |
-| Task 1 — Auth | — |
-| Task 2 — Home and Product (offline) | — |
-| Task 3 — Rewards | — |
-| Motion polish | — |
-| Tests | — |
-| README and delivery | — |
+| Project setup (architecture, tokens, database, navigation, CI) | ~6.5 h |
+| Task 1 — Auth | ~5 h |
+| Task 2 — Home and Product (offline) | ~4 h |
+| Task 3 — Rewards | ~5 h |
+| Motion polish | ~1.5 h |
+| Tests | ~0.5 h |
+| README and delivery | ~0.5 h |
+| **Total** | **~23 h** |
