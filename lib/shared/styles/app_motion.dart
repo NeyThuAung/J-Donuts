@@ -12,12 +12,9 @@ abstract final class AppMotion {
   static const buttonMorph = Duration(milliseconds: 300);
   static const pageStep = Duration(milliseconds: 400);
   static const dialog = Duration(milliseconds: 200);
-  static const hero = Duration(milliseconds: 400);
   static const shake = Duration(milliseconds: 450);
   static const progressRing = Duration(milliseconds: 600);
   static const ringToCheck = Duration(milliseconds: 400);
-  static const entrance = Duration(milliseconds: 500);
-  static const staggerStep = Duration(milliseconds: 80);
   static const donutDrift = Duration(milliseconds: 1200);
   static const homeEntrance = Duration(milliseconds: 900);
   static const productEntrance = Duration(milliseconds: 900);

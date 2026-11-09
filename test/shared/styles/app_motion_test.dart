@@ -41,7 +41,7 @@ void main() {
           data: MediaQueryData(disableAnimations: reduce),
           child: Builder(
             builder: (context) {
-              result = context.motion(AppMotion.entrance);
+              result = context.motion(AppMotion.fieldState);
               return const SizedBox.shrink();
             },
           ),
@@ -51,7 +51,7 @@ void main() {
     }
 
     testWidgets('returns the full duration normally', (tester) async {
-      expect(await resolve(tester, reduce: false), AppMotion.entrance);
+      expect(await resolve(tester, reduce: false), AppMotion.fieldState);
     });
 
     testWidgets('returns zero when Reduce Motion is on', (tester) async {
