@@ -5,6 +5,7 @@ A donut-shop loyalty app built for the Madivizion senior Flutter code test: phon
 ## Contents
 
 - [How to run](#how-to-run)
+- [Install the prebuilt apps](#install-the-prebuilt-apps)
 - [Versions](#versions)
 - [Architecture](#architecture)
 - [Folder map](#folder-map)
@@ -41,9 +42,46 @@ flutter build ios --simulator   # then zip the app for the iOS Simulator:
 cd build/ios/iphonesimulator && zip -r J-Donuts-simulator.zip Runner.app
 ```
 
-To install the simulator build, unzip it and drag `Runner.app` onto a running simulator (or `xcrun simctl install booted Runner.app`).
+Installing these builds without the source is covered in [Install the prebuilt apps](#install-the-prebuilt-apps).
 
 The app follows the phone's language: Burmese on a Burmese phone, English otherwise. Portrait only, phones from 4.7" to 6.9", text scale up to 1.3.
+
+## Install the prebuilt apps
+
+No Flutter needed: the release APK and the zipped iOS Simulator app run as they are.
+
+### iOS Simulator (`J-Donuts-simulator.zip`)
+
+Needs a Mac with Xcode, and a simulator on iOS 15 or later. The app is built for Apple Silicon and Intel Macs. It runs on the Simulator only, not on a real iPhone.
+
+1. Start a simulator: `open -a Simulator`, or in Xcode **Open Developer Tool → Simulator**, then pick an iPhone in **File → Open Simulator**.
+2. Unzip and install, either by dragging `Runner.app` onto the simulator window or from Terminal:
+
+   ```bash
+   unzip J-Donuts-simulator.zip
+   xcrun simctl install booted Runner.app
+   xcrun simctl launch booted com.neythuaung.j_donuts
+   ```
+
+3. The app shows on the home screen as **J'Donuts**.
+
+> Flutter builds iOS Simulator apps in debug mode only, so animations can be less smooth than on a real device. Judge performance on the release APK.
+
+### Android (`app-release.apk`)
+
+1. Start an emulator from Android Studio (**Device Manager**), or connect a phone with USB debugging on.
+2. Drag `app-release.apk` onto the emulator window, or run:
+
+   ```bash
+   adb install app-release.apk
+   ```
+
+### Things to try
+
+- **Offline:** open the app once online, then turn on airplane mode (on the iOS Simulator, turn off the Mac's Wi-Fi). Home, Product detail and Rewards keep working, the offline banner shows, and it turns green with "Back online" when the network returns.
+- **Fake OTP:** `123456`.
+- **Reduce Motion:** iOS **Settings → Accessibility → Motion → Reduce Motion**; Android **Settings → Accessibility → Remove animations**.
+- **Burmese:** set the device language to Burmese (မြန်မာ).
 
 ## Versions
 
