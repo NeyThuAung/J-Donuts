@@ -134,6 +134,10 @@
   "@commonOfflineBanner": {
     "description": "Strip under the status bar while there is no internet; the app shows local data."
   },
+  "commonBackOnlineBanner": "Back online",
+  "@commonBackOnlineBanner": {
+    "description": "Same strip, green, for a short while after the internet comes back."
+  },
   "commonImageUnavailable": "Image unavailable",
   "settingsAccount": "Account",
   "settingsLogOut": "Log out",

@@ -13,6 +13,7 @@ class _MockRefresh extends Mock implements RefreshLocalDataUseCase {}
 class _MockLogger extends Mock implements AppLogger {}
 
 const _noParams = NoParams();
+const _hold = Duration(milliseconds: 20);
 
 void main() {
   late StreamController<bool> status;
@@ -28,7 +29,12 @@ void main() {
     when(
       () => refresh(_noParams),
     ).thenAnswer((_) async => const Success(null));
-    cubit = ConnectivityCubit(network, refresh, _MockLogger());
+    cubit = ConnectivityCubit(
+      network,
+      refresh,
+      _MockLogger(),
+      backOnlineHold: _hold,
+    );
   });
 
   tearDown(() async {
@@ -37,6 +43,7 @@ void main() {
   });
 
   Future<void> settle() => Future<void>.delayed(Duration.zero);
+  Future<void> waitForHold() => Future<void>.delayed(_hold * 2);
 
   group('ConnectivityCubit', () {
     test('shows the offline banner when started without internet', () async {
@@ -65,8 +72,44 @@ void main() {
       status.add(true);
       await settle();
 
-      expect(cubit.state, ConnectivityStatus.online);
+      expect(cubit.state, ConnectivityStatus.backOnline);
       verify(() => refresh(_noParams)).called(1);
+    });
+
+    test('shows back online for a short hold, then hides the banner', () async {
+      when(() => network.isConnected).thenAnswer((_) async => false);
+      await cubit.start();
+
+      status.add(true);
+      await settle();
+      expect(cubit.state, ConnectivityStatus.backOnline);
+
+      await waitForHold();
+      expect(cubit.state, ConnectivityStatus.online);
+    });
+
+    test('never shows back online when the app starts online', () async {
+      when(() => network.isConnected).thenAnswer((_) async => true);
+      final states = <ConnectivityStatus>[];
+      final sub = cubit.stream.listen(states.add);
+
+      await cubit.start();
+      await waitForHold();
+      await sub.cancel();
+
+      expect(states, [ConnectivityStatus.online]);
+    });
+
+    test('stays offline when the connection drops during the hold', () async {
+      when(() => network.isConnected).thenAnswer((_) async => false);
+      await cubit.start();
+
+      status.add(true);
+      await settle();
+      status.add(false);
+      await waitForHold();
+
+      expect(cubit.state, ConnectivityStatus.offline);
     });
 
     test('does not refresh again while it stays online', () async {

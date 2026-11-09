@@ -22,6 +22,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     required this.homeHeader,
     required this.banner,
     required this.success,
+    required this.successStrong,
     required this.progressSecondary,
     required this.disabled,
     required this.track,
@@ -54,6 +55,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   final Color homeHeader;
   final Color banner;
   final Color success;
+
+  /// Dark enough for white text (back-online banner).
+  final Color successStrong;
   final Color progressSecondary;
   final Color disabled;
   final Color track;
@@ -94,6 +98,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     homeHeader: AppColors.peach,
     banner: AppColors.purple,
     success: AppColors.green,
+    successStrong: AppColors.forest,
     progressSecondary: AppColors.skyBlue,
     disabled: AppColors.silver,
     track: AppColors.cloud,
@@ -128,6 +133,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     Color? homeHeader,
     Color? banner,
     Color? success,
+    Color? successStrong,
     Color? progressSecondary,
     Color? disabled,
     Color? track,
@@ -159,6 +165,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     homeHeader: homeHeader ?? this.homeHeader,
     banner: banner ?? this.banner,
     success: success ?? this.success,
+    successStrong: successStrong ?? this.successStrong,
     progressSecondary: progressSecondary ?? this.progressSecondary,
     disabled: disabled ?? this.disabled,
     track: track ?? this.track,
@@ -196,6 +203,7 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
       homeHeader: mix(homeHeader, other.homeHeader),
       banner: mix(banner, other.banner),
       success: mix(success, other.success),
+      successStrong: mix(successStrong, other.successStrong),
       progressSecondary: mix(progressSecondary, other.progressSecondary),
       disabled: mix(disabled, other.disabled),
       track: mix(track, other.track),

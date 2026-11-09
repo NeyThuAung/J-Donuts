@@ -243,6 +243,9 @@ class AppLocalizationsMy extends AppLocalizations {
       'အင်တာနက် မရှိပါ · သိမ်းထားသည့် အချက်အလက်ကို ပြသနေသည်';
 
   @override
+  String get commonBackOnlineBanner => 'အင်တာနက် ပြန်ရပါပြီ';
+
+  @override
   String get commonImageUnavailable => 'ပုံ မရနိုင်ပါ';
 
   @override

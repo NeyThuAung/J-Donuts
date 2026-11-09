@@ -518,6 +518,12 @@ abstract class AppLocalizations {
   /// **'You\'re offline · showing saved data'**
   String get commonOfflineBanner;
 
+  /// Same strip, green, for a short while after the internet comes back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back online'**
+  String get commonBackOnlineBanner;
+
   /// No description provided for @commonImageUnavailable.
   ///
   /// In en, this message translates to:

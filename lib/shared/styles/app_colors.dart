@@ -7,6 +7,7 @@ abstract final class AppColors {
   static const orange = Color(0xFFFF7F1F);
   static const purple = Color(0xFF5E5AA7);
   static const green = Color(0xFF8BC14F);
+  static const forest = Color(0xFF3D7A2A);
   static const skyBlue = Color(0xFFA5DFF9);
   static const peach = Color(0xFFFFECDC);
   static const blush = Color(0xFFFDEDF3);

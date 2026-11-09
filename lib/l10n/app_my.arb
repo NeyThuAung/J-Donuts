@@ -70,6 +70,7 @@
   "authWelcomeExplore": "စတင်ရှာဖွေမည်",
   "commonCancel": "မလုပ်တော့ပါ",
   "commonOfflineBanner": "အင်တာနက် မရှိပါ · သိမ်းထားသည့် အချက်အလက်ကို ပြသနေသည်",
+  "commonBackOnlineBanner": "အင်တာနက် ပြန်ရပါပြီ",
   "commonImageUnavailable": "ပုံ မရနိုင်ပါ",
   "settingsAccount": "အကောင့်",
   "settingsLogOut": "ထွက်ရန်",

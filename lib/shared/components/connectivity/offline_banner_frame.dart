@@ -6,21 +6,26 @@ import '../../extensions/extensions.dart';
 import '../../styles/styles.dart';
 
 // Wraps every screen: while offline a small strip slides down under the
-// status bar and the page moves down with it, so nothing is covered.
+// status bar and the page moves down with it, so nothing is covered. When
+// the connection returns the strip turns green before it slides away.
 class OfflineBannerFrame extends StatelessWidget {
   const OfflineBannerFrame({
     super.key,
+    required this.isVisible,
     required this.isOffline,
     required this.child,
   });
 
+  final bool isVisible;
+
+  /// False shows the green "Back online" message.
   final bool isOffline;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
-      tween: Tween(end: isOffline ? 1 : 0),
+      tween: Tween(end: isVisible ? 1 : 0),
       duration: context.motion(AppMotion.offlineBanner),
       curve: AppMotion.standard,
       child: child,
@@ -30,7 +35,7 @@ class OfflineBannerFrame extends StatelessWidget {
         final topPadding = media.padding.top * (1 - shown);
         return Column(
           children: [
-            if (shown > 0) _Banner(shown: shown),
+            if (shown > 0) _Banner(shown: shown, isOffline: isOffline),
             Expanded(
               child: MediaQuery(
                 data: media.copyWith(
@@ -48,10 +53,11 @@ class OfflineBannerFrame extends StatelessWidget {
 }
 
 class _Banner extends StatelessWidget {
-  const _Banner({required this.shown});
+  const _Banner({required this.shown, required this.isOffline});
 
   /// 0 hidden … 1 fully shown.
   final double shown;
+  final bool isOffline;
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +69,10 @@ class _Banner extends StatelessWidget {
         child: Align(
           alignment: Alignment.bottomCenter,
           heightFactor: shown,
-          child: ColoredBox(
-            color: colors.inverseSurface,
+          child: AnimatedContainer(
+            duration: context.motion(AppMotion.offlineBanner),
+            curve: AppMotion.standard,
+            color: isOffline ? colors.inverseSurface : colors.successStrong,
             child: SafeArea(
               bottom: false,
               child: Padding(
@@ -72,7 +80,13 @@ class _Banner extends StatelessWidget {
                   horizontal: insets.md,
                   vertical: insets.xs,
                 ),
-                child: const _BannerMessage(),
+                child: AnimatedSwitcher(
+                  duration: context.motion(AppMotion.offlineBanner),
+                  child: _BannerMessage(
+                    key: ValueKey(isOffline),
+                    isOffline: isOffline,
+                  ),
+                ),
               ),
             ),
           ),
@@ -83,25 +97,30 @@ class _Banner extends StatelessWidget {
 }
 
 class _BannerMessage extends StatelessWidget {
-  const _BannerMessage();
+  const _BannerMessage({super.key, required this.isOffline});
+
+  final bool isOffline;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.appColors;
+    final l10n = context.l10n;
     return Semantics(
       liveRegion: true,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            CupertinoIcons.wifi_slash,
+            isOffline ? CupertinoIcons.wifi_slash : CupertinoIcons.wifi,
             color: colors.onInverseSurface,
             size: $styles.size.iconSm,
           ),
           SizedBox(width: $styles.insets.xs),
           Flexible(
             child: Text(
-              context.l10n.commonOfflineBanner,
+              isOffline
+                  ? l10n.commonOfflineBanner
+                  : l10n.commonBackOnlineBanner,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,

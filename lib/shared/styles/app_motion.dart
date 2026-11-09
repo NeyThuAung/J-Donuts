@@ -24,6 +24,8 @@ abstract final class AppMotion {
   static const shimmer = Duration(milliseconds: 1400);
   static const imageFade = Duration(milliseconds: 300);
   static const offlineBanner = Duration(milliseconds: 300);
+  // Reading time for "Back online"; not shortened by Reduce Motion.
+  static const backOnlineHold = Duration(seconds: 2);
   static const addedFeedback = Duration(milliseconds: 1600);
   static const carouselSlide = Duration(milliseconds: 500);
   static const carouselInterval = Duration(seconds: 4);

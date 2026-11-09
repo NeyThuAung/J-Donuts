@@ -54,10 +54,12 @@ class App extends StatelessWidget {
         data: AppTheme.light(Localizations.localeOf(context)),
         child: AnnotatedRegion<SystemUiOverlayStyle>(
           value: context.systemOverlayStyle,
-          child: BlocSelector<ConnectivityCubit, ConnectivityStatus, bool>(
-            selector: (status) => status == ConnectivityStatus.offline,
-            builder: (context, isOffline) => OfflineBannerFrame(
-              isOffline: isOffline,
+          child: BlocBuilder<ConnectivityCubit, ConnectivityStatus>(
+            builder: (context, status) => OfflineBannerFrame(
+              isVisible:
+                  status == ConnectivityStatus.offline ||
+                  status == ConnectivityStatus.backOnline,
+              isOffline: status == ConnectivityStatus.offline,
               child: child ?? const SizedBox.shrink(),
             ),
           ),
