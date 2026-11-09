@@ -1,33 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:j_donuts/app.dart';
+import 'package:j_donuts/core/core.dart';
 import 'package:j_donuts/features/auth/presentation/pages/onboarding/onboarding_page.dart';
+import 'package:j_donuts/features/home/domain/usecase/refresh_local_data_usecase.dart';
+import 'package:j_donuts/features/home/presentation/cubit/connectivity_cubit.dart';
 import 'package:j_donuts/gen/fonts.gen.dart';
 import 'package:j_donuts/navigation/navigation.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'helpers/test_authentication_cubit.dart';
 
 const _systemTextScale = 2.0;
 const _sampleFontSize = 10.0;
 
+class _MockNetworkInfo extends Mock implements NetworkInfo {}
+
+class _MockRefresh extends Mock implements RefreshLocalDataUseCase {}
+
+class _MockLogger extends Mock implements AppLogger {}
+
 void main() {
   group('App', () {
     late TestAuthenticationCubit authCubit;
+    late ConnectivityCubit connectivityCubit;
     late NavigationRouter navigationRouter;
 
     setUp(() {
       authCubit = TestAuthenticationCubit();
+      connectivityCubit = ConnectivityCubit(
+        _MockNetworkInfo(),
+        _MockRefresh(),
+        _MockLogger(),
+      );
       navigationRouter = NavigationRouter(NavigationKeyProvider(), authCubit);
     });
 
     tearDown(() async {
       navigationRouter.dispose();
       await authCubit.close();
+      await connectivityCubit.close();
     });
 
     Future<void> pumpApp(WidgetTester tester) async {
       await tester.pumpWidget(
-        App(authCubit: authCubit, router: navigationRouter.router),
+        App(
+          authCubit: authCubit,
+          connectivityCubit: connectivityCubit,
+          router: navigationRouter.router,
+        ),
       );
       await tester.pumpAndSettle();
     }

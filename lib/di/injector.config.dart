@@ -73,6 +73,8 @@ import 'package:j_donuts/features/home/domain/usecase/watch_home_sections_usecas
     as _i63;
 import 'package:j_donuts/features/home/domain/usecase/watch_shops_usecase.dart'
     as _i44;
+import 'package:j_donuts/features/home/presentation/cubit/connectivity_cubit.dart'
+    as _i691;
 import 'package:j_donuts/features/member/data/data_source/member_local_data_source.dart'
     as _i1033;
 import 'package:j_donuts/features/member/data/data_source/member_rest_client.dart'
@@ -285,6 +287,13 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i53.MemberRepository>(),
         gh<_i43.ProductRepository>(),
         gh<_i181.HomeRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i691.ConnectivityCubit>(
+      () => _i691.ConnectivityCubit(
+        gh<_i438.NetworkInfo>(),
+        gh<_i978.RefreshLocalDataUseCase>(),
+        gh<_i438.AppLogger>(),
       ),
     );
     return this;

@@ -130,6 +130,11 @@
   "authWelcomeTitle": "Welcome to the world of J'donuts",
   "authWelcomeExplore": "Let's explore",
   "commonCancel": "Cancel",
+  "commonOfflineBanner": "You're offline · showing saved data",
+  "@commonOfflineBanner": {
+    "description": "Strip under the status bar while there is no internet; the app shows local data."
+  },
+  "commonImageUnavailable": "Image unavailable",
   "settingsAccount": "Account",
   "settingsLogOut": "Log out",
   "settingsLogOutTitle": "Log out?",

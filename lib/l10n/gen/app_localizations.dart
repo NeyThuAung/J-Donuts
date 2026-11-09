@@ -512,6 +512,18 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get commonCancel;
 
+  /// Strip under the status bar while there is no internet; the app shows local data.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re offline · showing saved data'**
+  String get commonOfflineBanner;
+
+  /// No description provided for @commonImageUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Image unavailable'**
+  String get commonImageUnavailable;
+
   /// No description provided for @settingsAccount.
   ///
   /// In en, this message translates to:

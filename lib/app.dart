@@ -4,24 +4,35 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'features/auth/presentation/cubit/authentication_cubit.dart';
+import 'features/home/presentation/cubit/connectivity_cubit.dart';
 import 'l10n/l10n.dart';
+import 'shared/components/components.dart';
 import 'shared/extensions/extensions.dart';
 import 'shared/styles/styles.dart';
 
 class App extends StatelessWidget {
-  const App({super.key, required this.authCubit, required this.router});
+  const App({
+    super.key,
+    required this.authCubit,
+    required this.connectivityCubit,
+    required this.router,
+  });
 
   // The brief's largest supported system text size.
   static const maxTextScale = 1.3;
   static const _fallbackLocale = Locale('en');
 
   final AuthenticationCubit authCubit;
+  final ConnectivityCubit connectivityCubit;
   final GoRouter router;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: authCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: authCubit),
+        BlocProvider.value(value: connectivityCubit),
+      ],
       child: MaterialApp.router(
         onGenerateTitle: (context) => context.l10n.appTitle,
         debugShowCheckedModeBanner: false,
@@ -43,7 +54,13 @@ class App extends StatelessWidget {
         data: AppTheme.light(Localizations.localeOf(context)),
         child: AnnotatedRegion<SystemUiOverlayStyle>(
           value: context.systemOverlayStyle,
-          child: child ?? const SizedBox.shrink(),
+          child: BlocSelector<ConnectivityCubit, ConnectivityStatus, bool>(
+            selector: (status) => status == ConnectivityStatus.offline,
+            builder: (context, isOffline) => OfflineBannerFrame(
+              isOffline: isOffline,
+              child: child ?? const SizedBox.shrink(),
+            ),
+          ),
         ),
       ),
     );

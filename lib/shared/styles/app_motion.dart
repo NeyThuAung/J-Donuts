@@ -24,6 +24,8 @@ abstract final class AppMotion {
   static const pointsRing = Duration(milliseconds: 1400);
   static const challengeArt = Duration(milliseconds: 900);
   static const shimmer = Duration(milliseconds: 1400);
+  static const imageFade = Duration(milliseconds: 300);
+  static const offlineBanner = Duration(milliseconds: 300);
   static const carouselSlide = Duration(milliseconds: 500);
   static const carouselInterval = Duration(seconds: 4);
   static const attentionPulse = Duration(milliseconds: 1200);

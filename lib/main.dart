@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -6,6 +8,7 @@ import 'core/core.dart';
 import 'di/di.dart';
 import 'features/auth/presentation/cubit/authentication_cubit.dart';
 import 'features/home/domain/usecase/seed_local_data_usecase.dart';
+import 'features/home/presentation/cubit/connectivity_cubit.dart';
 import 'navigation/navigation.dart';
 
 Future<void> main() async {
@@ -18,7 +21,17 @@ Future<void> main() async {
   final authCubit = inject<AuthenticationCubit>();
   await authCubit.checkSession();
 
-  runApp(App(authCubit: authCubit, router: inject<NavigationRouter>().router));
+  // Offline banner and background refresh; never blocks the first frame.
+  final connectivityCubit = inject<ConnectivityCubit>();
+  unawaited(connectivityCubit.start());
+
+  runApp(
+    App(
+      authCubit: authCubit,
+      connectivityCubit: connectivityCubit,
+      router: inject<NavigationRouter>().router,
+    ),
+  );
 }
 
 // Bundled data first, so every screen works offline from the first launch.

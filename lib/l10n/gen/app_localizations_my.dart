@@ -239,6 +239,13 @@ class AppLocalizationsMy extends AppLocalizations {
   String get commonCancel => 'မလုပ်တော့ပါ';
 
   @override
+  String get commonOfflineBanner =>
+      'အင်တာနက် မရှိပါ · သိမ်းထားသည့် အချက်အလက်ကို ပြသနေသည်';
+
+  @override
+  String get commonImageUnavailable => 'ပုံ မရနိုင်ပါ';
+
+  @override
   String get settingsAccount => 'အကောင့်';
 
   @override

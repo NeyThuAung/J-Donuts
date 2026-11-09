@@ -242,6 +242,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonCancel => 'Cancel';
 
   @override
+  String get commonOfflineBanner => 'You\'re offline · showing saved data';
+
+  @override
+  String get commonImageUnavailable => 'Image unavailable';
+
+  @override
   String get settingsAccount => 'Account';
 
   @override

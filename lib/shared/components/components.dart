@@ -1,6 +1,8 @@
 export 'button/app_button.dart';
+export 'connectivity/offline_banner_frame.dart';
 export 'dialog/confirm_dialog.dart';
 export 'error/app_error_view.dart';
+export 'image/app_image.dart';
 export 'input/app_text_field.dart';
 export 'loading/app_shimmer.dart';
 export 'motion/staggered_entrance.dart';
