@@ -7,7 +7,7 @@ import '../../../../../../../shared/components/components.dart';
 import '../../../../../../../shared/extensions/extensions.dart';
 import '../../../../../../../shared/styles/styles.dart';
 import '../../../../../../member/domain/entity/member_entity.dart';
-import 'member_tier_label.dart';
+import '../../../../../../member/presentation/member_tier_label.dart';
 
 // Photo, name, tier and the points-to-next-tier pill.
 class MemberSummary extends StatelessWidget {

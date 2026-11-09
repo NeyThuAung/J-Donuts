@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:j_donuts/features/home/presentation/pages/home/home_page.dart';
+import 'package:j_donuts/features/rewards/presentation/pages/rewards/rewards_page.dart';
 import 'package:j_donuts/features/settings/presentation/pages/placeholder/placeholder_page.dart';
 import 'package:j_donuts/features/settings/presentation/pages/settings/settings_page.dart';
 import 'package:j_donuts/l10n/l10n.dart';
@@ -72,15 +73,16 @@ void main() {
     });
 
     testWidgets(
-      'shows Home and Settings on their tabs and placeholders on the rest',
+      'shows Home, Rewards and Settings on their tabs and placeholders on the rest',
       (tester) async {
         await _pump(tester, '/');
 
         expect(find.byType(HomePage, skipOffstage: false), findsOneWidget);
+        expect(find.byType(RewardsPage, skipOffstage: false), findsOneWidget);
         expect(find.byType(SettingsPage, skipOffstage: false), findsOneWidget);
         expect(
           find.byType(PlaceholderPage, skipOffstage: false),
-          findsNWidgets(IndexTab.values.length - 2),
+          findsNWidgets(IndexTab.values.length - 3),
         );
       },
     );

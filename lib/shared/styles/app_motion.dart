@@ -14,7 +14,6 @@ abstract final class AppMotion {
   static const dialog = Duration(milliseconds: 200);
   static const hero = Duration(milliseconds: 400);
   static const shake = Duration(milliseconds: 450);
-  static const badgePop = Duration(milliseconds: 450);
   static const progressRing = Duration(milliseconds: 600);
   static const ringToCheck = Duration(milliseconds: 400);
   static const entrance = Duration(milliseconds: 500);
@@ -22,8 +21,8 @@ abstract final class AppMotion {
   static const donutDrift = Duration(milliseconds: 1200);
   static const homeEntrance = Duration(milliseconds: 900);
   static const welcomeEntrance = Duration(milliseconds: 1400);
-  static const pointsRing = Duration(milliseconds: 1400);
-  static const challengeArt = Duration(milliseconds: 900);
+  static const rewardsEntrance = Duration(milliseconds: 1600);
+  static const rewardsCards = Duration(milliseconds: 1400);
   static const shimmer = Duration(milliseconds: 1400);
   static const imageFade = Duration(milliseconds: 300);
   static const offlineBanner = Duration(milliseconds: 300);
@@ -43,6 +42,21 @@ abstract final class AppMotion {
   static const sweep = Curves.easeInOutCubic;
   // Slow start, then overshoots about 13% before settling.
   static const navPillBounce = Cubic(0.4, 0, 0.2, 1.6);
+
+  // Slices of the Rewards entrance (one controller, rewardsEntrance long).
+  // The ring sweeps while the total counts up; the badge pops in during it.
+  static const rewardsRing = Interval(0, 0.875, curve: sweep);
+  static const rewardsBadge = Interval(0.3, 0.6, curve: pop);
+  // Each tier enters this much after the one above it, over rewardsTierSpan;
+  // then the line to the next tier fills.
+  static const rewardsTierStagger = 0.12;
+  static const rewardsTierSpan = 0.3;
+  static const rewardsLadderLine = Interval(0.45, 0.85, curve: sweep);
+  // Challenge card [index] draws its progress art from this point of the
+  // card entrance, one step after the card above, over rewardsArtSpan.
+  static const rewardsArtStart = 0.2;
+  static const rewardsArtStep = 0.1;
+  static const rewardsArtSpan = 0.5;
 
   // Values
   static const pressedScale = 0.96;
@@ -74,4 +88,27 @@ extension MotionX on BuildContext {
 
   // Zero when Reduce Motion is on, so the animation jumps to its end state.
   Duration motion(Duration duration) => reduceMotion ? Duration.zero : duration;
+}
+
+// Interval for tier [index] (top first) of the Rewards ladder entrance.
+Interval rewardsTierInterval(int index) {
+  final start = index * AppMotion.rewardsTierStagger;
+  return Interval(
+    start,
+    math.min(start + AppMotion.rewardsTierSpan, 1),
+    curve: AppMotion.pop,
+  );
+}
+
+// Interval in which challenge card [index] draws its progress art.
+Interval rewardsArtInterval(int index) {
+  final start = math.min(
+    AppMotion.rewardsArtStart + index * AppMotion.rewardsArtStep,
+    1 - AppMotion.rewardsArtSpan,
+  );
+  return Interval(
+    start,
+    start + AppMotion.rewardsArtSpan,
+    curve: AppMotion.sweep,
+  );
 }

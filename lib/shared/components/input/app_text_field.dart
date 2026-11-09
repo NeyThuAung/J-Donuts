@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../extensions/extensions.dart';
 import '../../styles/styles.dart';
+import '../motion/app_animated_size.dart';
 
 // White field from the auth designs. The border fades to cyan on focus and
 // pink on error; the error message slides open underneath.
@@ -80,10 +81,8 @@ class _AppTextFieldState extends State<AppTextField> {
           decoration: _decoration(context),
           child: _field(context),
         ),
-        AnimatedSize(
-          duration: duration,
-          curve: AppMotion.standard,
-          alignment: AlignmentDirectional.topStart,
+        AppAnimatedSize(
+          duration: AppMotion.fieldState,
           child: _FieldError(text: widget.errorText),
         ),
       ],

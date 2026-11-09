@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../l10n/l10n.dart';
+import '../../../../../../shared/components/components.dart';
 import '../../../../../../shared/extensions/extensions.dart';
 import '../../../../../../shared/styles/styles.dart';
 import '../../../../domain/entity/auth_flow.dart';
@@ -18,10 +19,8 @@ class WrongFlowMessage extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.isWrongFlow != current.isWrongFlow ||
           previous.flow != current.flow,
-      builder: (context, state) => AnimatedSize(
-        duration: context.motion(AppMotion.fieldState),
-        curve: AppMotion.standard,
-        alignment: AlignmentDirectional.topStart,
+      builder: (context, state) => AppAnimatedSize(
+        duration: AppMotion.fieldState,
         child: state.isWrongFlow
             ? _Message(flow: state.flow)
             : const SizedBox(width: double.infinity),

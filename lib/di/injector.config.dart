@@ -111,6 +111,8 @@ import 'package:j_donuts/features/rewards/domain/usecase/watch_challenges_usecas
     as _i1063;
 import 'package:j_donuts/features/rewards/domain/usecase/watch_tier_progress_usecase.dart'
     as _i909;
+import 'package:j_donuts/features/rewards/presentation/pages/rewards/cubit/rewards_cubit.dart'
+    as _i984;
 import 'package:j_donuts/navigation/navigation_key_provider.dart' as _i168;
 import 'package:j_donuts/navigation/navigation_router.dart' as _i1038;
 import 'package:j_donuts/shared/components/components.dart' as _i995;
@@ -352,6 +354,14 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i746.WatchBannersUseCase>(),
         gh<_i63.WatchHomeSectionsUseCase>(),
         gh<_i44.WatchShopsUseCase>(),
+        gh<_i978.RefreshLocalDataUseCase>(),
+        gh<_i995.ISnackShower>(),
+      ),
+    );
+    gh.factory<_i984.RewardsCubit>(
+      () => _i984.RewardsCubit(
+        gh<_i909.WatchTierProgressUseCase>(),
+        gh<_i1063.WatchChallengesUseCase>(),
         gh<_i978.RefreshLocalDataUseCase>(),
         gh<_i995.ISnackShower>(),
       ),

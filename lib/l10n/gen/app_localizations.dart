@@ -650,17 +650,17 @@ abstract class AppLocalizations {
   /// **'Your member details aren\'t ready yet.'**
   String get homeMemberEmpty;
 
-  /// No description provided for @homeSectionEmpty.
+  /// No description provided for @commonSectionEmpty.
   ///
   /// In en, this message translates to:
   /// **'Nothing here yet.'**
-  String get homeSectionEmpty;
+  String get commonSectionEmpty;
 
-  /// No description provided for @homeSectionError.
+  /// No description provided for @commonSectionError.
   ///
   /// In en, this message translates to:
   /// **'We couldn\'t load this part.'**
-  String get homeSectionError;
+  String get commonSectionError;
 
   /// No description provided for @productNew.
   ///
@@ -727,6 +727,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'It may have been taken off the menu.'**
   String get productNotFoundMessage;
+
+  /// No description provided for @rewardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'J\' Donuts Rewards'**
+  String get rewardsTitle;
+
+  /// No description provided for @rewardsBadgeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewards'**
+  String get rewardsBadgeLabel;
+
+  /// No description provided for @rewardsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No rewards available} =1{1 reward available} other{{count} rewards available}}'**
+  String rewardsAvailable(int count);
+
+  /// No description provided for @rewardsTotalPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Total points'**
+  String get rewardsTotalPoints;
+
+  /// No description provided for @rewardsTabEarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Eat more earn more'**
+  String get rewardsTabEarn;
+
+  /// No description provided for @rewardsTabGift.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift'**
+  String get rewardsTabGift;
+
+  /// No description provided for @rewardsEarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn'**
+  String get rewardsEarn;
+
+  /// No description provided for @rewardsPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'{points} pts'**
+  String rewardsPoints(String points);
+
+  /// No description provided for @rewardsProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{progress}/{goal}'**
+  String rewardsProgress(int progress, int goal);
+
+  /// No description provided for @rewardsMemberEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your points aren\'t ready yet.'**
+  String get rewardsMemberEmpty;
+
+  /// No description provided for @rewardsChallengesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No challenges right now.'**
+  String get rewardsChallengesEmpty;
+
+  /// No description provided for @rewardsGiftEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No gifts yet. Check back soon.'**
+  String get rewardsGiftEmpty;
+
+  /// No description provided for @rewardsTierHere.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re here now'**
+  String get rewardsTierHere;
+
+  /// No description provided for @rewardsTierRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'{points} pts Remaining to become {tier}'**
+  String rewardsTierRemaining(String points, String tier);
+
+  /// No description provided for @rewardsTierSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll be here soon'**
+  String get rewardsTierSoon;
+
+  /// No description provided for @rewardsTierReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Reached'**
+  String get rewardsTierReached;
 }
 
 class _AppLocalizationsDelegate

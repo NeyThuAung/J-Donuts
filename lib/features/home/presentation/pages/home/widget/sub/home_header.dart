@@ -8,12 +8,10 @@ import '../../../../../../../shared/styles/styles.dart';
 import '../../../../../../member/domain/entity/member_entity.dart';
 import '../../../../../domain/entity/banner_entity.dart';
 import '../../cubit/home_cubit.dart';
-import '../../cubit/section_data.dart';
 import 'banner_carousel.dart';
 import 'header_decorations.dart';
 import 'home_skeletons.dart';
 import 'member_summary.dart';
-import 'section_switcher.dart';
 
 // Peach header: member summary, tier art, bell and the banner carousel,
 // clipped by the rounded bottom edge.

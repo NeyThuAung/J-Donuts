@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../../core/core.dart';
+import '../../../core/core.dart';
 
 part 'section_data.freezed.dart';
 
-/// One Home section's own loading / ready / failed state, so a failing
+/// One screen section's own loading / ready / failed state, so a failing
 /// section never hides the others.
 @freezed
 sealed class SectionData<T> with _$SectionData<T> {

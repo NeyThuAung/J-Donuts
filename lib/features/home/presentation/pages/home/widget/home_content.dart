@@ -8,13 +8,11 @@ import '../../../../../../shared/styles/styles.dart';
 import '../../../../domain/entity/home_section_entity.dart';
 import '../../../../domain/entity/home_section_type.dart';
 import '../cubit/home_cubit.dart';
-import '../cubit/section_data.dart';
 import 'sub/home_header.dart';
 import 'sub/home_skeletons.dart';
 import 'sub/nearby_shops.dart';
 import 'sub/product_section.dart';
 import 'sub/product_tiles.dart';
-import 'sub/section_switcher.dart';
 
 // Header, product sections and shops; they enter staggered, and pull to
 // refresh fetches newer data while the current content stays on screen.

@@ -15,7 +15,6 @@ import '../../../../domain/usecase/refresh_local_data_usecase.dart';
 import '../../../../domain/usecase/watch_banners_usecase.dart';
 import '../../../../domain/usecase/watch_home_sections_usecase.dart';
 import '../../../../domain/usecase/watch_shops_usecase.dart';
-import 'section_data.dart';
 
 part 'home_cubit.freezed.dart';
 part 'home_state.dart';

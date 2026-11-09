@@ -8,7 +8,6 @@ import '../../../../../../product/domain/entity/product_entity.dart';
 import '../../../../../domain/entity/home_section_entity.dart';
 import '../../../../../domain/entity/home_section_type.dart';
 import 'product_tiles.dart';
-import 'section_switcher.dart';
 
 extension HomeSectionTitle on HomeSectionType {
   String title(AppLocalizations l10n) => switch (this) {

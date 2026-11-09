@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../../l10n/l10n.dart';
+import '../../../../../../../shared/components/components.dart';
 import '../../../../../../../shared/extensions/extensions.dart';
 import '../../../../../../../shared/styles/styles.dart';
 import '../../../../../domain/entity/shop_entity.dart';
 import '../../cubit/home_cubit.dart';
-import '../../cubit/section_data.dart';
 import 'home_skeletons.dart';
 import 'landscape_backdrop.dart';
-import 'section_switcher.dart';
 import 'shop_card.dart';
 
 // "There are 4 J'Donut shops near you" on a drawn landscape. Display only:

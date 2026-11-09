@@ -25,10 +25,14 @@ class _BannerCarouselState extends State<BannerCarousel> {
     viewportFraction: BannerCarousel.viewportFraction,
   );
   Timer? _timer;
+  var _isVisible = true;
 
+  // The tab shell keeps hidden tabs built, so the timer follows the tab's
+  // visibility; leaving Home stops it and coming back restarts it.
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _isVisible = Visibility.of(context);
     _startAutoPlay();
   }
 
@@ -41,13 +45,14 @@ class _BannerCarouselState extends State<BannerCarousel> {
 
   void _startAutoPlay() {
     _timer?.cancel();
-    if (context.reduceMotion || widget.banners.length < 2) return;
+    if (!_isVisible || context.reduceMotion || widget.banners.length < 2) {
+      return;
+    }
     _timer = Timer.periodic(AppMotion.carouselInterval, (_) => _showNext());
   }
 
   void _showNext() {
     if (!mounted || !_controller.hasClients) return;
-    if (!TickerMode.valuesOf(context).enabled) return;
     final current = _controller.page?.round() ?? 0;
     unawaited(
       _controller.animateToPage(

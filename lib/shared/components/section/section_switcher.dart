@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../../l10n/l10n.dart';
-import '../../../../../../../shared/extensions/extensions.dart';
-import '../../../../../../../shared/styles/styles.dart';
-import '../../cubit/section_data.dart';
+import '../../../l10n/l10n.dart';
+import '../../extensions/extensions.dart';
+import '../../styles/styles.dart';
+import 'section_data.dart';
 
-// Cross-fades one Home section between its skeleton, content, empty and
+// Cross-fades one screen section between its skeleton, content, empty and
 // error states.
 class SectionSwitcher<T> extends StatelessWidget {
   const SectionSwitcher({
@@ -82,7 +82,7 @@ class SectionMessage extends StatelessWidget {
           Expanded(
             child: Text(
               message ??
-                  (isError ? l10n.homeSectionError : l10n.homeSectionEmpty),
+                  (isError ? l10n.commonSectionError : l10n.commonSectionEmpty),
               style: context.textTheme.bodyMedium?.copyWith(
                 color: colors.textSecondary,
               ),

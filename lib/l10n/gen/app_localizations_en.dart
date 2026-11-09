@@ -337,10 +337,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeMemberEmpty => 'Your member details aren\'t ready yet.';
 
   @override
-  String get homeSectionEmpty => 'Nothing here yet.';
+  String get commonSectionEmpty => 'Nothing here yet.';
 
   @override
-  String get homeSectionError => 'We couldn\'t load this part.';
+  String get commonSectionError => 'We couldn\'t load this part.';
 
   @override
   String get productNew => 'New';
@@ -380,4 +380,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get productNotFoundMessage => 'It may have been taken off the menu.';
+
+  @override
+  String get rewardsTitle => 'J\' Donuts Rewards';
+
+  @override
+  String get rewardsBadgeLabel => 'Rewards';
+
+  @override
+  String rewardsAvailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count rewards available',
+      one: '1 reward available',
+      zero: 'No rewards available',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get rewardsTotalPoints => 'Total points';
+
+  @override
+  String get rewardsTabEarn => 'Eat more earn more';
+
+  @override
+  String get rewardsTabGift => 'Gift';
+
+  @override
+  String get rewardsEarn => 'Earn';
+
+  @override
+  String rewardsPoints(String points) {
+    return '$points pts';
+  }
+
+  @override
+  String rewardsProgress(int progress, int goal) {
+    return '$progress/$goal';
+  }
+
+  @override
+  String get rewardsMemberEmpty => 'Your points aren\'t ready yet.';
+
+  @override
+  String get rewardsChallengesEmpty => 'No challenges right now.';
+
+  @override
+  String get rewardsGiftEmpty => 'No gifts yet. Check back soon.';
+
+  @override
+  String get rewardsTierHere => 'You\'re here now';
+
+  @override
+  String rewardsTierRemaining(String points, String tier) {
+    return '$points pts Remaining to become $tier';
+  }
+
+  @override
+  String get rewardsTierSoon => 'You\'ll be here soon';
+
+  @override
+  String get rewardsTierReached => 'Reached';
 }

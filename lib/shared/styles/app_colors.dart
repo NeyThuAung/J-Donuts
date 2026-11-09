@@ -14,6 +14,9 @@ abstract final class AppColors {
   static const apricot = Color(0xFFF6DCC6);
   static const taupe = Color(0xFFA0928A);
   static const cream = Color(0xFFF4E7D6);
+  static const pewter = Color(0xFFBFC3C8);
+  static const honey = Color(0xFFF2CF5B);
+  static const ice = Color(0xFF9FDDEE);
 
   static const white = Color(0xFFFFFFFF);
   static const ink = Color(0xFF242B32);

@@ -32,6 +32,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     required this.headerBadge,
     required this.headerBadgeIcon,
     required this.landscapeCloud,
+    required this.tierSilver,
+    required this.tierGold,
+    required this.tierPlatinum,
   });
 
   final Color primary;
@@ -68,6 +71,11 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   /// Clouds behind the nearby shops.
   final Color landscapeCloud;
 
+  /// Tier shields on the Rewards ladder.
+  final Color tierSilver;
+  final Color tierGold;
+  final Color tierPlatinum;
+
   static const light = AppThemeColors(
     primary: AppColors.cyan,
     primaryTint: AppColors.cyanTint,
@@ -96,6 +104,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     headerBadge: AppColors.apricot,
     headerBadgeIcon: AppColors.taupe,
     landscapeCloud: AppColors.cream,
+    tierSilver: AppColors.pewter,
+    tierGold: AppColors.honey,
+    tierPlatinum: AppColors.ice,
   );
 
   @override
@@ -127,6 +138,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     Color? headerBadge,
     Color? headerBadgeIcon,
     Color? landscapeCloud,
+    Color? tierSilver,
+    Color? tierGold,
+    Color? tierPlatinum,
   }) => AppThemeColors(
     primary: primary ?? this.primary,
     primaryTint: primaryTint ?? this.primaryTint,
@@ -155,6 +169,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     headerBadge: headerBadge ?? this.headerBadge,
     headerBadgeIcon: headerBadgeIcon ?? this.headerBadgeIcon,
     landscapeCloud: landscapeCloud ?? this.landscapeCloud,
+    tierSilver: tierSilver ?? this.tierSilver,
+    tierGold: tierGold ?? this.tierGold,
+    tierPlatinum: tierPlatinum ?? this.tierPlatinum,
   );
 
   @override
@@ -189,6 +206,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
       headerBadge: mix(headerBadge, other.headerBadge),
       headerBadgeIcon: mix(headerBadgeIcon, other.headerBadgeIcon),
       landscapeCloud: mix(landscapeCloud, other.landscapeCloud),
+      tierSilver: mix(tierSilver, other.tierSilver),
+      tierGold: mix(tierGold, other.tierGold),
+      tierPlatinum: mix(tierPlatinum, other.tierPlatinum),
     );
   }
 }

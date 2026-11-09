@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../l10n/l10n.dart';
+import '../../../../../../shared/components/components.dart';
 import '../../../../../../shared/extensions/extensions.dart';
 import '../../../../../../shared/styles/styles.dart';
 import '../../../../domain/auth_rules.dart';
@@ -33,10 +34,8 @@ class OtpCodeField extends StatelessWidget {
             hasError: state.showWrongCode,
             shakeCount: state.shakeCount,
           ),
-          AnimatedSize(
-            duration: context.motion(AppMotion.fieldState),
-            curve: AppMotion.standard,
-            alignment: AlignmentDirectional.topStart,
+          AppAnimatedSize(
+            duration: AppMotion.fieldState,
             child: _Message(text: _message(context.l10n, state)),
           ),
         ],

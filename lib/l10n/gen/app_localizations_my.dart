@@ -333,10 +333,10 @@ class AppLocalizationsMy extends AppLocalizations {
   String get homeMemberEmpty => 'အဖွဲ့ဝင် အချက်အလက် မရရှိသေးပါ။';
 
   @override
-  String get homeSectionEmpty => 'ဤနေရာတွင် မရှိသေးပါ။';
+  String get commonSectionEmpty => 'ဤနေရာတွင် မရှိသေးပါ။';
 
   @override
-  String get homeSectionError => 'ဤအပိုင်းကို ဖွင့်၍ မရပါ။';
+  String get commonSectionError => 'ဤအပိုင်းကို ဖွင့်၍ မရပါ။';
 
   @override
   String get productNew => 'အသစ်';
@@ -376,4 +376,66 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get productNotFoundMessage => 'မီနူးမှ ဖယ်ရှားထားနိုင်ပါသည်။';
+
+  @override
+  String get rewardsTitle => 'J\' Donuts ဆုလာဘ်များ';
+
+  @override
+  String get rewardsBadgeLabel => 'ဆုလာဘ်';
+
+  @override
+  String rewardsAvailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'ရယူနိုင်သော ဆုလာဘ် $count ခု',
+      zero: 'ရယူနိုင်သော ဆုလာဘ် မရှိပါ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get rewardsTotalPoints => 'စုစုပေါင်း မှတ်';
+
+  @override
+  String get rewardsTabEarn => 'များများစား များများရ';
+
+  @override
+  String get rewardsTabGift => 'လက်ဆောင်';
+
+  @override
+  String get rewardsEarn => 'ရယူမည်';
+
+  @override
+  String rewardsPoints(String points) {
+    return '$points မှတ်';
+  }
+
+  @override
+  String rewardsProgress(int progress, int goal) {
+    return '$progress/$goal';
+  }
+
+  @override
+  String get rewardsMemberEmpty => 'သင့်မှတ်များ မရရှိသေးပါ။';
+
+  @override
+  String get rewardsChallengesEmpty => 'လက်ရှိ စိန်ခေါ်မှု မရှိပါ။';
+
+  @override
+  String get rewardsGiftEmpty => 'လက်ဆောင် မရှိသေးပါ။ မကြာမီ ပြန်ကြည့်ပါ။';
+
+  @override
+  String get rewardsTierHere => 'လက်ရှိ အဆင့်';
+
+  @override
+  String rewardsTierRemaining(String points, String tier) {
+    return '$tier ဖြစ်ရန် $points မှတ် လိုပါသေးသည်';
+  }
+
+  @override
+  String get rewardsTierSoon => 'မကြာမီ ရောက်ပါမည်';
+
+  @override
+  String get rewardsTierReached => 'ရောက်ပြီး';
 }

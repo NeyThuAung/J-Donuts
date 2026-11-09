@@ -8,6 +8,8 @@ import '../di/di.dart';
 import '../features/auth/presentation/cubit/authentication_cubit.dart';
 import '../features/home/presentation/pages/home/cubit/home_cubit.dart';
 import '../features/home/presentation/pages/home/home_page.dart';
+import '../features/rewards/presentation/pages/rewards/cubit/rewards_cubit.dart';
+import '../features/rewards/presentation/pages/rewards/rewards_page.dart';
 import '../features/settings/presentation/pages/placeholder/placeholder_page.dart';
 import '../features/settings/presentation/pages/settings/settings_page.dart';
 import '../gen/assets.gen.dart';
@@ -48,12 +50,15 @@ class IndexPage extends StatelessWidget {
     );
   }
 
-  // Rewards arrives with Task 3; Orders and Wallet stay placeholders, as
-  // the brief allows.
+  // Orders and Wallet stay placeholders, as the brief allows.
   Widget _body(BuildContext context, IndexTab tab) => switch (tab) {
     IndexTab.home => BlocProvider(
       create: (_) => inject<HomeCubit>()..start(),
       child: const HomePage(),
+    ),
+    IndexTab.rewards => BlocProvider(
+      create: (_) => inject<RewardsCubit>()..start(),
+      child: const RewardsPage(),
     ),
     IndexTab.settings => SettingsPage(
       onLogOut: () => unawaited(context.read<AuthenticationCubit>().logOut()),

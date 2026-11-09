@@ -24,6 +24,11 @@ import 'package:j_donuts/features/member/domain/usecase/watch_member_usecase.dar
 import 'package:j_donuts/features/product/domain/entity/product_entity.dart';
 import 'package:j_donuts/features/product/domain/usecase/watch_product_usecase.dart';
 import 'package:j_donuts/features/product/presentation/pages/product_detail/cubit/product_detail_cubit.dart';
+import 'package:j_donuts/features/rewards/domain/entity/challenge_entity.dart';
+import 'package:j_donuts/features/rewards/domain/entity/tier_progress_entity.dart';
+import 'package:j_donuts/features/rewards/domain/usecase/watch_challenges_usecase.dart';
+import 'package:j_donuts/features/rewards/domain/usecase/watch_tier_progress_usecase.dart';
+import 'package:j_donuts/features/rewards/presentation/pages/rewards/cubit/rewards_cubit.dart';
 import 'package:j_donuts/shared/components/components.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -69,6 +74,19 @@ class _NoShops implements WatchShopsUseCase {
       Stream.value(const Success([]));
 }
 
+// Rewards with no data: both sections settle on their empty states.
+class _NoTierProgress implements WatchTierProgressUseCase {
+  @override
+  Stream<DataState<TierProgressEntity?>> call(NoParams param) =>
+      Stream.value(const Success(null));
+}
+
+class _NoChallenges implements WatchChallengesUseCase {
+  @override
+  Stream<DataState<List<ChallengeEntity>>> call(NoParams param) =>
+      Stream.value(const Success([]));
+}
+
 /// Router tests build real routes, which inject their page cubits.
 void registerPageCubits() {
   final snack = _MockSnackShower();
@@ -85,6 +103,14 @@ void registerPageCubits() {
         _NoBanners(),
         _NoSections(),
         _NoShops(),
+        _MockRefresh(),
+        snack,
+      ),
+    )
+    ..registerFactory(
+      () => RewardsCubit(
+        _NoTierProgress(),
+        _NoChallenges(),
         _MockRefresh(),
         snack,
       ),
