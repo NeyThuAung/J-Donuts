@@ -1,0 +1,55 @@
+name: Mock API
+
+# Publishes the seed JSON (/v1) and seed images (/images) to GitHub Pages.
+on:
+  push:
+    branches: [master]
+    paths:
+      - assets/seed/**
+      - assets/images/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check every JSON file parses
+        run: for file in assets/seed/v1/*.json; do python3 -m json.tool "$file" > /dev/null; done
+
+      - name: Assemble site
+        run: |
+          mkdir -p site
+          cp -R assets/seed/v1 site/v1
+          cp -R assets/images site/images
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

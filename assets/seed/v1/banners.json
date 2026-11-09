@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": "b_new_shop",
+      "tag": "New shop",
+      "title": "We are now at Central Boulevard",
+      "imageUrl": "https://neythuaung.github.io/J-Donuts/images/banner_new_shop.jpg",
+      "sortOrder": 0
+    },
+    {
+      "id": "b_half_price",
+      "tag": "50% off",
+      "title": "Hot donuts for the cold season",
+      "imageUrl": "https://neythuaung.github.io/J-Donuts/images/banner_half_price.jpg",
+      "sortOrder": 1
+    },
+    {
+      "id": "b_christmas_cookies",
+      "tag": "Christmas",
+      "title": "Santa's cookies are back",
+      "imageUrl": "https://neythuaung.github.io/J-Donuts/images/banner_christmas_cookies.jpg",
+      "sortOrder": 2
+    }
+  ],
+  "error": null,
+  "meta": {
+    "version": 1
+  }
+}

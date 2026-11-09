@@ -1,6 +1,14 @@
 export 'app_database.dart';
 export 'daos/app_meta_dao.dart';
+export 'daos/home_dao.dart';
+export 'daos/members_dao.dart';
+export 'daos/products_dao.dart';
 export 'daos/users_dao.dart';
 export 'run_local.dart';
 export 'tables/app_meta_entries.dart';
+export 'tables/banners.dart';
+export 'tables/members.dart';
+export 'tables/products.dart';
+export 'tables/sections.dart';
+export 'tables/shops.dart';
 export 'tables/users.dart';

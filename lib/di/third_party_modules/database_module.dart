@@ -14,6 +14,15 @@ abstract class DatabaseModule {
 
   @lazySingleton
   UsersDao usersDao(AppDatabase database) => database.usersDao;
+
+  @lazySingleton
+  ProductsDao productsDao(AppDatabase database) => database.productsDao;
+
+  @lazySingleton
+  HomeDao homeDao(AppDatabase database) => database.homeDao;
+
+  @lazySingleton
+  MembersDao membersDao(AppDatabase database) => database.membersDao;
 }
 
 FutureOr<void> closeDatabase(AppDatabase database) => database.close();

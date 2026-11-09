@@ -72,6 +72,30 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/banner_christmas_cookies.jpg
+  AssetGenImage get bannerChristmasCookies =>
+      const AssetGenImage('assets/images/banner_christmas_cookies.jpg');
+
+  /// File path: assets/images/banner_half_price.jpg
+  AssetGenImage get bannerHalfPrice =>
+      const AssetGenImage('assets/images/banner_half_price.jpg');
+
+  /// File path: assets/images/banner_new_shop.jpg
+  AssetGenImage get bannerNewShop =>
+      const AssetGenImage('assets/images/banner_new_shop.jpg');
+
+  /// File path: assets/images/cold_brew_coffee.jpg
+  AssetGenImage get coldBrewCoffee =>
+      const AssetGenImage('assets/images/cold_brew_coffee.jpg');
+
+  /// File path: assets/images/cookies_santa_set.jpg
+  AssetGenImage get cookiesSantaSet =>
+      const AssetGenImage('assets/images/cookies_santa_set.jpg');
+
+  /// File path: assets/images/dalgona_coffee.jpg
+  AssetGenImage get dalgonaCoffee =>
+      const AssetGenImage('assets/images/dalgona_coffee.jpg');
+
   /// File path: assets/images/donut_chocolate_hearts.png
   AssetGenImage get donutChocolateHearts =>
       const AssetGenImage('assets/images/donut_chocolate_hearts.png');
@@ -92,20 +116,96 @@ class $AssetsImagesGen {
   AssetGenImage get donutPinkSprinkles =>
       const AssetGenImage('assets/images/donut_pink_sprinkles.png');
 
+  /// File path: assets/images/member_avatar.jpg
+  AssetGenImage get memberAvatar =>
+      const AssetGenImage('assets/images/member_avatar.jpg');
+
+  /// File path: assets/images/seasonal_birthday_box.jpg
+  AssetGenImage get seasonalBirthdayBox =>
+      const AssetGenImage('assets/images/seasonal_birthday_box.jpg');
+
+  /// File path: assets/images/seasonal_family_box.jpg
+  AssetGenImage get seasonalFamilyBox =>
+      const AssetGenImage('assets/images/seasonal_family_box.jpg');
+
+  /// File path: assets/images/seasonal_romance_box.jpg
+  AssetGenImage get seasonalRomanceBox =>
+      const AssetGenImage('assets/images/seasonal_romance_box.jpg');
+
+  /// File path: assets/images/shop_bahan.jpg
+  AssetGenImage get shopBahan =>
+      const AssetGenImage('assets/images/shop_bahan.jpg');
+
+  /// File path: assets/images/shop_kamayut.jpg
+  AssetGenImage get shopKamayut =>
+      const AssetGenImage('assets/images/shop_kamayut.jpg');
+
+  /// File path: assets/images/shop_myaynigone.jpg
+  AssetGenImage get shopMyaynigone =>
+      const AssetGenImage('assets/images/shop_myaynigone.jpg');
+
+  /// File path: assets/images/shop_sanchaung.jpg
+  AssetGenImage get shopSanchaung =>
+      const AssetGenImage('assets/images/shop_sanchaung.jpg');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+    bannerChristmasCookies,
+    bannerHalfPrice,
+    bannerNewShop,
+    coldBrewCoffee,
+    cookiesSantaSet,
+    dalgonaCoffee,
     donutChocolateHearts,
     donutChocolateSprinkles,
     donutChocolateStrawberry,
     donutGreenSprinkles,
     donutPinkSprinkles,
+    memberAvatar,
+    seasonalBirthdayBox,
+    seasonalFamilyBox,
+    seasonalRomanceBox,
+    shopBahan,
+    shopKamayut,
+    shopMyaynigone,
+    shopSanchaung,
   ];
+}
+
+class $AssetsSeedGen {
+  const $AssetsSeedGen();
+
+  /// Directory path: assets/seed/v1
+  $AssetsSeedV1Gen get v1 => const $AssetsSeedV1Gen();
+}
+
+class $AssetsSeedV1Gen {
+  const $AssetsSeedV1Gen();
+
+  /// File path: assets/seed/v1/banners.json
+  String get banners => 'assets/seed/v1/banners.json';
+
+  /// File path: assets/seed/v1/member.json
+  String get member => 'assets/seed/v1/member.json';
+
+  /// File path: assets/seed/v1/products.json
+  String get products => 'assets/seed/v1/products.json';
+
+  /// File path: assets/seed/v1/sections.json
+  String get sections => 'assets/seed/v1/sections.json';
+
+  /// File path: assets/seed/v1/shops.json
+  String get shops => 'assets/seed/v1/shops.json';
+
+  /// List of all assets
+  List<String> get values => [banners, member, products, sections, shops];
 }
 
 abstract final class Assets {
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsSeedGen seed = $AssetsSeedGen();
 }
 
 class AssetGenImage {

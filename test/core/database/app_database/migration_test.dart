@@ -1,4 +1,4 @@
-import 'package:drift/drift.dart';
+import 'package:drift/drift.dart' hide isNotNull, isNull;
 import 'package:drift/native.dart';
 import 'package:drift_dev/api/migrations_native.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,6 +6,7 @@ import 'package:j_donuts/core/database/database.dart';
 
 import 'generated/schema.dart';
 import 'generated/schema_v1.dart' as v1;
+import 'generated/schema_v2.dart' as v2;
 
 // Snapshots in drift_schemas/ come from `dart run drift_dev make-migrations`.
 void main() {
@@ -58,6 +59,29 @@ void main() {
 
       expect(await database.appMetaDao.readValue('seed_version'), '1');
       expect(await database.select(database.users).get(), isEmpty);
+    });
+
+    test('v2 to v3 adds empty catalog tables and keeps users', () async {
+      final schema = await verifier.schemaAt(2);
+      final oldDatabase = v2.DatabaseAtV2(schema.newConnection());
+      await oldDatabase
+          .into(oldDatabase.users)
+          .insert(
+            v2.UsersCompanion.insert(
+              phone: '+959254135592',
+              firstName: 'Ye',
+              dateOfBirth: '2000-01-01T00:00:00.000',
+            ),
+          );
+      await oldDatabase.close();
+
+      final database = AppDatabase(schema.newConnection());
+      addTearDown(database.close);
+      await verifier.migrateAndValidate(database, 3);
+
+      expect(await database.usersDao.findByPhone('+959254135592'), isNotNull);
+      expect(await database.select(database.products).get(), isEmpty);
+      expect(await database.membersDao.readMember(), isNull);
     });
   });
 }

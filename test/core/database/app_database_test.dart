@@ -9,8 +9,8 @@ void main() {
     setUp(() => database = AppDatabase(NativeDatabase.memory()));
     tearDown(() => database.close());
 
-    test('is at schema version 2, which adds users', () {
-      expect(database.schemaVersion, 2);
+    test('is at schema version 3, which adds the catalog and member', () {
+      expect(database.schemaVersion, 3);
     });
 
     test('creates every table on first open', () async {
@@ -19,7 +19,19 @@ void main() {
           .map((row) => row.read<String>('name'))
           .get();
 
-      expect(tables, containsAll(['app_meta', 'users']));
+      expect(
+        tables,
+        containsAll([
+          'app_meta',
+          'users',
+          'products',
+          'banners',
+          'sections',
+          'section_products',
+          'shops',
+          'members',
+        ]),
+      );
     });
 
     test('turns foreign key checks on when it opens', () async {

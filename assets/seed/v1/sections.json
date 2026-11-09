@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "id": "s_seasonal",
+      "type": "seasonal",
+      "sortOrder": 0,
+      "productIds": [
+        "p_mistletoe_box",
+        "p_christmas_family_box",
+        "p_birthday_box"
+      ]
+    },
+    {
+      "id": "s_popular",
+      "type": "popular",
+      "sortOrder": 1,
+      "productIds": [
+        "p_strawberry_chocolate",
+        "p_dalgona_coffee",
+        "p_coconut",
+        "p_matcha_sprinkles",
+        "p_pink_sprinkles"
+      ]
+    },
+    {
+      "id": "s_order_again",
+      "type": "orderAgain",
+      "sortOrder": 2,
+      "productIds": [
+        "p_santa_cookies",
+        "p_chocolate_sprinkles",
+        "p_cold_brew"
+      ]
+    }
+  ],
+  "error": null,
+  "meta": {
+    "version": 1
+  }
+}

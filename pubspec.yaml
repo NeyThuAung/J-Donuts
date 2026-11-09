@@ -53,6 +53,10 @@ dependencies:
     sdk: flutter
   top_snackbar_flutter: ^3.5.0
   flutter_svg: ^2.3.2
+  dio: ^5.11.1
+  retrofit: ^4.10.0
+  pretty_dio_logger: ^1.4.0
+  dio_smart_retry: ^7.0.1
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +78,7 @@ dev_dependencies:
   bloc_test: ^10.0.0
   integration_test:
     sdk: flutter
+  retrofit_generator: ^10.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -86,6 +91,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/seed/v1/
     - assets/fonts/OFL-Figtree.txt
     - assets/fonts/OFL-NotoSansMyanmar.txt
 

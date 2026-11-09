@@ -1,0 +1,16 @@
+{
+  "data": {
+    "name": "Hania",
+    "photoUrl": "https://neythuaung.github.io/J-Donuts/images/member_avatar.jpg",
+    "tier": "silver",
+    "points": 680000,
+    "nextTier": "gold",
+    "pointsToNextTier": 500,
+    "notificationCount": 2,
+    "availableRewards": 3
+  },
+  "error": null,
+  "meta": {
+    "version": 1
+  }
+}
