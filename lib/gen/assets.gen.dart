@@ -185,6 +185,9 @@ class $AssetsSeedV1Gen {
   /// File path: assets/seed/v1/banners.json
   String get banners => 'assets/seed/v1/banners.json';
 
+  /// File path: assets/seed/v1/challenges.json
+  String get challenges => 'assets/seed/v1/challenges.json';
+
   /// File path: assets/seed/v1/member.json
   String get member => 'assets/seed/v1/member.json';
 
@@ -197,8 +200,19 @@ class $AssetsSeedV1Gen {
   /// File path: assets/seed/v1/shops.json
   String get shops => 'assets/seed/v1/shops.json';
 
+  /// File path: assets/seed/v1/tiers.json
+  String get tiers => 'assets/seed/v1/tiers.json';
+
   /// List of all assets
-  List<String> get values => [banners, member, products, sections, shops];
+  List<String> get values => [
+    banners,
+    challenges,
+    member,
+    products,
+    sections,
+    shops,
+    tiers,
+  ];
 }
 
 abstract final class Assets {

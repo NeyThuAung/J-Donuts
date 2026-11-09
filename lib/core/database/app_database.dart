@@ -5,13 +5,16 @@ import 'daos/app_meta_dao.dart';
 import 'daos/home_dao.dart';
 import 'daos/members_dao.dart';
 import 'daos/products_dao.dart';
+import 'daos/rewards_dao.dart';
 import 'daos/users_dao.dart';
 import 'tables/app_meta_entries.dart';
 import 'tables/banners.dart';
+import 'tables/challenges.dart';
 import 'tables/members.dart';
 import 'tables/products.dart';
 import 'tables/sections.dart';
 import 'tables/shops.dart';
+import 'tables/tiers.dart';
 import 'tables/users.dart';
 
 part 'app_database.g.dart';
@@ -27,14 +30,16 @@ part 'app_database.g.dart';
     SectionProducts,
     Shops,
     Members,
+    Tiers,
+    Challenges,
   ],
-  daos: [AppMetaDao, UsersDao, ProductsDao, HomeDao, MembersDao],
+  daos: [AppMetaDao, UsersDao, ProductsDao, HomeDao, MembersDao, RewardsDao],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -42,6 +47,7 @@ class AppDatabase extends _$AppDatabase {
     onUpgrade: stepByStep(
       from1To2: (migrator, schema) => migrator.createTable(schema.users),
       from2To3: _addCatalog,
+      from3To4: _addRewards,
     ),
     beforeOpen: (_) => customStatement('PRAGMA foreign_keys = ON'),
   );
@@ -53,5 +59,10 @@ class AppDatabase extends _$AppDatabase {
     await migrator.createTable(schema.sectionProducts);
     await migrator.createTable(schema.shops);
     await migrator.createTable(schema.members);
+  }
+
+  Future<void> _addRewards(Migrator migrator, Schema4 schema) async {
+    await migrator.createTable(schema.tiers);
+    await migrator.createTable(schema.challenges);
   }
 }

@@ -99,6 +99,18 @@ import 'package:j_donuts/features/product/domain/usecase/watch_product_usecase.d
     as _i790;
 import 'package:j_donuts/features/product/presentation/pages/product_detail/cubit/product_detail_cubit.dart'
     as _i293;
+import 'package:j_donuts/features/rewards/data/data_source/rewards_local_data_source.dart'
+    as _i488;
+import 'package:j_donuts/features/rewards/data/data_source/rewards_rest_client.dart'
+    as _i932;
+import 'package:j_donuts/features/rewards/data/repository_impl/rewards_repository_impl.dart'
+    as _i466;
+import 'package:j_donuts/features/rewards/domain/repository/rewards_repository.dart'
+    as _i694;
+import 'package:j_donuts/features/rewards/domain/usecase/watch_challenges_usecase.dart'
+    as _i1063;
+import 'package:j_donuts/features/rewards/domain/usecase/watch_tier_progress_usecase.dart'
+    as _i909;
 import 'package:j_donuts/navigation/navigation_key_provider.dart' as _i168;
 import 'package:j_donuts/navigation/navigation_router.dart' as _i1038;
 import 'package:j_donuts/shared/components/components.dart' as _i995;
@@ -142,6 +154,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i416.MembersDao>(
       () => databaseModule.membersDao(gh<_i416.AppDatabase>()),
     );
+    gh.lazySingleton<_i416.RewardsDao>(
+      () => databaseModule.rewardsDao(gh<_i416.AppDatabase>()),
+    );
     gh.singleton<_i168.INavigationKeyProvider>(
       () => _i168.NavigationKeyProvider(),
     );
@@ -159,6 +174,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i479.AppLogger>(
       () => loggerModule.appLogger(gh<_i974.Logger>()),
+    );
+    gh.lazySingleton<_i488.RewardsLocalDataSource>(
+      () => _i488.RewardsLocalDataSourceImpl(gh<_i416.AppDatabase>()),
     );
     gh.lazySingleton<_i213.HomeLocalDataSource>(
       () => _i213.HomeLocalDataSourceImpl(gh<_i416.AppDatabase>()),
@@ -207,6 +225,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i772.ProductRestClient>(
       () => _i772.ProductRestClient(gh<_i361.Dio>()),
     );
+    gh.lazySingleton<_i932.RewardsRestClient>(
+      () => _i932.RewardsRestClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i131.VerifyOtpCubit>(
       () => _i131.VerifyOtpCubit(
         gh<_i617.VerifyOtpUseCase>(),
@@ -219,6 +240,14 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i191.CheckSessionUseCase>(),
         gh<_i865.LogOutUseCase>(),
         gh<_i995.ISnackShower>(),
+      ),
+    );
+    gh.lazySingleton<_i694.RewardsRepository>(
+      () => _i466.RewardsRepositoryImpl(
+        gh<_i488.RewardsLocalDataSource>(),
+        gh<_i932.RewardsRestClient>(),
+        gh<_i438.SeedAssetReader>(),
+        gh<_i438.ImageRefResolver>(),
       ),
     );
     gh.factory<_i1028.PhoneNumberCubit>(
@@ -270,6 +299,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i43.ProductRepository>(),
       ),
     );
+    gh.lazySingleton<_i1063.WatchChallengesUseCase>(
+      () => _i1063.WatchChallengesUseCase(gh<_i694.RewardsRepository>()),
+    );
     gh.lazySingleton<_i790.WatchProductUseCase>(
       () => _i790.WatchProductUseCase(gh<_i43.ProductRepository>()),
     );
@@ -279,17 +311,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i907.AuthRepository>(),
       ),
     );
-    gh.factory<_i293.ProductDetailCubit>(
-      () => _i293.ProductDetailCubit(
-        gh<_i790.WatchProductUseCase>(),
-        gh<_i995.ISnackShower>(),
-      ),
-    );
     gh.lazySingleton<_i978.RefreshLocalDataUseCase>(
       () => _i978.RefreshLocalDataUseCase(
         gh<_i53.MemberRepository>(),
         gh<_i43.ProductRepository>(),
         gh<_i181.HomeRepository>(),
+        gh<_i694.RewardsRepository>(),
       ),
     );
     gh.lazySingleton<_i342.SeedLocalDataUseCase>(
@@ -297,6 +324,19 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i53.MemberRepository>(),
         gh<_i43.ProductRepository>(),
         gh<_i181.HomeRepository>(),
+        gh<_i694.RewardsRepository>(),
+      ),
+    );
+    gh.factory<_i293.ProductDetailCubit>(
+      () => _i293.ProductDetailCubit(
+        gh<_i790.WatchProductUseCase>(),
+        gh<_i995.ISnackShower>(),
+      ),
+    );
+    gh.lazySingleton<_i909.WatchTierProgressUseCase>(
+      () => _i909.WatchTierProgressUseCase(
+        gh<_i53.MemberRepository>(),
+        gh<_i694.RewardsRepository>(),
       ),
     );
     gh.lazySingleton<_i691.ConnectivityCubit>(

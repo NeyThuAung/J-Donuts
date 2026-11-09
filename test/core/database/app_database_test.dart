@@ -9,8 +9,8 @@ void main() {
     setUp(() => database = AppDatabase(NativeDatabase.memory()));
     tearDown(() => database.close());
 
-    test('is at schema version 3, which adds the catalog and member', () {
-      expect(database.schemaVersion, 3);
+    test('is at schema version 4, which adds tiers and challenges', () {
+      expect(database.schemaVersion, 4);
     });
 
     test('creates every table on first open', () async {
@@ -30,6 +30,8 @@ void main() {
           'section_products',
           'shops',
           'members',
+          'tiers',
+          'challenges',
         ]),
       );
     });

@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "id": "ch_coco_donuts_complete",
+      "tab": "earn",
+      "title": "Eat 4 Coco donuts",
+      "goal": 4,
+      "progress": 4,
+      "rewardPoints": 100,
+      "artwork": "donutQuarters",
+      "imageUrl": "https://neythuaung.github.io/J-Donuts/images/donut_pink_sprinkles.png",
+      "sortOrder": 0
+    },
+    {
+      "id": "ch_coco_donuts",
+      "tab": "earn",
+      "title": "Eat 4 Coco donuts",
+      "goal": 4,
+      "progress": 1,
+      "rewardPoints": 100,
+      "artwork": "donutQuarters",
+      "imageUrl": "https://neythuaung.github.io/J-Donuts/images/donut_pink_sprinkles.png",
+      "sortOrder": 1
+    },
+    {
+      "id": "ch_americano",
+      "tab": "earn",
+      "title": "Drink 12 cups americano",
+      "goal": 12,
+      "progress": 9,
+      "rewardPoints": 100,
+      "artwork": "arc",
+      "imageUrl": "https://neythuaung.github.io/J-Donuts/images/cold_brew_coffee.jpg",
+      "sortOrder": 2
+    }
+  ],
+  "error": null,
+  "meta": {
+    "version": 1
+  }
+}

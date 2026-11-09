@@ -23,6 +23,9 @@ abstract class DatabaseModule {
 
   @lazySingleton
   MembersDao membersDao(AppDatabase database) => database.membersDao;
+
+  @lazySingleton
+  RewardsDao rewardsDao(AppDatabase database) => database.rewardsDao;
 }
 
 FutureOr<void> closeDatabase(AppDatabase database) => database.close();

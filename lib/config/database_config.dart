@@ -8,4 +8,6 @@ abstract final class DatabaseConfig {
   static const bannersVersionKey = 'data_version.banners';
   static const sectionsVersionKey = 'data_version.sections';
   static const shopsVersionKey = 'data_version.shops';
+  static const tiersVersionKey = 'data_version.tiers';
+  static const challengesVersionKey = 'data_version.challenges';
 }

@@ -2943,6 +2943,771 @@ class MembersCompanion extends UpdateCompanion<MemberRow> {
   }
 }
 
+class $TiersTable extends Tiers with TableInfo<$TiersTable, TierRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $TiersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _minPointsMeta = const VerificationMeta(
+    'minPoints',
+  );
+  @override
+  late final GeneratedColumn<int> minPoints = GeneratedColumn<int>(
+    'min_points',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [id, minPoints];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'tiers';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<TierRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('min_points')) {
+      context.handle(
+        _minPointsMeta,
+        minPoints.isAcceptableOrUnknown(data['min_points']!, _minPointsMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_minPointsMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  TierRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return TierRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      minPoints: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}min_points'],
+      )!,
+    );
+  }
+
+  @override
+  $TiersTable createAlias(String alias) {
+    return $TiersTable(attachedDatabase, alias);
+  }
+}
+
+class TierRow extends DataClass implements Insertable<TierRow> {
+  final String id;
+  final int minPoints;
+  const TierRow({required this.id, required this.minPoints});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['min_points'] = Variable<int>(minPoints);
+    return map;
+  }
+
+  TiersCompanion toCompanion(bool nullToAbsent) {
+    return TiersCompanion(id: Value(id), minPoints: Value(minPoints));
+  }
+
+  factory TierRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return TierRow(
+      id: serializer.fromJson<String>(json['id']),
+      minPoints: serializer.fromJson<int>(json['minPoints']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'minPoints': serializer.toJson<int>(minPoints),
+    };
+  }
+
+  TierRow copyWith({String? id, int? minPoints}) =>
+      TierRow(id: id ?? this.id, minPoints: minPoints ?? this.minPoints);
+  TierRow copyWithCompanion(TiersCompanion data) {
+    return TierRow(
+      id: data.id.present ? data.id.value : this.id,
+      minPoints: data.minPoints.present ? data.minPoints.value : this.minPoints,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TierRow(')
+          ..write('id: $id, ')
+          ..write('minPoints: $minPoints')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, minPoints);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is TierRow &&
+          other.id == this.id &&
+          other.minPoints == this.minPoints);
+}
+
+class TiersCompanion extends UpdateCompanion<TierRow> {
+  final Value<String> id;
+  final Value<int> minPoints;
+  final Value<int> rowid;
+  const TiersCompanion({
+    this.id = const Value.absent(),
+    this.minPoints = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  TiersCompanion.insert({
+    required String id,
+    required int minPoints,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       minPoints = Value(minPoints);
+  static Insertable<TierRow> custom({
+    Expression<String>? id,
+    Expression<int>? minPoints,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (minPoints != null) 'min_points': minPoints,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  TiersCompanion copyWith({
+    Value<String>? id,
+    Value<int>? minPoints,
+    Value<int>? rowid,
+  }) {
+    return TiersCompanion(
+      id: id ?? this.id,
+      minPoints: minPoints ?? this.minPoints,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (minPoints.present) {
+      map['min_points'] = Variable<int>(minPoints.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TiersCompanion(')
+          ..write('id: $id, ')
+          ..write('minPoints: $minPoints, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ChallengesTable extends Challenges
+    with TableInfo<$ChallengesTable, ChallengeRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ChallengesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tabMeta = const VerificationMeta('tab');
+  @override
+  late final GeneratedColumn<String> tab = GeneratedColumn<String>(
+    'tab',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _goalMeta = const VerificationMeta('goal');
+  @override
+  late final GeneratedColumn<int> goal = GeneratedColumn<int>(
+    'goal',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _progressMeta = const VerificationMeta(
+    'progress',
+  );
+  @override
+  late final GeneratedColumn<int> progress = GeneratedColumn<int>(
+    'progress',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _rewardPointsMeta = const VerificationMeta(
+    'rewardPoints',
+  );
+  @override
+  late final GeneratedColumn<int> rewardPoints = GeneratedColumn<int>(
+    'reward_points',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _artworkMeta = const VerificationMeta(
+    'artwork',
+  );
+  @override
+  late final GeneratedColumn<String> artwork = GeneratedColumn<String>(
+    'artwork',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _imageUrlMeta = const VerificationMeta(
+    'imageUrl',
+  );
+  @override
+  late final GeneratedColumn<String> imageUrl = GeneratedColumn<String>(
+    'image_url',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tab,
+    title,
+    goal,
+    progress,
+    rewardPoints,
+    artwork,
+    imageUrl,
+    sortOrder,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'challenges';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ChallengeRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tab')) {
+      context.handle(
+        _tabMeta,
+        tab.isAcceptableOrUnknown(data['tab']!, _tabMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tabMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('goal')) {
+      context.handle(
+        _goalMeta,
+        goal.isAcceptableOrUnknown(data['goal']!, _goalMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_goalMeta);
+    }
+    if (data.containsKey('progress')) {
+      context.handle(
+        _progressMeta,
+        progress.isAcceptableOrUnknown(data['progress']!, _progressMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_progressMeta);
+    }
+    if (data.containsKey('reward_points')) {
+      context.handle(
+        _rewardPointsMeta,
+        rewardPoints.isAcceptableOrUnknown(
+          data['reward_points']!,
+          _rewardPointsMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_rewardPointsMeta);
+    }
+    if (data.containsKey('artwork')) {
+      context.handle(
+        _artworkMeta,
+        artwork.isAcceptableOrUnknown(data['artwork']!, _artworkMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_artworkMeta);
+    }
+    if (data.containsKey('image_url')) {
+      context.handle(
+        _imageUrlMeta,
+        imageUrl.isAcceptableOrUnknown(data['image_url']!, _imageUrlMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_imageUrlMeta);
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sortOrderMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ChallengeRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ChallengeRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tab: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tab'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      goal: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}goal'],
+      )!,
+      progress: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}progress'],
+      )!,
+      rewardPoints: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}reward_points'],
+      )!,
+      artwork: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}artwork'],
+      )!,
+      imageUrl: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}image_url'],
+      )!,
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+    );
+  }
+
+  @override
+  $ChallengesTable createAlias(String alias) {
+    return $ChallengesTable(attachedDatabase, alias);
+  }
+}
+
+class ChallengeRow extends DataClass implements Insertable<ChallengeRow> {
+  final String id;
+  final String tab;
+  final String title;
+  final int goal;
+  final int progress;
+  final int rewardPoints;
+  final String artwork;
+  final String imageUrl;
+  final int sortOrder;
+  const ChallengeRow({
+    required this.id,
+    required this.tab,
+    required this.title,
+    required this.goal,
+    required this.progress,
+    required this.rewardPoints,
+    required this.artwork,
+    required this.imageUrl,
+    required this.sortOrder,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tab'] = Variable<String>(tab);
+    map['title'] = Variable<String>(title);
+    map['goal'] = Variable<int>(goal);
+    map['progress'] = Variable<int>(progress);
+    map['reward_points'] = Variable<int>(rewardPoints);
+    map['artwork'] = Variable<String>(artwork);
+    map['image_url'] = Variable<String>(imageUrl);
+    map['sort_order'] = Variable<int>(sortOrder);
+    return map;
+  }
+
+  ChallengesCompanion toCompanion(bool nullToAbsent) {
+    return ChallengesCompanion(
+      id: Value(id),
+      tab: Value(tab),
+      title: Value(title),
+      goal: Value(goal),
+      progress: Value(progress),
+      rewardPoints: Value(rewardPoints),
+      artwork: Value(artwork),
+      imageUrl: Value(imageUrl),
+      sortOrder: Value(sortOrder),
+    );
+  }
+
+  factory ChallengeRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ChallengeRow(
+      id: serializer.fromJson<String>(json['id']),
+      tab: serializer.fromJson<String>(json['tab']),
+      title: serializer.fromJson<String>(json['title']),
+      goal: serializer.fromJson<int>(json['goal']),
+      progress: serializer.fromJson<int>(json['progress']),
+      rewardPoints: serializer.fromJson<int>(json['rewardPoints']),
+      artwork: serializer.fromJson<String>(json['artwork']),
+      imageUrl: serializer.fromJson<String>(json['imageUrl']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tab': serializer.toJson<String>(tab),
+      'title': serializer.toJson<String>(title),
+      'goal': serializer.toJson<int>(goal),
+      'progress': serializer.toJson<int>(progress),
+      'rewardPoints': serializer.toJson<int>(rewardPoints),
+      'artwork': serializer.toJson<String>(artwork),
+      'imageUrl': serializer.toJson<String>(imageUrl),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+    };
+  }
+
+  ChallengeRow copyWith({
+    String? id,
+    String? tab,
+    String? title,
+    int? goal,
+    int? progress,
+    int? rewardPoints,
+    String? artwork,
+    String? imageUrl,
+    int? sortOrder,
+  }) => ChallengeRow(
+    id: id ?? this.id,
+    tab: tab ?? this.tab,
+    title: title ?? this.title,
+    goal: goal ?? this.goal,
+    progress: progress ?? this.progress,
+    rewardPoints: rewardPoints ?? this.rewardPoints,
+    artwork: artwork ?? this.artwork,
+    imageUrl: imageUrl ?? this.imageUrl,
+    sortOrder: sortOrder ?? this.sortOrder,
+  );
+  ChallengeRow copyWithCompanion(ChallengesCompanion data) {
+    return ChallengeRow(
+      id: data.id.present ? data.id.value : this.id,
+      tab: data.tab.present ? data.tab.value : this.tab,
+      title: data.title.present ? data.title.value : this.title,
+      goal: data.goal.present ? data.goal.value : this.goal,
+      progress: data.progress.present ? data.progress.value : this.progress,
+      rewardPoints: data.rewardPoints.present
+          ? data.rewardPoints.value
+          : this.rewardPoints,
+      artwork: data.artwork.present ? data.artwork.value : this.artwork,
+      imageUrl: data.imageUrl.present ? data.imageUrl.value : this.imageUrl,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ChallengeRow(')
+          ..write('id: $id, ')
+          ..write('tab: $tab, ')
+          ..write('title: $title, ')
+          ..write('goal: $goal, ')
+          ..write('progress: $progress, ')
+          ..write('rewardPoints: $rewardPoints, ')
+          ..write('artwork: $artwork, ')
+          ..write('imageUrl: $imageUrl, ')
+          ..write('sortOrder: $sortOrder')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tab,
+    title,
+    goal,
+    progress,
+    rewardPoints,
+    artwork,
+    imageUrl,
+    sortOrder,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ChallengeRow &&
+          other.id == this.id &&
+          other.tab == this.tab &&
+          other.title == this.title &&
+          other.goal == this.goal &&
+          other.progress == this.progress &&
+          other.rewardPoints == this.rewardPoints &&
+          other.artwork == this.artwork &&
+          other.imageUrl == this.imageUrl &&
+          other.sortOrder == this.sortOrder);
+}
+
+class ChallengesCompanion extends UpdateCompanion<ChallengeRow> {
+  final Value<String> id;
+  final Value<String> tab;
+  final Value<String> title;
+  final Value<int> goal;
+  final Value<int> progress;
+  final Value<int> rewardPoints;
+  final Value<String> artwork;
+  final Value<String> imageUrl;
+  final Value<int> sortOrder;
+  final Value<int> rowid;
+  const ChallengesCompanion({
+    this.id = const Value.absent(),
+    this.tab = const Value.absent(),
+    this.title = const Value.absent(),
+    this.goal = const Value.absent(),
+    this.progress = const Value.absent(),
+    this.rewardPoints = const Value.absent(),
+    this.artwork = const Value.absent(),
+    this.imageUrl = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ChallengesCompanion.insert({
+    required String id,
+    required String tab,
+    required String title,
+    required int goal,
+    required int progress,
+    required int rewardPoints,
+    required String artwork,
+    required String imageUrl,
+    required int sortOrder,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tab = Value(tab),
+       title = Value(title),
+       goal = Value(goal),
+       progress = Value(progress),
+       rewardPoints = Value(rewardPoints),
+       artwork = Value(artwork),
+       imageUrl = Value(imageUrl),
+       sortOrder = Value(sortOrder);
+  static Insertable<ChallengeRow> custom({
+    Expression<String>? id,
+    Expression<String>? tab,
+    Expression<String>? title,
+    Expression<int>? goal,
+    Expression<int>? progress,
+    Expression<int>? rewardPoints,
+    Expression<String>? artwork,
+    Expression<String>? imageUrl,
+    Expression<int>? sortOrder,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tab != null) 'tab': tab,
+      if (title != null) 'title': title,
+      if (goal != null) 'goal': goal,
+      if (progress != null) 'progress': progress,
+      if (rewardPoints != null) 'reward_points': rewardPoints,
+      if (artwork != null) 'artwork': artwork,
+      if (imageUrl != null) 'image_url': imageUrl,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ChallengesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tab,
+    Value<String>? title,
+    Value<int>? goal,
+    Value<int>? progress,
+    Value<int>? rewardPoints,
+    Value<String>? artwork,
+    Value<String>? imageUrl,
+    Value<int>? sortOrder,
+    Value<int>? rowid,
+  }) {
+    return ChallengesCompanion(
+      id: id ?? this.id,
+      tab: tab ?? this.tab,
+      title: title ?? this.title,
+      goal: goal ?? this.goal,
+      progress: progress ?? this.progress,
+      rewardPoints: rewardPoints ?? this.rewardPoints,
+      artwork: artwork ?? this.artwork,
+      imageUrl: imageUrl ?? this.imageUrl,
+      sortOrder: sortOrder ?? this.sortOrder,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tab.present) {
+      map['tab'] = Variable<String>(tab.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (goal.present) {
+      map['goal'] = Variable<int>(goal.value);
+    }
+    if (progress.present) {
+      map['progress'] = Variable<int>(progress.value);
+    }
+    if (rewardPoints.present) {
+      map['reward_points'] = Variable<int>(rewardPoints.value);
+    }
+    if (artwork.present) {
+      map['artwork'] = Variable<String>(artwork.value);
+    }
+    if (imageUrl.present) {
+      map['image_url'] = Variable<String>(imageUrl.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ChallengesCompanion(')
+          ..write('id: $id, ')
+          ..write('tab: $tab, ')
+          ..write('title: $title, ')
+          ..write('goal: $goal, ')
+          ..write('progress: $progress, ')
+          ..write('rewardPoints: $rewardPoints, ')
+          ..write('artwork: $artwork, ')
+          ..write('imageUrl: $imageUrl, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -2956,11 +3721,14 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   );
   late final $ShopsTable shops = $ShopsTable(this);
   late final $MembersTable members = $MembersTable(this);
+  late final $TiersTable tiers = $TiersTable(this);
+  late final $ChallengesTable challenges = $ChallengesTable(this);
   late final AppMetaDao appMetaDao = AppMetaDao(this as AppDatabase);
   late final UsersDao usersDao = UsersDao(this as AppDatabase);
   late final ProductsDao productsDao = ProductsDao(this as AppDatabase);
   late final HomeDao homeDao = HomeDao(this as AppDatabase);
   late final MembersDao membersDao = MembersDao(this as AppDatabase);
+  late final RewardsDao rewardsDao = RewardsDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -2974,6 +3742,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     sectionProducts,
     shops,
     members,
+    tiers,
+    challenges,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -5040,6 +5810,429 @@ typedef $$MembersTableProcessedTableManager =
       MemberRow,
       PrefetchHooks Function()
     >;
+typedef $$TiersTableCreateCompanionBuilder = TiersCompanion Function({
+  required String id,
+  required int minPoints,
+  Value<int> rowid,
+});
+typedef $$TiersTableUpdateCompanionBuilder = TiersCompanion Function({
+  Value<String> id,
+  Value<int> minPoints,
+  Value<int> rowid,
+});
+
+class $$TiersTableFilterComposer extends Composer<_$AppDatabase, $TiersTable> {
+  $$TiersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get minPoints => $composableBuilder(
+    column: $table.minPoints,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$TiersTableOrderingComposer
+    extends Composer<_$AppDatabase, $TiersTable> {
+  $$TiersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get minPoints => $composableBuilder(
+    column: $table.minPoints,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$TiersTableAnnotationComposer
+    extends Composer<_$AppDatabase, $TiersTable> {
+  $$TiersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get minPoints =>
+      $composableBuilder(column: $table.minPoints, builder: (column) => column);
+}
+
+class $$TiersTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $TiersTable,
+          TierRow,
+          $$TiersTableFilterComposer,
+          $$TiersTableOrderingComposer,
+          $$TiersTableAnnotationComposer,
+          $$TiersTableCreateCompanionBuilder,
+          $$TiersTableUpdateCompanionBuilder,
+          (TierRow, BaseReferences<_$AppDatabase, $TiersTable, TierRow>),
+          TierRow,
+          PrefetchHooks Function()
+        > {
+  $$TiersTableTableManager(_$AppDatabase db, $TiersTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$TiersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$TiersTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$TiersTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<int> minPoints = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) => TiersCompanion(id: id, minPoints: minPoints, rowid: rowid),
+          createCompanionCallback:
+              ({
+                required String id,
+                required int minPoints,
+                Value<int> rowid = const Value.absent(),
+              }) => TiersCompanion.insert(
+                id: id,
+                minPoints: minPoints,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$TiersTable, TierRow>(table),
+                  BaseReferences<_$AppDatabase, $TiersTable, TierRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$TiersTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $TiersTable,
+      TierRow,
+      $$TiersTableFilterComposer,
+      $$TiersTableOrderingComposer,
+      $$TiersTableAnnotationComposer,
+      $$TiersTableCreateCompanionBuilder,
+      $$TiersTableUpdateCompanionBuilder,
+      (TierRow, BaseReferences<_$AppDatabase, $TiersTable, TierRow>),
+      TierRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ChallengesTableCreateCompanionBuilder = ChallengesCompanion Function({
+  required String id,
+  required String tab,
+  required String title,
+  required int goal,
+  required int progress,
+  required int rewardPoints,
+  required String artwork,
+  required String imageUrl,
+  required int sortOrder,
+  Value<int> rowid,
+});
+typedef $$ChallengesTableUpdateCompanionBuilder = ChallengesCompanion Function({
+  Value<String> id,
+  Value<String> tab,
+  Value<String> title,
+  Value<int> goal,
+  Value<int> progress,
+  Value<int> rewardPoints,
+  Value<String> artwork,
+  Value<String> imageUrl,
+  Value<int> sortOrder,
+  Value<int> rowid,
+});
+
+class $$ChallengesTableFilterComposer
+    extends Composer<_$AppDatabase, $ChallengesTable> {
+  $$ChallengesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tab => $composableBuilder(
+    column: $table.tab,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get goal => $composableBuilder(
+    column: $table.goal,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get progress => $composableBuilder(
+    column: $table.progress,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rewardPoints => $composableBuilder(
+    column: $table.rewardPoints,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get artwork => $composableBuilder(
+    column: $table.artwork,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get imageUrl => $composableBuilder(
+    column: $table.imageUrl,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ChallengesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ChallengesTable> {
+  $$ChallengesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tab => $composableBuilder(
+    column: $table.tab,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get goal => $composableBuilder(
+    column: $table.goal,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get progress => $composableBuilder(
+    column: $table.progress,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rewardPoints => $composableBuilder(
+    column: $table.rewardPoints,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get artwork => $composableBuilder(
+    column: $table.artwork,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get imageUrl => $composableBuilder(
+    column: $table.imageUrl,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ChallengesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ChallengesTable> {
+  $$ChallengesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tab =>
+      $composableBuilder(column: $table.tab, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<int> get goal =>
+      $composableBuilder(column: $table.goal, builder: (column) => column);
+
+  GeneratedColumn<int> get progress =>
+      $composableBuilder(column: $table.progress, builder: (column) => column);
+
+  GeneratedColumn<int> get rewardPoints => $composableBuilder(
+    column: $table.rewardPoints,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get artwork =>
+      $composableBuilder(column: $table.artwork, builder: (column) => column);
+
+  GeneratedColumn<String> get imageUrl =>
+      $composableBuilder(column: $table.imageUrl, builder: (column) => column);
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+}
+
+class $$ChallengesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ChallengesTable,
+          ChallengeRow,
+          $$ChallengesTableFilterComposer,
+          $$ChallengesTableOrderingComposer,
+          $$ChallengesTableAnnotationComposer,
+          $$ChallengesTableCreateCompanionBuilder,
+          $$ChallengesTableUpdateCompanionBuilder,
+          (
+            ChallengeRow,
+            BaseReferences<_$AppDatabase, $ChallengesTable, ChallengeRow>,
+          ),
+          ChallengeRow,
+          PrefetchHooks Function()
+        > {
+  $$ChallengesTableTableManager(_$AppDatabase db, $ChallengesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ChallengesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ChallengesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ChallengesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tab = const Value.absent(),
+                Value<String> title = const Value.absent(),
+                Value<int> goal = const Value.absent(),
+                Value<int> progress = const Value.absent(),
+                Value<int> rewardPoints = const Value.absent(),
+                Value<String> artwork = const Value.absent(),
+                Value<String> imageUrl = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ChallengesCompanion(
+                id: id,
+                tab: tab,
+                title: title,
+                goal: goal,
+                progress: progress,
+                rewardPoints: rewardPoints,
+                artwork: artwork,
+                imageUrl: imageUrl,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tab,
+                required String title,
+                required int goal,
+                required int progress,
+                required int rewardPoints,
+                required String artwork,
+                required String imageUrl,
+                required int sortOrder,
+                Value<int> rowid = const Value.absent(),
+              }) => ChallengesCompanion.insert(
+                id: id,
+                tab: tab,
+                title: title,
+                goal: goal,
+                progress: progress,
+                rewardPoints: rewardPoints,
+                artwork: artwork,
+                imageUrl: imageUrl,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ChallengesTable, ChallengeRow>(table),
+                  BaseReferences<_$AppDatabase, $ChallengesTable, ChallengeRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ChallengesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ChallengesTable,
+      ChallengeRow,
+      $$ChallengesTableFilterComposer,
+      $$ChallengesTableOrderingComposer,
+      $$ChallengesTableAnnotationComposer,
+      $$ChallengesTableCreateCompanionBuilder,
+      $$ChallengesTableUpdateCompanionBuilder,
+      (
+        ChallengeRow,
+        BaseReferences<_$AppDatabase, $ChallengesTable, ChallengeRow>,
+      ),
+      ChallengeRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -5060,4 +6253,8 @@ class $AppDatabaseManager {
       $$ShopsTableTableManager(_db, _db.shops);
   $$MembersTableTableManager get members =>
       $$MembersTableTableManager(_db, _db.members);
+  $$TiersTableTableManager get tiers =>
+      $$TiersTableTableManager(_db, _db.tiers);
+  $$ChallengesTableTableManager get challenges =>
+      $$ChallengesTableTableManager(_db, _db.challenges);
 }

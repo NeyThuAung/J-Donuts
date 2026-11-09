@@ -1,0 +1,11 @@
+{
+  "data": [
+    { "id": "silver", "minPoints": 0 },
+    { "id": "gold", "minPoints": 680500 },
+    { "id": "platinum", "minPoints": 900000 }
+  ],
+  "error": null,
+  "meta": {
+    "version": 1
+  }
+}
