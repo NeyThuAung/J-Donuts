@@ -61,7 +61,8 @@ class AppBottomNavBar extends StatelessWidget {
                 insets.xs,
                 insets.md,
                 insets.xs,
-                math.max(bottomInset, insets.md),
+                // A gap above the system navigation bar, never less than md.
+                math.max(bottomInset + insets.sm, insets.md),
               ),
               child: _row(),
             ),

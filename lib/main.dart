@@ -14,6 +14,9 @@ import 'navigation/navigation.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // Draw behind the system bars (Android below 15 doesn't by default), so
+  // the transparent navigation bar shows the bottom nav, not a white strip.
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   await configureDependencies();
   await _seedLocalData();
 
@@ -37,7 +40,7 @@ Future<void> main() async {
 // Bundled data first, so every screen works offline from the first launch.
 // A failure is logged; the screens then show their empty or error states.
 Future<void> _seedLocalData() async {
-  final result = await inject<SeedLocalDataUseCase>()(const NoParams());
+  final result = await inject<SeedLocalDataUseCase>().call(const NoParams());
   if (result case Failed(:final failure, :final error)) {
     inject<AppLogger>().error('Seeding failed: $failure', error: error);
   }

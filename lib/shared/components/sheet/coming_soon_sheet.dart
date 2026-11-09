@@ -38,7 +38,7 @@ class ComingSoonSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
-              CupertinoIcons.sparkles,
+              CupertinoIcons.hourglass,
               size: $styles.size.iconLg,
               color: context.appColors.accent,
             ),

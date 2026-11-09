@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import '../../../l10n/l10n.dart';
 import '../../extensions/extensions.dart';
 import '../../styles/styles.dart';
+import '../motion/app_animated_size.dart';
 import 'section_data.dart';
 
 // Cross-fades one screen section between its skeleton, content, empty and
-// error states.
+// error states. Both sit at the section's top-start corner (the default
+// centres them, so a skeleton drifted to the middle of taller content) and
+// the height eases, so sections below slide instead of jumping.
 class SectionSwitcher<T> extends StatelessWidget {
   const SectionSwitcher({
     super.key,
@@ -28,21 +31,30 @@ class SectionSwitcher<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: context.motion(AppMotion.fieldState),
-      child: KeyedSubtree(
-        key: ValueKey(data.runtimeType),
-        child: switch (data) {
-          SectionLoading() => skeleton,
-          SectionFailed() => SectionMessage.error(onRetry: onRetry),
-          SectionReady(:final data) when isEmpty(data) => SectionMessage.empty(
-            message: emptyMessage,
-          ),
-          SectionReady(:final data) => builder(data),
-        },
+    const duration = AppMotion.fieldState;
+    return AppAnimatedSize(
+      duration: duration,
+      child: AnimatedSwitcher(
+        duration: context.motion(duration),
+        layoutBuilder: _topStart,
+        child: KeyedSubtree(
+          key: ValueKey(data.runtimeType),
+          child: switch (data) {
+            SectionLoading() => skeleton,
+            SectionFailed() => SectionMessage.error(onRetry: onRetry),
+            SectionReady(:final data) when isEmpty(data) =>
+              SectionMessage.empty(
+                message: emptyMessage,
+              ),
+            SectionReady(:final data) => builder(data),
+          },
+        ),
       ),
     );
   }
+
+  static Widget _topStart(Widget? current, List<Widget> previous) =>
+      Stack(children: [...previous, ?current]);
 }
 
 /// Small inline notice used for a section's empty and error states.
