@@ -11,6 +11,9 @@ abstract final class AppColors {
   static const peach = Color(0xFFFFECDC);
   static const blush = Color(0xFFFDEDF3);
   static const cyanTint = Color(0x1F59CFEC);
+  static const apricot = Color(0xFFF6DCC6);
+  static const taupe = Color(0xFFA0928A);
+  static const cream = Color(0xFFF4E7D6);
 
   static const white = Color(0xFFFFFFFF);
   static const ink = Color(0xFF242B32);

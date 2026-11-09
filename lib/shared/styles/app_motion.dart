@@ -20,12 +20,14 @@ abstract final class AppMotion {
   static const entrance = Duration(milliseconds: 500);
   static const staggerStep = Duration(milliseconds: 80);
   static const donutDrift = Duration(milliseconds: 1200);
+  static const homeEntrance = Duration(milliseconds: 900);
   static const welcomeEntrance = Duration(milliseconds: 1400);
   static const pointsRing = Duration(milliseconds: 1400);
   static const challengeArt = Duration(milliseconds: 900);
   static const shimmer = Duration(milliseconds: 1400);
   static const imageFade = Duration(milliseconds: 300);
   static const offlineBanner = Duration(milliseconds: 300);
+  static const addedFeedback = Duration(milliseconds: 1600);
   static const carouselSlide = Duration(milliseconds: 500);
   static const carouselInterval = Duration(seconds: 4);
   static const attentionPulse = Duration(milliseconds: 1200);

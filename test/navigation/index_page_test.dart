@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:j_donuts/features/home/presentation/pages/home/home_page.dart';
 import 'package:j_donuts/features/settings/presentation/pages/placeholder/placeholder_page.dart';
 import 'package:j_donuts/features/settings/presentation/pages/settings/settings_page.dart';
 import 'package:j_donuts/l10n/l10n.dart';
@@ -8,6 +9,8 @@ import 'package:j_donuts/navigation/index_page.dart';
 import 'package:j_donuts/navigation/index_tab.dart';
 import 'package:j_donuts/shared/components/components.dart';
 import 'package:j_donuts/shared/styles/styles.dart';
+
+import '../helpers/test_page_cubits.dart';
 
 GoRouter _router(String location) => GoRouter(
   initialLocation: location,
@@ -22,6 +25,7 @@ GoRouter _router(String location) => GoRouter(
 );
 
 Future<GoRouter> _pump(WidgetTester tester, String location) async {
+  registerPageCubits();
   final router = _router(location);
   addTearDown(router.dispose);
   await tester.pumpWidget(
@@ -67,17 +71,19 @@ void main() {
       expect(_visibleTab(tester), IndexTab.rewards.index);
     });
 
-    testWidgets('shows Settings on its tab and placeholders on the rest', (
-      tester,
-    ) async {
-      await _pump(tester, '/');
+    testWidgets(
+      'shows Home and Settings on their tabs and placeholders on the rest',
+      (tester) async {
+        await _pump(tester, '/');
 
-      expect(find.byType(SettingsPage, skipOffstage: false), findsOneWidget);
-      expect(
-        find.byType(PlaceholderPage, skipOffstage: false),
-        findsNWidgets(IndexTab.values.length - 1),
-      );
-    });
+        expect(find.byType(HomePage, skipOffstage: false), findsOneWidget);
+        expect(find.byType(SettingsPage, skipOffstage: false), findsOneWidget);
+        expect(
+          find.byType(PlaceholderPage, skipOffstage: false),
+          findsNWidgets(IndexTab.values.length - 2),
+        );
+      },
+    );
 
     testWidgets('tapping a tab switches to it and updates the location', (
       tester,

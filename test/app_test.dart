@@ -10,6 +10,7 @@ import 'package:j_donuts/navigation/navigation.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'helpers/test_authentication_cubit.dart';
+import 'helpers/test_page_cubits.dart';
 
 const _systemTextScale = 2.0;
 const _sampleFontSize = 10.0;
@@ -27,6 +28,7 @@ void main() {
     late NavigationRouter navigationRouter;
 
     setUp(() {
+      registerPageCubits();
       authCubit = TestAuthenticationCubit();
       connectivityCubit = ConnectivityCubit(
         _MockNetworkInfo(),

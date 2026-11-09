@@ -75,6 +75,8 @@ import 'package:j_donuts/features/home/domain/usecase/watch_shops_usecase.dart'
     as _i44;
 import 'package:j_donuts/features/home/presentation/cubit/connectivity_cubit.dart'
     as _i691;
+import 'package:j_donuts/features/home/presentation/pages/home/cubit/home_cubit.dart'
+    as _i119;
 import 'package:j_donuts/features/member/data/data_source/member_local_data_source.dart'
     as _i1033;
 import 'package:j_donuts/features/member/data/data_source/member_rest_client.dart'
@@ -95,6 +97,8 @@ import 'package:j_donuts/features/product/domain/repository/product_repository.d
     as _i43;
 import 'package:j_donuts/features/product/domain/usecase/watch_product_usecase.dart'
     as _i790;
+import 'package:j_donuts/features/product/presentation/pages/product_detail/cubit/product_detail_cubit.dart'
+    as _i293;
 import 'package:j_donuts/navigation/navigation_key_provider.dart' as _i168;
 import 'package:j_donuts/navigation/navigation_router.dart' as _i1038;
 import 'package:j_donuts/shared/components/components.dart' as _i995;
@@ -275,6 +279,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i907.AuthRepository>(),
       ),
     );
+    gh.factory<_i293.ProductDetailCubit>(
+      () => _i293.ProductDetailCubit(
+        gh<_i790.WatchProductUseCase>(),
+        gh<_i995.ISnackShower>(),
+      ),
+    );
     gh.lazySingleton<_i978.RefreshLocalDataUseCase>(
       () => _i978.RefreshLocalDataUseCase(
         gh<_i53.MemberRepository>(),
@@ -294,6 +304,16 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i438.NetworkInfo>(),
         gh<_i978.RefreshLocalDataUseCase>(),
         gh<_i438.AppLogger>(),
+      ),
+    );
+    gh.factory<_i119.HomeCubit>(
+      () => _i119.HomeCubit(
+        gh<_i144.WatchMemberUseCase>(),
+        gh<_i746.WatchBannersUseCase>(),
+        gh<_i63.WatchHomeSectionsUseCase>(),
+        gh<_i44.WatchShopsUseCase>(),
+        gh<_i978.RefreshLocalDataUseCase>(),
+        gh<_i995.ISnackShower>(),
       ),
     );
     return this;

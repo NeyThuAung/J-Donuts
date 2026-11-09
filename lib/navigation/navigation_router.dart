@@ -15,6 +15,7 @@ import '../features/auth/presentation/pages/phone_number/phone_number_page.dart'
 import '../features/auth/presentation/pages/verify_otp/cubit/verify_otp_cubit.dart';
 import '../features/auth/presentation/pages/verify_otp/verify_otp_page.dart';
 import '../features/auth/presentation/pages/welcome/welcome_page.dart';
+import '../features/product/presentation/pages/product_detail/cubit/product_detail_cubit.dart';
 import '../features/product/presentation/pages/product_detail/product_detail_page.dart';
 import 'authentication_router_notifier.dart';
 import 'index_page.dart';
@@ -127,12 +128,16 @@ class NavigationRouter {
     routes: [
       GoRoute(
         path: ProductDetailPage.routePath,
-        pageBuilder: (_, state) => _page(
-          state,
-          ProductDetailPage(
-            productId: state.pathParameters[ProductDetailPage.idParam]!,
-          ),
-        ),
+        pageBuilder: (_, state) {
+          final productId = state.pathParameters[ProductDetailPage.idParam]!;
+          return _page(
+            state,
+            BlocProvider(
+              create: (_) => inject<ProductDetailCubit>()..start(productId),
+              child: ProductDetailPage(productId: productId),
+            ),
+          );
+        },
       ),
     ],
   );

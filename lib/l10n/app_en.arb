@@ -138,5 +138,104 @@
   "settingsAccount": "Account",
   "settingsLogOut": "Log out",
   "settingsLogOutTitle": "Log out?",
-  "settingsLogOutMessage": "You'll need your phone number and a code to log back in."
+  "settingsLogOutMessage": "You'll need your phone number and a code to log back in.",
+  "memberTierSilver": "Silver",
+  "memberTierGold": "Gold",
+  "memberTierPlatinum": "Platinum",
+  "homeMemberTier": "{tier} member",
+  "@homeMemberTier": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "homePointsToNextTier": "{points} points left to become {tier} Member",
+  "@homePointsToNextTier": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      },
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "homeTopTier": "You're at our top tier",
+  "homeNotifications": "{count, plural, =0{No notifications} =1{1 notification} other{{count} notifications}}",
+  "@homeNotifications": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeNotificationsTitle": "Notifications",
+  "homeSeasonalSpecials": "Seasonal specials",
+  "homePopular": "Popular 🔥",
+  "homeOrderAgain": "Order again",
+  "homeSeeAll": "See all {section}",
+  "@homeSeeAll": {
+    "placeholders": {
+      "section": {
+        "type": "String"
+      }
+    }
+  },
+  "homeDiscountOff": "{percent}% off",
+  "@homeDiscountOff": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "homeNearbyShops": "{count, plural, =1{There is 1 J'Donut shop near you. 😋} other{There are {count} J'Donut shops near you. 😋}}",
+  "@homeNearbyShops": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeExploreNow": "Explore now",
+  "homeOrderOnline": "Order online",
+  "homeMemberEmpty": "Your member details aren't ready yet.",
+  "homeSectionEmpty": "Nothing here yet.",
+  "homeSectionError": "We couldn't load this part.",
+  "productNew": "New",
+  "productPrice": "{price} MMK",
+  "@productPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "productWhatsThis": "What's this?",
+  "productAddToCart": "Add to cart",
+  "productAdded": "Added",
+  "productAddedMessage": "{quantity} × {name} added to your cart.",
+  "@productAddedMessage": {
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "productDecrease": "Decrease quantity",
+  "productIncrease": "Increase quantity",
+  "productQuantity": "Quantity {quantity}",
+  "@productQuantity": {
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "productNotFoundTitle": "We couldn't find this product",
+  "productNotFoundMessage": "It may have been taken off the menu."
 }

@@ -259,4 +259,125 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsLogOutMessage =>
       'You\'ll need your phone number and a code to log back in.';
+
+  @override
+  String get memberTierSilver => 'Silver';
+
+  @override
+  String get memberTierGold => 'Gold';
+
+  @override
+  String get memberTierPlatinum => 'Platinum';
+
+  @override
+  String homeMemberTier(String tier) {
+    return '$tier member';
+  }
+
+  @override
+  String homePointsToNextTier(String points, String tier) {
+    return '$points points left to become $tier Member';
+  }
+
+  @override
+  String get homeTopTier => 'You\'re at our top tier';
+
+  @override
+  String homeNotifications(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count notifications',
+      one: '1 notification',
+      zero: 'No notifications',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeNotificationsTitle => 'Notifications';
+
+  @override
+  String get homeSeasonalSpecials => 'Seasonal specials';
+
+  @override
+  String get homePopular => 'Popular 🔥';
+
+  @override
+  String get homeOrderAgain => 'Order again';
+
+  @override
+  String homeSeeAll(String section) {
+    return 'See all $section';
+  }
+
+  @override
+  String homeDiscountOff(int percent) {
+    return '$percent% off';
+  }
+
+  @override
+  String homeNearbyShops(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'There are $count J\'Donut shops near you. 😋',
+      one: 'There is 1 J\'Donut shop near you. 😋',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeExploreNow => 'Explore now';
+
+  @override
+  String get homeOrderOnline => 'Order online';
+
+  @override
+  String get homeMemberEmpty => 'Your member details aren\'t ready yet.';
+
+  @override
+  String get homeSectionEmpty => 'Nothing here yet.';
+
+  @override
+  String get homeSectionError => 'We couldn\'t load this part.';
+
+  @override
+  String get productNew => 'New';
+
+  @override
+  String productPrice(String price) {
+    return '$price MMK';
+  }
+
+  @override
+  String get productWhatsThis => 'What\'s this?';
+
+  @override
+  String get productAddToCart => 'Add to cart';
+
+  @override
+  String get productAdded => 'Added';
+
+  @override
+  String productAddedMessage(int quantity, String name) {
+    return '$quantity × $name added to your cart.';
+  }
+
+  @override
+  String get productDecrease => 'Decrease quantity';
+
+  @override
+  String get productIncrease => 'Increase quantity';
+
+  @override
+  String productQuantity(int quantity) {
+    return 'Quantity $quantity';
+  }
+
+  @override
+  String get productNotFoundTitle => 'We couldn\'t find this product';
+
+  @override
+  String get productNotFoundMessage => 'It may have been taken off the menu.';
 }

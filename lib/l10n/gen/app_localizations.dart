@@ -547,6 +547,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You\'ll need your phone number and a code to log back in.'**
   String get settingsLogOutMessage;
+
+  /// No description provided for @memberTierSilver.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver'**
+  String get memberTierSilver;
+
+  /// No description provided for @memberTierGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold'**
+  String get memberTierGold;
+
+  /// No description provided for @memberTierPlatinum.
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum'**
+  String get memberTierPlatinum;
+
+  /// No description provided for @homeMemberTier.
+  ///
+  /// In en, this message translates to:
+  /// **'{tier} member'**
+  String homeMemberTier(String tier);
+
+  /// No description provided for @homePointsToNextTier.
+  ///
+  /// In en, this message translates to:
+  /// **'{points} points left to become {tier} Member'**
+  String homePointsToNextTier(String points, String tier);
+
+  /// No description provided for @homeTopTier.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re at our top tier'**
+  String get homeTopTier;
+
+  /// No description provided for @homeNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No notifications} =1{1 notification} other{{count} notifications}}'**
+  String homeNotifications(int count);
+
+  /// No description provided for @homeNotificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get homeNotificationsTitle;
+
+  /// No description provided for @homeSeasonalSpecials.
+  ///
+  /// In en, this message translates to:
+  /// **'Seasonal specials'**
+  String get homeSeasonalSpecials;
+
+  /// No description provided for @homePopular.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular 🔥'**
+  String get homePopular;
+
+  /// No description provided for @homeOrderAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Order again'**
+  String get homeOrderAgain;
+
+  /// No description provided for @homeSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all {section}'**
+  String homeSeeAll(String section);
+
+  /// No description provided for @homeDiscountOff.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% off'**
+  String homeDiscountOff(int percent);
+
+  /// No description provided for @homeNearbyShops.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{There is 1 J\'Donut shop near you. 😋} other{There are {count} J\'Donut shops near you. 😋}}'**
+  String homeNearbyShops(int count);
+
+  /// No description provided for @homeExploreNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore now'**
+  String get homeExploreNow;
+
+  /// No description provided for @homeOrderOnline.
+  ///
+  /// In en, this message translates to:
+  /// **'Order online'**
+  String get homeOrderOnline;
+
+  /// No description provided for @homeMemberEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your member details aren\'t ready yet.'**
+  String get homeMemberEmpty;
+
+  /// No description provided for @homeSectionEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here yet.'**
+  String get homeSectionEmpty;
+
+  /// No description provided for @homeSectionError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t load this part.'**
+  String get homeSectionError;
+
+  /// No description provided for @productNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get productNew;
+
+  /// No description provided for @productPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} MMK'**
+  String productPrice(String price);
+
+  /// No description provided for @productWhatsThis.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s this?'**
+  String get productWhatsThis;
+
+  /// No description provided for @productAddToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get productAddToCart;
+
+  /// No description provided for @productAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Added'**
+  String get productAdded;
+
+  /// No description provided for @productAddedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{quantity} × {name} added to your cart.'**
+  String productAddedMessage(int quantity, String name);
+
+  /// No description provided for @productDecrease.
+  ///
+  /// In en, this message translates to:
+  /// **'Decrease quantity'**
+  String get productDecrease;
+
+  /// No description provided for @productIncrease.
+  ///
+  /// In en, this message translates to:
+  /// **'Increase quantity'**
+  String get productIncrease;
+
+  /// No description provided for @productQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity {quantity}'**
+  String productQuantity(int quantity);
+
+  /// No description provided for @productNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find this product'**
+  String get productNotFoundTitle;
+
+  /// No description provided for @productNotFoundMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It may have been taken off the menu.'**
+  String get productNotFoundMessage;
 }
 
 class _AppLocalizationsDelegate

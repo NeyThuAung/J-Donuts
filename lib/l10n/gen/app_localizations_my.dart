@@ -257,4 +257,123 @@ class AppLocalizationsMy extends AppLocalizations {
   @override
   String get settingsLogOutMessage =>
       'ပြန်ဝင်ရန် ဖုန်းနံပါတ်နှင့် ကုဒ် လိုအပ်ပါမည်။';
+
+  @override
+  String get memberTierSilver => 'ငွေ';
+
+  @override
+  String get memberTierGold => 'ရွှေ';
+
+  @override
+  String get memberTierPlatinum => 'ပလက်တီနမ်';
+
+  @override
+  String homeMemberTier(String tier) {
+    return '$tier အဖွဲ့ဝင်';
+  }
+
+  @override
+  String homePointsToNextTier(String points, String tier) {
+    return '$tier အဖွဲ့ဝင် ဖြစ်ရန် $points မှတ် လိုပါသေးသည်';
+  }
+
+  @override
+  String get homeTopTier => 'အမြင့်ဆုံး အဆင့်သို့ ရောက်ရှိနေပါပြီ';
+
+  @override
+  String homeNotifications(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'အသိပေးချက် $count ခု',
+      zero: 'အသိပေးချက် မရှိပါ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeNotificationsTitle => 'အသိပေးချက်များ';
+
+  @override
+  String get homeSeasonalSpecials => 'ရာသီအလိုက် အထူးများ';
+
+  @override
+  String get homePopular => 'လူကြိုက်များ 🔥';
+
+  @override
+  String get homeOrderAgain => 'ထပ်မံ မှာယူရန်';
+
+  @override
+  String homeSeeAll(String section) {
+    return '$section အားလုံး ကြည့်ရန်';
+  }
+
+  @override
+  String homeDiscountOff(int percent) {
+    return '$percent% လျှော့';
+  }
+
+  @override
+  String homeNearbyShops(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'သင့်အနီးတွင် J\'Donut ဆိုင် $count ဆိုင် ရှိပါသည်။ 😋',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeExploreNow => 'ယခု လေ့လာမည်';
+
+  @override
+  String get homeOrderOnline => 'အွန်လိုင်းမှ မှာယူရန်';
+
+  @override
+  String get homeMemberEmpty => 'အဖွဲ့ဝင် အချက်အလက် မရရှိသေးပါ။';
+
+  @override
+  String get homeSectionEmpty => 'ဤနေရာတွင် မရှိသေးပါ။';
+
+  @override
+  String get homeSectionError => 'ဤအပိုင်းကို ဖွင့်၍ မရပါ။';
+
+  @override
+  String get productNew => 'အသစ်';
+
+  @override
+  String productPrice(String price) {
+    return '$price ကျပ်';
+  }
+
+  @override
+  String get productWhatsThis => 'ဒါဘာလဲ?';
+
+  @override
+  String get productAddToCart => 'ခြင်းထဲ ထည့်မည်';
+
+  @override
+  String get productAdded => 'ထည့်ပြီးပါပြီ';
+
+  @override
+  String productAddedMessage(int quantity, String name) {
+    return '$name $quantity ခုကို ခြင်းထဲ ထည့်ပြီးပါပြီ။';
+  }
+
+  @override
+  String get productDecrease => 'အရေအတွက် လျှော့ရန်';
+
+  @override
+  String get productIncrease => 'အရေအတွက် တိုးရန်';
+
+  @override
+  String productQuantity(int quantity) {
+    return 'အရေအတွက် $quantity';
+  }
+
+  @override
+  String get productNotFoundTitle => 'ဤပစ္စည်းကို ရှာမတွေ့ပါ';
+
+  @override
+  String get productNotFoundMessage => 'မီနူးမှ ဖယ်ရှားထားနိုင်ပါသည်။';
 }

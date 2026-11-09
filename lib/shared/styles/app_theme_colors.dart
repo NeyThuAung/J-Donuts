@@ -29,6 +29,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     required this.shimmerBase,
     required this.shimmerHighlight,
     required this.scrim,
+    required this.headerBadge,
+    required this.headerBadgeIcon,
+    required this.landscapeCloud,
   });
 
   final Color primary;
@@ -58,6 +61,13 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
   /// Behind dialogs.
   final Color scrim;
 
+  /// Tier badge shape behind the Home header, and its star.
+  final Color headerBadge;
+  final Color headerBadgeIcon;
+
+  /// Clouds behind the nearby shops.
+  final Color landscapeCloud;
+
   static const light = AppThemeColors(
     primary: AppColors.cyan,
     primaryTint: AppColors.cyanTint,
@@ -83,6 +93,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     shimmerBase: AppColors.smoke,
     shimmerHighlight: AppColors.mist,
     scrim: AppColors.scrim,
+    headerBadge: AppColors.apricot,
+    headerBadgeIcon: AppColors.taupe,
+    landscapeCloud: AppColors.cream,
   );
 
   @override
@@ -111,6 +124,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     Color? shimmerBase,
     Color? shimmerHighlight,
     Color? scrim,
+    Color? headerBadge,
+    Color? headerBadgeIcon,
+    Color? landscapeCloud,
   }) => AppThemeColors(
     primary: primary ?? this.primary,
     primaryTint: primaryTint ?? this.primaryTint,
@@ -136,6 +152,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
     shimmerBase: shimmerBase ?? this.shimmerBase,
     shimmerHighlight: shimmerHighlight ?? this.shimmerHighlight,
     scrim: scrim ?? this.scrim,
+    headerBadge: headerBadge ?? this.headerBadge,
+    headerBadgeIcon: headerBadgeIcon ?? this.headerBadgeIcon,
+    landscapeCloud: landscapeCloud ?? this.landscapeCloud,
   );
 
   @override
@@ -167,6 +186,9 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
       shimmerBase: mix(shimmerBase, other.shimmerBase),
       shimmerHighlight: mix(shimmerHighlight, other.shimmerHighlight),
       scrim: mix(scrim, other.scrim),
+      headerBadge: mix(headerBadge, other.headerBadge),
+      headerBadgeIcon: mix(headerBadgeIcon, other.headerBadgeIcon),
+      landscapeCloud: mix(landscapeCloud, other.landscapeCloud),
     );
   }
 }
