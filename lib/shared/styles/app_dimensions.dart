@@ -47,6 +47,10 @@ class AppSizes {
   final double wheelItemExtent = 40;
   final double settingsRow = 56;
   final double hairline = 1;
+  final double navPillHeight = 40;
+  final double navPillPadding = 14;
+  final double navIcon = 20;
+  final double navStrip = 32;
 }
 
 class AppGrid {

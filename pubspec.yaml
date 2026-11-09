@@ -52,6 +52,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   top_snackbar_flutter: ^3.5.0
+  flutter_svg: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -114,3 +115,5 @@ flutter:
 
 flutter_gen:
   output: lib/gen/
+  integrations:
+    flutter_svg: true

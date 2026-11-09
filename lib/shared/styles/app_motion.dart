@@ -7,7 +7,7 @@ abstract final class AppMotion {
   static const press = Duration(milliseconds: 120);
   static const fieldState = Duration(milliseconds: 200);
   static const quantity = Duration(milliseconds: 250);
-  static const navPill = Duration(milliseconds: 350);
+  static const navPill = Duration(milliseconds: 550);
   static const tabSwitch = Duration(milliseconds: 350);
   static const buttonMorph = Duration(milliseconds: 300);
   static const pageStep = Duration(milliseconds: 400);
@@ -37,11 +37,14 @@ abstract final class AppMotion {
   static const enter = Curves.easeOutQuart;
   static const pop = Curves.easeOutBack;
   static const sweep = Curves.easeInOutCubic;
+  // Slow start, then overshoots about 13% before settling.
+  static const navPillBounce = Cubic(0.4, 0, 0.2, 1.6);
 
   // Values
   static const pressedScale = 0.96;
   static const pulseScale = 1.06;
   static const dialogEnterScale = 1.08;
+  static const navPillFadeIn = 0.3;
   static const enterSlideOffset = Offset(0, 0.15);
   static const shakeDistance = 10.0;
   static const shakeOscillations = 3;

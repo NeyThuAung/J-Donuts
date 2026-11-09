@@ -6,6 +6,7 @@ import 'package:j_donuts/features/settings/presentation/pages/settings/settings_
 import 'package:j_donuts/l10n/l10n.dart';
 import 'package:j_donuts/navigation/index_page.dart';
 import 'package:j_donuts/navigation/index_tab.dart';
+import 'package:j_donuts/shared/components/components.dart';
 import 'package:j_donuts/shared/styles/styles.dart';
 
 GoRouter _router(String location) => GoRouter(
@@ -35,6 +36,14 @@ Future<GoRouter> _pump(WidgetTester tester, String location) async {
   return router;
 }
 
+// Nav buttons are the bar's tap targets, one per tab in order.
+Finder _navButton(IndexTab tab) => find
+    .descendant(
+      of: find.byType(AppBottomNavBar),
+      matching: find.byType(GestureDetector),
+    )
+    .at(tab.index);
+
 int _visibleTab(WidgetTester tester) =>
     tester.widget<IndexedStack>(find.byType(IndexedStack)).index!;
 
@@ -45,7 +54,9 @@ void main() {
 
       expect(_visibleTab(tester), IndexTab.home.index);
       expect(
-        tester.widget<NavigationBar>(find.byType(NavigationBar)).selectedIndex,
+        tester
+            .widget<AppBottomNavBar>(find.byType(AppBottomNavBar))
+            .selectedIndex,
         IndexTab.home.index,
       );
     });
@@ -73,7 +84,7 @@ void main() {
     ) async {
       final router = await _pump(tester, '/');
 
-      await tester.tap(find.byIcon(IndexTab.wallet.icon));
+      await tester.tap(_navButton(IndexTab.wallet));
       await tester.pumpAndSettle();
 
       expect(_visibleTab(tester), IndexTab.wallet.index);
@@ -89,7 +100,7 @@ void main() {
       await _pump(tester, '/');
       final stackBefore = tester.element(find.byType(IndexedStack));
 
-      await tester.tap(find.byIcon(IndexTab.rewards.icon));
+      await tester.tap(_navButton(IndexTab.rewards));
       await tester.pumpAndSettle();
 
       expect(tester.element(find.byType(IndexedStack)), same(stackBefore));

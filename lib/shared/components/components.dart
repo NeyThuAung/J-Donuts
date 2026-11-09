@@ -4,6 +4,7 @@ export 'error/app_error_view.dart';
 export 'input/app_text_field.dart';
 export 'loading/app_shimmer.dart';
 export 'motion/staggered_entrance.dart';
+export 'navigation/app_bottom_nav_bar.dart';
 export 'settings/settings_group.dart';
 export 'settings/settings_tile.dart';
 export 'sheet/coming_soon_sheet.dart';

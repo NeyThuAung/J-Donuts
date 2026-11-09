@@ -7,7 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../features/auth/presentation/cubit/authentication_cubit.dart';
 import '../features/settings/presentation/pages/placeholder/placeholder_page.dart';
 import '../features/settings/presentation/pages/settings/settings_page.dart';
+import '../gen/assets.gen.dart';
 import '../l10n/l10n.dart';
+import '../shared/components/components.dart';
+import '../shared/resources/r.dart';
 import 'index_tab.dart';
 import 'router_extension.dart';
 
@@ -23,19 +26,20 @@ class IndexPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
+      // The page shows beside the bar's rounded top corners.
+      extendBody: true,
       body: IndexedStack(
         index: tab.index,
         children: [
           for (final tab in IndexTab.values) _body(context, tab),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
+      bottomNavigationBar: AppBottomNavBar(
         selectedIndex: tab.index,
-        onDestinationSelected: (index) =>
-            context.selectIndexTab(IndexTab.values[index]),
-        destinations: [
+        onSelected: (index) => context.selectIndexTab(IndexTab.values[index]),
+        items: [
           for (final tab in IndexTab.values)
-            NavigationDestination(icon: Icon(tab.icon), label: tab.label(l10n)),
+            AppNavItem(icon: tab.navIcon, label: tab.label(l10n)),
         ],
       ),
     );
@@ -60,6 +64,15 @@ extension IndexTabView on IndexTab {
     IndexTab.settings => l10n.navSettings,
   };
 
+  SvgGenImage get navIcon => switch (this) {
+    IndexTab.home => R.icons.navHome,
+    IndexTab.rewards => R.icons.navReward,
+    IndexTab.orders => R.icons.navOrders,
+    IndexTab.wallet => R.icons.navWallet,
+    IndexTab.settings => R.icons.navSettings,
+  };
+
+  /// For the placeholder page bodies.
   IconData get icon => switch (this) {
     IndexTab.home => CupertinoIcons.house,
     IndexTab.rewards => CupertinoIcons.rosette,
